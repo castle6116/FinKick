@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DE6C59CA259F404600AED03F /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE6C59C9259F404600AED03F /* NanumSquareBold.ttf */; };
-		DEAAD6AB259F152F00001F67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAAD6AA259F152F00001F67 /* ViewController.swift */; };
+		DEAAD6AB259F152F00001F67 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAAD6AA259F152F00001F67 /* MainViewController.swift */; };
 		DEAAD6B1259F15AB00001F67 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = DEAAD6AF259F15AB00001F67 /* lock.png */; };
 		DEAAD6B2259F15AB00001F67 /* human.png in Resources */ = {isa = PBXBuildFile; fileRef = DEAAD6B0259F15AB00001F67 /* human.png */; };
 		DEAAD6B5259F15E800001F67 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAAD6B4259F15E800001F67 /* ImageController.swift */; };
@@ -23,7 +23,7 @@
 		DE6C59C9259F404600AED03F /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareBold.ttf; path = ../../../../../Library/Fonts/NanumSquareBold.ttf; sourceTree = "<group>"; };
 		DE6C59CC259F40E200AED03F /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SCDream5.otf; path = "../../../Downloads/S-Core_Dream_OTF/SCDream5.otf"; sourceTree = "<group>"; };
 		DE6C59CE259F470200AED03F /* FinKick-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FinKick-Bridging-Header.h"; sourceTree = "<group>"; };
-		DEAAD6AA259F152F00001F67 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DEAAD6AA259F152F00001F67 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DEAAD6AF259F15AB00001F67 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = Image/lock.png; sourceTree = SOURCE_ROOT; };
 		DEAAD6B0259F15AB00001F67 /* human.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = human.png; path = Image/human.png; sourceTree = SOURCE_ROOT; };
 		DEAAD6B4259F15E800001F67 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 			children = (
 				DEEC1362259EFE84008F282A /* AppDelegate.swift */,
 				DEEC1364259EFE84008F282A /* SceneDelegate.swift */,
-				DEAAD6AA259F152F00001F67 /* ViewController.swift */,
+				DEAAD6AA259F152F00001F67 /* MainViewController.swift */,
 				DEAAD6B4259F15E800001F67 /* ImageController.swift */,
 				DEEC1368259EFE84008F282A /* Main.storyboard */,
 				DE6C59CC259F40E200AED03F /* SCDream5.otf */,
@@ -158,7 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEEC1363259EFE84008F282A /* AppDelegate.swift in Sources */,
-				DEAAD6AB259F152F00001F67 /* ViewController.swift in Sources */,
+				DEAAD6AB259F152F00001F67 /* MainViewController.swift in Sources */,
 				DEEC1365259EFE84008F282A /* SceneDelegate.swift in Sources */,
 				DEAAD6B5259F15E800001F67 /* ImageController.swift in Sources */,
 			);
