@@ -1,0 +1,20 @@
+PODS:
+  - NMapsMap (3.10.1)
+  - SideMenuSwift (2.0.7)
+
+DEPENDENCIES:
+  - NMapsMap (= 3.10.1)
+  - SideMenuSwift
+
+SPEC REPOS:
+  trunk:
+    - NMapsMap
+    - SideMenuSwift
+
+SPEC CHECKSUMS:
+  NMapsMap: 1dc27ca06eac287ce1f001a972172766dca2abe1
+  SideMenuSwift: ffbbc88d23741932177ad1320df837cedfb3bc5e
+
+PODFILE CHECKSUM: d597cd157e9937eb535d67db03ba519d29d7dc6c
+
+COCOAPODS: 1.10.1
