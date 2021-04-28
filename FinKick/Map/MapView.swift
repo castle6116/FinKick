@@ -17,13 +17,37 @@ class MapView: UIViewController, MTMapViewDelegate {
 //    var poiItem1: MTMapPOIItem?
 //    var mapcricle: MTMapCircle?
     // 네이버
-    
+    func setMarker(_ mapView: NMFNaverMapView) {
+        let marker = NMFMarker()
+        marker.position = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
+        marker.iconImage = NMF_MARKER_IMAGE_BLACK
+        marker.iconTintColor = UIColor.red
+        marker.width = 50
+        marker.height = 60
+        marker.mapView = mapView.mapView
+        
+        // 정보창 생성
+        let infoWindow = NMFInfoWindow()
+        let dataSource = NMFInfoWindowDefaultTextSource.data()
+        dataSource.title = "서울특별시청"
+        infoWindow.dataSource = dataSource
+        
+        // 마커에 달아주기
+        infoWindow.open(with: marker)
+
+    }
     
     override func viewDidLoad() {
         
             super.viewDidLoad()
         //네이버 맵
-            let mapView = NMFMapView(frame: view.frame)
+            var mapView = NMFNaverMapView(frame: view.frame)
+            let locationOverlay = mapView.mapView.locationOverlay
+            locationOverlay.hidden = true
+            locationOverlay.icon = NMFOverlayImage(name: "location_overlay_icon")
+            setMarker(mapView)
+            mapView.mapView.positionMode = .direction
+            mapView.showLocationButton = true
             view.addSubview(mapView)
         //카카오 맵
 //            // 지도 불러오기
