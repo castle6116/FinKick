@@ -9,6 +9,7 @@ import UIKit
 
 class Members: UIViewController{
     @IBOutlet weak var IdInputField: UITextField!
+    @IBOutlet var IdOverlapCheck: UIButton!
     @IBOutlet weak var PwInputField: UITextField!
     @IBOutlet var PwCheckInputField: UITextField!
     @IBOutlet var EmailInputField: UITextField!
@@ -25,7 +26,17 @@ class Members: UIViewController{
     var loginPW : String!
     var EmailCertificationCode : String = "0000"
     // 아이디 중복 체크 함수
-    var IdCheckoverlap : Int = 1
+    var IdCheckoverlap : Int = 0
+    
+    func IdOverlapCheckfunction(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if(IdInputField.text != ""){
+            appDelegate.getid(InputId: IdInputField.text!)
+        }else{
+            showToast(message: "아이디를 입력해 주세요")
+        }
+        
+    }
 
     @objc func EmailCertification(_ sender: Any?) -> Bool{
         if EmailCertificationCode != EmailCertificationInputField.text {

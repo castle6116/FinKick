@@ -7,10 +7,14 @@
 
 import UIKit
 import NMapsMap
+import CoreLocation
 // 카카오
 // public let DEFAULT_POSITION = MTMapPointGeo(latitude: 35.8471267472791, longitude: 128.58281776895694)
 
-class MapView: UIViewController, MTMapViewDelegate {
+class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
+    var latitude : Double = 0.0
+    var longitude : Double = 0.0
+    
     // 카카오
 //    var mapView: MTMapView?
 //    var mapPoint1: MTMapPoint?
@@ -19,7 +23,7 @@ class MapView: UIViewController, MTMapViewDelegate {
     // 네이버
     func setMarker(_ mapView: NMFNaverMapView) {
         let marker = NMFMarker()
-        marker.position = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
+        marker.position = NMGLatLng(lat: 35.8471267472791, lng: 128.58281776895694)
         marker.iconImage = NMF_MARKER_IMAGE_BLACK
         marker.iconTintColor = UIColor.red
         marker.width = 50
@@ -29,7 +33,7 @@ class MapView: UIViewController, MTMapViewDelegate {
         // 정보창 생성
         let infoWindow = NMFInfoWindow()
         let dataSource = NMFInfoWindowDefaultTextSource.data()
-        dataSource.title = "서울특별시청"
+        dataSource.title = "영남이공대"
         infoWindow.dataSource = dataSource
         
         // 마커에 달아주기
@@ -38,17 +42,42 @@ class MapView: UIViewController, MTMapViewDelegate {
     }
     
     override func viewDidLoad() {
-        
-            super.viewDidLoad()
+        super.viewDidLoad()
         //네이버 맵
-            var mapView = NMFNaverMapView(frame: view.frame)
-            let locationOverlay = mapView.mapView.locationOverlay
-            locationOverlay.hidden = true
-            locationOverlay.icon = NMFOverlayImage(name: "location_overlay_icon")
-            setMarker(mapView)
-            mapView.mapView.positionMode = .direction
-            mapView.showLocationButton = true
-            view.addSubview(mapView)
+        let mapView = NMFNaverMapView(frame: view.frame)
+        mapView.mapView.positionMode = .normal
+        
+        //locationManager 인스턴스 생성 및 델리게이트 생성
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+            
+        //포그라운드 상태에서 위치 추적 권한 요청
+        locationManager.requestWhenInUseAuthorization()
+        
+        //배터리에 맞게 권장되는 최적의 정확도
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        //위치업데이트
+        locationManager.startUpdatingLocation()
+        
+        //위도 경도 가져오기
+        var coor = locationManager.location?.coordinate
+        latitude = coor!.latitude
+        longitude = coor!.longitude
+        
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
+        mapView.mapView.moveCamera(cameraUpdate)
+        
+        mapView.showCompass = true
+        mapView.showScaleBar = true
+        mapView.showZoomControls = true
+        mapView.showLocationButton = true
+        mapView.mapView.logoInteractionEnabled = true
+        mapView.mapView.logoAlign = NMFLogoAlign(rawValue: 3)!
+        
+//        setMarker(mapView)
+        
+        view.addSubview(mapView)
         //카카오 맵
 //            // 지도 불러오기
 //            mapView = MTMapView(frame: self.view.bounds)

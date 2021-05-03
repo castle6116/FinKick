@@ -6,6 +6,7 @@ target 'FinKick' do
   use_frameworks!
   pod 'SideMenuSwift'
   pod 'NMapsMap','3.10.1'
+  pod 'Alamofire' , '~> 4.4'
   # Pods for FinKick
 
 end

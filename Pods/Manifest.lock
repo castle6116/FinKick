@@ -1,20 +1,24 @@
 PODS:
+  - Alamofire (4.9.1)
   - NMapsMap (3.10.1)
   - SideMenuSwift (2.0.7)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.4)
   - NMapsMap (= 3.10.1)
   - SideMenuSwift
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - NMapsMap
     - SideMenuSwift
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   NMapsMap: 1dc27ca06eac287ce1f001a972172766dca2abe1
   SideMenuSwift: ffbbc88d23741932177ad1320df837cedfb3bc5e
 
-PODFILE CHECKSUM: d597cd157e9937eb535d67db03ba519d29d7dc6c
+PODFILE CHECKSUM: 603c86939af0787a2d87120f51996fe30f9e3055
 
 COCOAPODS: 1.10.1

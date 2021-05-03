@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 @main
 
@@ -15,6 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var success: Int = 0
     var ID : String!
     var Pass : String!
+    
+    func getid(InputId:String ) {
+            let url = "http://test.api.1997kfc.com/api/account/" + InputId
+            Alamofire.request(url,
+                       method: .get,
+                       parameters: nil,
+                       encoding: URLEncoding.default,
+                       headers: ["Content-Type":"application/json", "Accept":"application/json"])
+                .validate(statusCode: 200..<300)
+                .responseJSON { (json) in
+                    //여기서 가져온 데이터를 자유롭게 활용하세요.
+                    print(json)
+            }
+        }
     
     lazy var persistentContainer: NSPersistentContainer = {
             let container = NSPersistentContainer(name: "Users") // 여기는 파일명을 적어줘요.

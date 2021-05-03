@@ -125,13 +125,13 @@ class MainViewController: UIViewController {
         LoginError.isHidden = true
         IdInputField.keyboardType = .asciiCapable
         PwInputField.keyboardType = .asciiCapable
+        
         var locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
     }
     // 앱이 실행 했을 때
     override func viewDidLoad() {
         super.viewDidLoad()
-        //키보드 활성화시 화면 올라감
         // Do any additional setup after loading the view.
     }
     
