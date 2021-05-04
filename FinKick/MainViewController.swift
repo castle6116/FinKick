@@ -105,6 +105,11 @@ class MainViewController: UIViewController {
             print("User ID = \(userID)")
             print("User PW = \(userPW)")
     }
+    //빈 화면 터치 시 키보드 내림
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
+    
     //데이터 삭제
     fileprivate func deleteUser(_ id: String) {
             CoreDataManager.shared.deleteUser(id: id) { onSuccess in

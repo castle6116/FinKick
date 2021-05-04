@@ -11,25 +11,64 @@ import Alamofire
 
 @main
 
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    struct Response : Codable {
+        var code : Int
+        var message : String
+        var result_data : Result_data
+    }
+    struct Result_data : Codable{
+        var account : Account
+        
+    }
+    struct Account : Codable{
+        var email : String
+        var id : String
+    }
     var window: UIWindow?
     var success: Int = 0
-    var ID : String!
-    var Pass : String!
+    var ID : String?
+    var Pass : String?
+    var email : String = ""
     
     func getid(InputId:String ) {
-            let url = "http://test.api.1997kfc.com/api/account/" + InputId
-            Alamofire.request(url,
-                       method: .get,
-                       parameters: nil,
-                       encoding: URLEncoding.default,
-                       headers: ["Content-Type":"application/json", "Accept":"application/json"])
-                .validate(statusCode: 200..<300)
-                .responseJSON { (json) in
-                    //여기서 가져온 데이터를 자유롭게 활용하세요.
-                    print(json)
+        let url = "http://test.api.1997kfc.com/api/account/" + InputId
+        success = 0
+        AF.request(url,
+                    method: .get,
+                    parameters: nil,
+                    encoding: URLEncoding.default,
+                    headers: ["Content-Type":"application/json", "Accept":"application/json"])
+            .validate(statusCode: 200..<300)
+            .responseJSON { (json) in
+//                   여기서 가져온 데이터를 자유롭게 활용하세요.
+                print(json)
+                switch json.result{
+                    case .success(let obj):
+                        // 통신 성공 시
+                        if obj is NSDictionary{
+                            do{
+                                //obj를 JSON으로 변경
+                                let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                                // JSON Decoder 사용
+                                let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                                print("code : ", getInstanceData.code)
+                                print("message : ", getInstanceData.message)
+                                print("email : ",getInstanceData.result_data.account.email)
+                                print("id : ",getInstanceData.result_data.account.id)
+                                self.success = 1
+                            }catch{
+                                print(error.localizedDescription)
+                            }
+                        }
+                    case .failure(let e):
+                        print(e.localizedDescription)
+                        print("실패")
             }
         }
+        print("하이")
+    }
     
     lazy var persistentContainer: NSPersistentContainer = {
             let container = NSPersistentContainer(name: "Users") // 여기는 파일명을 적어줘요.

@@ -28,10 +28,17 @@ class Members: UIViewController{
     // 아이디 중복 체크 함수
     var IdCheckoverlap : Int = 0
     
-    func IdOverlapCheckfunction(){
+    @IBAction func IdOverlapCheckfunction(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        IdCheckoverlap = 0
         if(IdInputField.text != ""){
             appDelegate.getid(InputId: IdInputField.text!)
+            if(appDelegate.success == 1){
+                showToast(message: "아이디가 중복됩니다.")
+            }else{
+                showToast(message: "사용가능한 아이디 입니다.")
+                IdCheckoverlap = 1
+            }
         }else{
             showToast(message: "아이디를 입력해 주세요")
         }
@@ -184,6 +191,12 @@ class Members: UIViewController{
             //화면 원상복귀
             self.view.frame.origin.y = 0
         }
+    //빈 화면 터치 시 키보드 내림
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
     
     //프로그램이 시작 될 때 제일 처음 실행 되는 함수
     override func viewDidAppear(_ animated: Bool) {
