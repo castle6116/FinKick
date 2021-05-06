@@ -34,7 +34,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwy-Nm-A8i">
-                                <rect key="frame" x="50" y="184" width="99.5" height="42"/>
+                                <rect key="frame" x="50" y="184" width="102.5" height="42"/>
                                 <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -506,7 +506,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orw-bU-qrn">
-                                <rect key="frame" x="40" y="84" width="193.5" height="42"/>
+                                <rect key="frame" x="40" y="84" width="207.5" height="42"/>
                                 <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -525,13 +525,13 @@
                                 <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7f-Di-L2p">
-                                <rect key="frame" x="96" y="276.5" width="248" height="22"/>
+                                <rect key="frame" x="96" y="347" width="248" height="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FJy-Xc-Ev6">
-                                <rect key="frame" x="70" y="276.5" width="22" height="22"/>
+                                <rect key="frame" x="70" y="347" width="22" height="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="GNG-CK-JgB"/>
@@ -545,34 +545,93 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 조건에 맞지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3U-cq-1vV">
-                                <rect key="frame" x="102" y="319" width="210.5" height="20"/>
-                                <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="17"/>
-                                <color key="textColor" systemColor="systemRedColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l9c-7M-DQM">
-                                <rect key="frame" x="70" y="447.5" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="0fH-Cq-UHk"/>
-                                    <constraint firstAttribute="width" constant="22" id="R0m-ne-X0W"/>
-                                </constraints>
-                            </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="oa9-Og-5eF">
-                                <rect key="frame" x="71" y="476.5" width="272" height="2.5"/>
-                                <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 조건에 맞지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqe-7W-oHE">
-                                <rect key="frame" x="109.5" y="490" width="195.5" height="20"/>
+                                <rect key="frame" x="102" y="389.5" width="210.5" height="20"/>
                                 <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="17"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="GAc-Cn-aPQ">
-                                <rect key="frame" x="71" y="305.5" width="272" height="2.5"/>
+                                <rect key="frame" x="71" y="376" width="272" height="2.5"/>
                                 <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wu5-AX-klL">
+                                <rect key="frame" x="96" y="427.5" width="248" height="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMQ-C2-m7g">
+                                <rect key="frame" x="70" y="428" width="22" height="20.5"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="2w6-ay-4xf"/>
+                                    <constraint firstAttribute="height" constant="22" id="R0g-AB-4DP"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 조건에 맞지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNU-Gz-v0d">
+                                <rect key="frame" x="102" y="470" width="210.5" height="20"/>
+                                <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="YGN-Ux-Xum">
+                                <rect key="frame" x="71" y="456.5" width="272" height="2.5"/>
+                                <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKd-ia-xsV">
+                                <rect key="frame" x="324" y="186" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="6Xn-90-oFr"/>
+                                    <constraint firstAttribute="width" constant="20" id="6rL-oo-moZ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="check.png"/>
+                                <connections>
+                                    <action selector="IdOverlapCheckfunction" destination="FkA-p8-MUe" eventType="touchUpInside" id="RMZ-0q-l9U"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JYy-52-n0G">
+                                <rect key="frame" x="70" y="266.5" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="DTi-yL-gPz"/>
+                                    <constraint firstAttribute="width" constant="22" id="UVg-9H-UZK"/>
+                                </constraints>
+                            </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="g2M-gQ-S6P">
+                                <rect key="frame" x="71" y="295.5" width="272" height="2.5"/>
+                                <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 인증 코드를 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbf-Gm-SfK">
+                                <rect key="frame" x="94.5" y="309" width="225" height="20"/>
+                                <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKA-PN-6A1">
+                                <rect key="frame" x="96" y="266.5" width="248" height="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAK-pT-FTf">
+                                <rect key="frame" x="310" y="261.5" width="34" height="30"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" 인증 ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfY-i5-1EW">
-                                <rect key="frame" x="71" y="670.5" width="272" height="50"/>
+                                <rect key="frame" x="71" y="570" width="272" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="KSB-Gz-qrW"/>
@@ -596,118 +655,30 @@
                                     <action selector="OkButtonClick:" destination="FkA-p8-MUe" eventType="touchUpInside" id="uIh-bi-w2f"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wu5-AX-klL">
-                                <rect key="frame" x="96" y="357" width="248" height="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMQ-C2-m7g">
-                                <rect key="frame" x="70" y="357.5" width="22" height="20.5"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="2w6-ay-4xf"/>
-                                    <constraint firstAttribute="height" constant="22" id="R0g-AB-4DP"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 조건에 맞지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNU-Gz-v0d">
-                                <rect key="frame" x="102" y="399.5" width="210.5" height="20"/>
-                                <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="17"/>
-                                <color key="textColor" systemColor="systemRedColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="YGN-Ux-Xum">
-                                <rect key="frame" x="71" y="386" width="272" height="2.5"/>
-                                <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </progressView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cpg-JW-gEh">
-                                <rect key="frame" x="96" y="447.5" width="248" height="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKd-ia-xsV">
-                                <rect key="frame" x="324" y="186" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="6Xn-90-oFr"/>
-                                    <constraint firstAttribute="width" constant="20" id="6rL-oo-moZ"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="check.png"/>
-                                <connections>
-                                    <action selector="IdOverlapCheckfunction" destination="FkA-p8-MUe" eventType="touchUpInside" id="RMZ-0q-l9U"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JYy-52-n0G">
-                                <rect key="frame" x="70" y="528" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="DTi-yL-gPz"/>
-                                    <constraint firstAttribute="width" constant="22" id="UVg-9H-UZK"/>
-                                </constraints>
-                            </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="g2M-gQ-S6P">
-                                <rect key="frame" x="71" y="557" width="272" height="2.5"/>
-                                <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 인증 코드를 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbf-Gm-SfK">
-                                <rect key="frame" x="94.5" y="570.5" width="225" height="20"/>
-                                <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="17"/>
-                                <color key="textColor" systemColor="systemRedColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKA-PN-6A1">
-                                <rect key="frame" x="96" y="528" width="248" height="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAK-pT-FTf">
-                                <rect key="frame" x="310" y="443.5" width="34" height="30"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title=" 인증 ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OSR-dX-Lpu"/>
                         <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="oa9-Og-5eF" firstAttribute="leading" secondItem="fiM-Hi-7Tz" secondAttribute="leadingMargin" constant="51" id="0rE-TG-y9d"/>
                             <constraint firstItem="OSR-dX-Lpu" firstAttribute="trailing" secondItem="vAK-pT-FTf" secondAttribute="trailing" constant="70" id="4fE-2j-B6S"/>
-                            <constraint firstItem="oa9-Og-5eF" firstAttribute="top" secondItem="vAK-pT-FTf" secondAttribute="bottom" constant="3" id="5Dz-2J-ep6"/>
                             <constraint firstItem="9Lk-9w-Fbc" firstAttribute="top" secondItem="hPZ-P3-uGF" secondAttribute="bottom" constant="12" id="6yT-IX-GeN"/>
                             <constraint firstItem="J6U-ny-ZhC" firstAttribute="top" secondItem="Orw-bU-qrn" secondAttribute="bottom" constant="60" id="77u-dv-CIM"/>
                             <constraint firstItem="wu5-AX-klL" firstAttribute="top" secondItem="pMQ-C2-m7g" secondAttribute="top" id="7L4-Sd-Ftf"/>
-                            <constraint firstItem="OSR-dX-Lpu" firstAttribute="trailing" secondItem="Cpg-JW-gEh" secondAttribute="trailing" constant="70" id="87F-5l-lig"/>
                             <constraint firstItem="g2M-gQ-S6P" firstAttribute="top" secondItem="pKA-PN-6A1" secondAttribute="bottom" constant="7" id="Anm-Kj-t3M"/>
                             <constraint firstItem="GAc-Cn-aPQ" firstAttribute="top" secondItem="FJy-Xc-Ev6" secondAttribute="bottom" constant="7" id="Ccf-3k-RLU"/>
                             <constraint firstItem="Hbf-Gm-SfK" firstAttribute="top" secondItem="g2M-gQ-S6P" secondAttribute="bottom" constant="12" id="Dca-q5-pPV"/>
+                            <constraint firstItem="rfY-i5-1EW" firstAttribute="trailing" secondItem="YGN-Ux-Xum" secondAttribute="trailing" id="DtX-2x-SL7"/>
                             <constraint firstItem="6mq-mJ-ac1" firstAttribute="top" secondItem="J6U-ny-ZhC" secondAttribute="top" id="E3q-bW-UW5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GAc-Cn-aPQ" secondAttribute="trailing" constant="51" id="FGr-U4-oQF"/>
-                            <constraint firstItem="rfY-i5-1EW" firstAttribute="leading" secondItem="oa9-Og-5eF" secondAttribute="leading" id="FHd-4o-0F2"/>
                             <constraint firstItem="g2M-gQ-S6P" firstAttribute="leading" secondItem="fiM-Hi-7Tz" secondAttribute="leadingMargin" constant="51" id="Fug-xO-hNg"/>
-                            <constraint firstItem="rfY-i5-1EW" firstAttribute="trailing" secondItem="oa9-Og-5eF" secondAttribute="trailing" id="I8i-IL-Qsl"/>
                             <constraint firstItem="hPZ-P3-uGF" firstAttribute="top" secondItem="J6U-ny-ZhC" secondAttribute="bottom" constant="7" id="IHx-Kg-rB6"/>
                             <constraint firstItem="GAc-Cn-aPQ" firstAttribute="top" secondItem="w7f-Di-L2p" secondAttribute="bottom" constant="7" id="Idx-UA-E9t"/>
-                            <constraint firstItem="g2M-gQ-S6P" firstAttribute="leading" secondItem="oa9-Og-5eF" secondAttribute="leading" id="J7y-oo-Gyt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="g2M-gQ-S6P" secondAttribute="trailing" constant="51" id="JFC-dT-fbH"/>
                             <constraint firstItem="pMQ-C2-m7g" firstAttribute="leading" secondItem="OSR-dX-Lpu" secondAttribute="leading" constant="70" id="Jg6-fI-D0F"/>
                             <constraint firstItem="wu5-AX-klL" firstAttribute="leading" secondItem="pMQ-C2-m7g" secondAttribute="trailing" constant="4" id="JgQ-po-DTU"/>
-                            <constraint firstItem="Xqe-7W-oHE" firstAttribute="top" secondItem="oa9-Og-5eF" secondAttribute="bottom" constant="12" id="Kpc-mj-Kis"/>
                             <constraint firstItem="6mq-mJ-ac1" firstAttribute="centerX" secondItem="fiM-Hi-7Tz" secondAttribute="centerX" id="Lcg-fB-Hkd"/>
                             <constraint firstItem="YGN-Ux-Xum" firstAttribute="top" secondItem="wu5-AX-klL" secondAttribute="bottom" constant="7" id="LhQ-JF-VIH"/>
-                            <constraint firstItem="rfY-i5-1EW" firstAttribute="top" secondItem="Hbf-Gm-SfK" secondAttribute="bottom" constant="80" id="M2h-cp-AcR"/>
                             <constraint firstItem="hPZ-P3-uGF" firstAttribute="top" secondItem="6mq-mJ-ac1" secondAttribute="bottom" constant="7" id="MZJ-4n-455"/>
+                            <constraint firstItem="JYy-52-n0G" firstAttribute="top" secondItem="hPZ-P3-uGF" secondAttribute="bottom" constant="50" id="MgN-Wi-sYY"/>
                             <constraint firstItem="6mq-mJ-ac1" firstAttribute="leading" secondItem="J6U-ny-ZhC" secondAttribute="trailing" constant="4" id="MmE-a5-zMC"/>
                             <constraint firstItem="OSR-dX-Lpu" firstAttribute="trailing" secondItem="pKA-PN-6A1" secondAttribute="trailing" constant="70" id="PgL-J5-VrW"/>
                             <constraint firstItem="YGN-Ux-Xum" firstAttribute="top" secondItem="pMQ-C2-m7g" secondAttribute="bottom" constant="7" id="Q3T-sY-r28"/>
@@ -717,7 +688,10 @@
                             <constraint firstItem="Orw-bU-qrn" firstAttribute="top" secondItem="OSR-dX-Lpu" secondAttribute="top" constant="40" id="TYe-XS-EYF"/>
                             <constraint firstItem="9Lk-9w-Fbc" firstAttribute="centerX" secondItem="fiM-Hi-7Tz" secondAttribute="centerX" id="ToY-lC-8NP"/>
                             <constraint firstItem="eNU-Gz-v0d" firstAttribute="centerX" secondItem="fiM-Hi-7Tz" secondAttribute="centerX" id="WJL-kZ-QLf"/>
+                            <constraint firstItem="g2M-gQ-S6P" firstAttribute="top" secondItem="vAK-pT-FTf" secondAttribute="bottom" constant="4" id="Xfc-GB-erO"/>
                             <constraint firstItem="pKA-PN-6A1" firstAttribute="leading" secondItem="JYy-52-n0G" secondAttribute="trailing" constant="4" id="Yan-LC-1R8"/>
+                            <constraint firstItem="FJy-Xc-Ev6" firstAttribute="top" secondItem="g2M-gQ-S6P" secondAttribute="bottom" constant="50" id="YfJ-ja-vot"/>
+                            <constraint firstItem="rfY-i5-1EW" firstAttribute="top" secondItem="eNU-Gz-v0d" secondAttribute="bottom" constant="80" id="ZCy-UN-vPo"/>
                             <constraint firstItem="hPZ-P3-uGF" firstAttribute="leading" secondItem="fiM-Hi-7Tz" secondAttribute="leadingMargin" constant="51" id="a0v-B5-AFa"/>
                             <constraint firstItem="OSR-dX-Lpu" firstAttribute="trailing" secondItem="w7f-Di-L2p" secondAttribute="trailing" constant="70" id="auo-1Y-rrZ"/>
                             <constraint firstItem="Hbf-Gm-SfK" firstAttribute="centerX" secondItem="fiM-Hi-7Tz" secondAttribute="centerX" id="cpV-8K-ght"/>
@@ -727,30 +701,18 @@
                             <constraint firstItem="w7f-Di-L2p" firstAttribute="leading" secondItem="FJy-Xc-Ev6" secondAttribute="trailing" constant="4" id="eRT-1G-n06"/>
                             <constraint firstItem="fKd-ia-xsV" firstAttribute="top" secondItem="J6U-ny-ZhC" secondAttribute="top" id="euh-6U-Tvm"/>
                             <constraint firstAttribute="trailing" secondItem="fKd-ia-xsV" secondAttribute="trailing" constant="70" id="h6k-kq-NAx"/>
-                            <constraint firstItem="oa9-Og-5eF" firstAttribute="top" secondItem="Cpg-JW-gEh" secondAttribute="bottom" constant="7" id="hVb-WW-f4T"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oa9-Og-5eF" secondAttribute="trailing" constant="51" id="hYN-xd-3Zo"/>
                             <constraint firstItem="p3U-cq-1vV" firstAttribute="centerX" secondItem="fiM-Hi-7Tz" secondAttribute="centerX" id="hf1-OO-wfc"/>
                             <constraint firstItem="J6U-ny-ZhC" firstAttribute="leading" secondItem="OSR-dX-Lpu" secondAttribute="leading" constant="70" id="hvY-fR-dtS"/>
-                            <constraint firstItem="Xqe-7W-oHE" firstAttribute="centerX" secondItem="fiM-Hi-7Tz" secondAttribute="centerX" id="iAs-uK-ipg"/>
-                            <constraint firstItem="Cpg-JW-gEh" firstAttribute="top" secondItem="l9c-7M-DQM" secondAttribute="top" id="ili-Wk-y2D"/>
                             <constraint firstItem="w7f-Di-L2p" firstAttribute="top" secondItem="FJy-Xc-Ev6" secondAttribute="top" id="jix-0L-DhD"/>
-                            <constraint firstItem="oa9-Og-5eF" firstAttribute="top" secondItem="l9c-7M-DQM" secondAttribute="bottom" constant="7" id="kcu-QB-Rmu"/>
                             <constraint firstItem="Orw-bU-qrn" firstAttribute="leading" secondItem="OSR-dX-Lpu" secondAttribute="leading" constant="40" id="lWD-Aa-epD"/>
-                            <constraint firstItem="FJy-Xc-Ev6" firstAttribute="top" secondItem="hPZ-P3-uGF" secondAttribute="bottom" constant="60" id="r2w-6l-3LZ"/>
-                            <constraint firstItem="l9c-7M-DQM" firstAttribute="top" secondItem="YGN-Ux-Xum" secondAttribute="bottom" constant="60" id="rUC-y3-1er"/>
-                            <constraint firstItem="Cpg-JW-gEh" firstAttribute="leading" secondItem="l9c-7M-DQM" secondAttribute="trailing" constant="4" id="s7c-B2-u3a"/>
+                            <constraint firstItem="rfY-i5-1EW" firstAttribute="centerX" secondItem="fiM-Hi-7Tz" secondAttribute="centerX" id="loI-9m-DTJ"/>
                             <constraint firstItem="JYy-52-n0G" firstAttribute="leading" secondItem="OSR-dX-Lpu" secondAttribute="leading" constant="70" id="sG4-x8-HdR"/>
                             <constraint firstItem="hPZ-P3-uGF" firstAttribute="centerX" secondItem="fiM-Hi-7Tz" secondAttribute="centerX" id="soD-9m-t0v"/>
                             <constraint firstItem="GAc-Cn-aPQ" firstAttribute="leading" secondItem="fiM-Hi-7Tz" secondAttribute="leadingMargin" constant="51" id="sxd-9w-0nq"/>
-                            <constraint firstItem="JYy-52-n0G" firstAttribute="top" secondItem="oa9-Og-5eF" secondAttribute="bottom" constant="50" id="taw-zB-Tay"/>
-                            <constraint firstItem="l9c-7M-DQM" firstAttribute="leading" secondItem="OSR-dX-Lpu" secondAttribute="leading" constant="70" id="tzM-Xk-Myn"/>
                             <constraint firstItem="YGN-Ux-Xum" firstAttribute="leading" secondItem="GAc-Cn-aPQ" secondAttribute="leading" id="vgV-FD-1h8"/>
                             <constraint firstItem="FJy-Xc-Ev6" firstAttribute="leading" secondItem="OSR-dX-Lpu" secondAttribute="leading" constant="70" id="wnE-7j-u08"/>
                             <constraint firstItem="eNU-Gz-v0d" firstAttribute="top" secondItem="YGN-Ux-Xum" secondAttribute="bottom" constant="12" id="x6b-n5-A1p"/>
-                            <constraint firstItem="oa9-Og-5eF" firstAttribute="trailing" secondItem="YGN-Ux-Xum" secondAttribute="trailing" id="yLd-Pf-sti"/>
                             <constraint firstItem="g2M-gQ-S6P" firstAttribute="top" secondItem="JYy-52-n0G" secondAttribute="bottom" constant="7" id="ywY-XE-Z4Q"/>
-                            <constraint firstItem="oa9-Og-5eF" firstAttribute="leading" secondItem="YGN-Ux-Xum" secondAttribute="leading" id="z7t-4z-jfH"/>
-                            <constraint firstItem="g2M-gQ-S6P" firstAttribute="trailing" secondItem="oa9-Og-5eF" secondAttribute="trailing" id="zyq-qH-Thl"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="human" image="human.png" id="A5X-sF-hU1">
@@ -761,8 +723,6 @@
                         <outlet property="EmailCertification" destination="Hbf-Gm-SfK" id="Ks3-LD-mRt"/>
                         <outlet property="EmailCertificationButton" destination="vAK-pT-FTf" id="EXb-CV-Agl"/>
                         <outlet property="EmailCertificationInputField" destination="pKA-PN-6A1" id="WOe-Na-2Zx"/>
-                        <outlet property="EmailCheck" destination="Xqe-7W-oHE" id="V1W-8D-INY"/>
-                        <outlet property="EmailInputField" destination="Cpg-JW-gEh" id="Pfh-Af-XTW"/>
                         <outlet property="IdInputField" destination="6mq-mJ-ac1" id="fEb-Fg-oR5"/>
                         <outlet property="IdOverlapCheck" destination="fKd-ia-xsV" id="moo-jV-44E"/>
                         <outlet property="LoginError" destination="9Lk-9w-Fbc" id="Y8G-Id-ZgW"/>
@@ -920,7 +880,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8W-he-JiG">
-                                <rect key="frame" x="0.0" y="582" width="414" height="280"/>
+                                <rect key="frame" x="0.0" y="580.5" width="414" height="281.5"/>
                                 <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <string key="text">1. 킥스탠드를 밀어올리고 발판에 발을 올리세요.
 
@@ -933,7 +893,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스쿠터 이용 방법" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wg7-37-ANE">
-                                <rect key="frame" x="111" y="518" width="192" height="34"/>
+                                <rect key="frame" x="107.5" y="518" width="199.5" height="32.5"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1260,65 +1220,65 @@
                                 <state key="normal" title="목록으로"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 내역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usE-y6-k5v">
-                                <rect key="frame" x="151" y="64" width="112.5" height="35"/>
+                                <rect key="frame" x="148.5" y="64" width="117" height="33.5"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alu-gV-kG8">
-                                <rect key="frame" x="85" y="219.5" width="64" height="20"/>
+                                <rect key="frame" x="85" y="217" width="66.5" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영수증" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djA-n1-JTR">
-                                <rect key="frame" x="185" y="339" width="44.5" height="20"/>
+                                <rect key="frame" x="184" y="337.5" width="46.5" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 요금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZV-DW-jL1">
-                                <rect key="frame" x="50" y="389" width="64" height="20"/>
+                                <rect key="frame" x="50" y="387.5" width="66.5" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="합계" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbS-vq-x5M">
-                                <rect key="frame" x="50" y="433" width="29.5" height="20"/>
+                                <rect key="frame" x="50" y="430.5" width="31" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="50l-Mm-LeT">
-                                <rect key="frame" x="40" y="419" width="324" height="4"/>
+                                <rect key="frame" x="40" y="416.5" width="324" height="4"/>
                                 <color key="progressTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25분 30초" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-s2-qfG">
-                                <rect key="frame" x="74.5" y="176" width="85" height="23.5"/>
+                                <rect key="frame" x="73" y="174.5" width="90.5" height="22.5"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제 요금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7K-Te-zrU">
-                                <rect key="frame" x="260" y="219.5" width="64" height="20"/>
+                                <rect key="frame" x="262.5" y="217" width="66.5" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￦5,200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXp-W5-zpL">
-                                <rect key="frame" x="257" y="176" width="70.5" height="23.5"/>
+                                <rect key="frame" x="259.5" y="174.5" width="73" height="22.5"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￦5,200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYQ-pK-eMe">
-                                <rect key="frame" x="302.5" y="388" width="61.5" height="21"/>
+                                <rect key="frame" x="302.5" y="385.5" width="61.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￦5,200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQE-PM-weo">
-                                <rect key="frame" x="302.5" y="433" width="61.5" height="21"/>
+                                <rect key="frame" x="302.5" y="430.5" width="61.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>

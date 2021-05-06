@@ -12,11 +12,9 @@ class Members: UIViewController{
     @IBOutlet var IdOverlapCheck: UIButton!
     @IBOutlet weak var PwInputField: UITextField!
     @IBOutlet var PwCheckInputField: UITextField!
-    @IBOutlet var EmailInputField: UITextField!
     @IBOutlet weak var LoginError: UILabel!
     @IBOutlet var PasswordError: UILabel!
     @IBOutlet var PasswordErrorCheck: UILabel!
-    @IBOutlet var EmailCheck: UILabel!
     @IBOutlet var MembershipButton: UIButton!
     @IBOutlet var EmailCertificationButton: UIButton!
     @IBOutlet var EmailCertificationInputField: UITextField!
@@ -24,25 +22,41 @@ class Members: UIViewController{
     
     var loginID : String!
     var loginPW : String!
-    var EmailCertificationCode : String = "0000"
+    var EmailCertificationCode : String = ""
     // 아이디 중복 체크 함수
     var IdCheckoverlap : Int = 0
+    var emailCheckoverlap : Int = 0
     
     @IBAction func IdOverlapCheckfunction(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         IdCheckoverlap = 0
         if(IdInputField.text != ""){
-            appDelegate.getid(InputId: IdInputField.text!)
-            if(appDelegate.success == 1){
-                showToast(message: "아이디가 중복됩니다.")
-            }else{
-                showToast(message: "사용가능한 아이디 입니다.")
-                IdCheckoverlap = 1
+            appDelegate.getid(InputId: IdInputField.text!) {
+                (data, statusCode) in
+                if let statusCode = statusCode{
+                    self.codestat(statusCode: statusCode)
+                }
+
             }
-        }else{
+
+        }
+        if(IdInputField.text == ""){
             showToast(message: "아이디를 입력해 주세요")
         }
         
+    }
+    func codestat(statusCode : Int?) {
+        if(statusCode == 200 ){
+            self.showToast(message: "아이디가 중복됩니다.")
+        }else if(statusCode == 400){
+            self.showToast(message: "이메일 형식으로 요청해주세요.")
+        }else if(statusCode == 404){
+            self.showToast(message: "사용가능한 아이디 입니다.")
+            self.IdCheckoverlap = 1
+            self.loginID = self.IdInputField.text
+        }else{
+            self.showToast(message: "문제가 발생하였습니다 관리자에게 문의 하십시요. 에러코드:\(statusCode)")
+        }
     }
 
     @objc func EmailCertification(_ sender: Any?) -> Bool{
@@ -72,23 +86,13 @@ class Members: UIViewController{
             return false
         }
     }
-    @objc func EmailError(_ sender: Any?) -> Bool{
-        if EmailCheck(id: EmailInputField.text) == false {
-            EmailCheck.text = "이메일 양식으로 작성해주세요."
-            EmailCheck.isHidden = false
-            return false
-        }else{
-            EmailCheck.isHidden = true
-            return true
-        }
-    }
     @objc func IdError(_ sender: Any?) -> Bool{
         if IdCheckoverlap != 1 {
             LoginError.text = "중복 체크를 해주세요."
             LoginError.isHidden = false
             return false
         }else if IdCheck(id: IdInputField.text) == false {
-            LoginError.text = "대소문자 및 숫자로 5~12 자리"
+            LoginError.text = "이메일 양식으로 작성해주세요."
             LoginError.isHidden = false
             return false
         }else{
@@ -120,8 +124,8 @@ class Members: UIViewController{
     
     @IBAction func OkButtonClick(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if PassError(self) == true && EmailError(self) == true && IdError(self) == true && EmailCertification(self) == true{
-            CoreDataManager.shared.saveUser(id : IdInputField.text!, email : EmailInputField.text! , pw : PwInputField.text!){ onSuccess in
+        if PassError(self) == true && IdError(self) == true && EmailCertification(self) == true && IdInputField.text == loginID{
+            CoreDataManager.shared.saveUser(id : IdInputField.text!, email: "nil", pw : PwInputField.text!){ onSuccess in
                 print("saved = \(onSuccess)")
             }
             appDelegate.success = 1
@@ -130,8 +134,6 @@ class Members: UIViewController{
             self.view.window?.rootViewController?.dismiss(animated: false, completion: {
                 let homeVC = SecondViewController()
                   homeVC.modalPresentationStyle = .fullScreen
-                 
-                
                   appDelegate.window?.rootViewController?.present(homeVC, animated: true, completion: nil)
             })
             
@@ -160,6 +162,7 @@ class Members: UIViewController{
             }, completion: {(isCompleted) in
                 toastLabel.removeFromSuperview()
             })
+            self.view.endEditing(true)
         }
     func KeyboardSetting()
         {
@@ -173,7 +176,7 @@ class Members: UIViewController{
         //키보드가 올라온 순간
         @objc func keyboardWillShow(_ sender: Notification) {
             //내가 선택한 UITextfield가 편집모드일 때
-            if(EmailCertificationInputField.isEditing || EmailInputField.isEditing)
+            if(PwCheckInputField.isEditing)
             {
                 //키보드의 높이
                 if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -181,7 +184,7 @@ class Members: UIViewController{
                     print(keyboardHeight)
                     
                     //가상 키보드 높이만큼 화면의 y값을 감소
-                    self.view.frame.origin.y = -keyboardHeight
+                    self.view.frame.origin.y = -120
                 }
             }
         }
@@ -203,9 +206,7 @@ class Members: UIViewController{
         LoginError.isHidden = true
         PasswordError.isHidden = true
         PasswordErrorCheck.isHidden = true
-        EmailCheck.isHidden = true
         EmailCertification.isHidden = true
-        EmailInputField.keyboardType = .emailAddress
         IdInputField.keyboardType = .asciiCapable
         PwInputField.keyboardType = .asciiCapable
     }
@@ -215,7 +216,6 @@ class Members: UIViewController{
         self.IdInputField.addTarget(self, action: #selector(self.IdError(_:)), for: .editingChanged)
         self.PwInputField.addTarget(self, action: #selector(self.PassError(_:)), for: .editingChanged)
         self.PwCheckInputField.addTarget(self, action: #selector(self.PassError(_:)), for: .editingChanged)
-        self.EmailInputField.addTarget(self, action: #selector(self.EmailError(_:)), for: .editingChanged)
         self.EmailCertificationInputField.addTarget(self, action: #selector(self.EmailCertification(_:)), for: .editingChanged)
         super.viewDidLoad()
         // Do any additional setup after loading the view.

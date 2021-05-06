@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     struct Account : Codable{
-        var email : String
         var id : String
     }
     var window: UIWindow?
@@ -32,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var Pass : String?
     var email : String = ""
     
-    func getid(InputId:String ) {
+    func getid(InputId:String, complation : ((Response?, Int?) -> ())?){
         let url = "http://test.api.1997kfc.com/api/account/" + InputId
         success = 0
         AF.request(url,
@@ -40,34 +39,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     parameters: nil,
                     encoding: URLEncoding.default,
                     headers: ["Content-Type":"application/json", "Accept":"application/json"])
-            .validate(statusCode: 200..<300)
-            .responseJSON { (json) in
-//                   여기서 가져온 데이터를 자유롭게 활용하세요.
-                print(json)
-                switch json.result{
-                    case .success(let obj):
-                        // 통신 성공 시
-                        if obj is NSDictionary{
-                            do{
-                                //obj를 JSON으로 변경
-                                let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
-                                // JSON Decoder 사용
-                                let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
-                                print("code : ", getInstanceData.code)
-                                print("message : ", getInstanceData.message)
-                                print("email : ",getInstanceData.result_data.account.email)
-                                print("id : ",getInstanceData.result_data.account.id)
-                                self.success = 1
-                            }catch{
-                                print(error.localizedDescription)
+//            .validate(statusCode: 200..<300)
+                .responseJSON { (json) in
+    //                   여기서 가져온 데이터를 자유롭게 활용하세요
+                    let statusCode = json.response!.statusCode
+                    
+                    
+                    switch json.result{
+                        case .success(let obj):
+                            // 통신 성공 시
+                            if obj is NSDictionary{
+                                do{
+                                    //obj를 JSON으로 변경
+                                    let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                                    // JSON Decoder 사용
+                                    let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+
+                                    complation!(getInstanceData, statusCode)
+                                }catch{
+                                    complation!(nil, statusCode)
+                                }
                             }
-                        }
-                    case .failure(let e):
-                        print(e.localizedDescription)
-                        print("실패")
+                        case .failure(let e):
+                            print(e.localizedDescription)
+                            print("실패")
+                }
             }
-        }
-        print("하이")
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
