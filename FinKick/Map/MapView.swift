@@ -44,7 +44,7 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //네이버 맵
-        let mapView = NMFNaverMapView(frame: view.frame)
+        let mapView = NMFNaverMapView(frame: CGRect(x: 0, y: 0, width: 390, height: 722))
         mapView.mapView.positionMode = .direction
         
         //locationManager 인스턴스 생성 및 델리게이트 생성

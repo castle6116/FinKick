@@ -18,19 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     struct Result_data : Codable{
-        var account : Account
-        var version : Version
+        var account : Account?
+        var version : Version?
     }
     
     struct Version : Codable {
-        var ios : String
-        var iosUrl : String
+        var ios : String?
+        var iosUrl : String?
     }
     
     struct Account : Codable{
-        var id : String
-        var password : String
-        var phoneNumber : String
+        var id : String?
+        var password : String?
+        var phoneNumber : String?
     }
     
     var window: UIWindow?
@@ -39,6 +39,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var Pass : String?
     var email : String?
     var url : String!
+    
+    var version: String? {
+        guard let dictionary = Bundle.main.infoDictionary,
+            let version = dictionary["CFBundleShortVersionString"] as? String else {return nil}
+        
+        return version
+    }
+    
+    func Getversion(){
+        url = "http://test.api.finkick.xyz/api/version"
+        AF.request(url,
+                   method: .get,
+                   parameters: nil,
+                   encoding: URLEncoding.default,
+                   headers: ["Content-Type":"application/json", "Accept":"application/json"])
+            //            .validate(statusCode: 200..<300)
+            .responseJSON { (json) in
+                //                   여기서 가져온 데이터를 자유롭게 활용하세요
+                let statusCode = json.response!.statusCode
+                
+                switch json.result{
+                case .success(let obj):
+                    // 통신 성공 시
+                    if obj is NSDictionary{
+                        do{
+                            //obj를 JSON으로 변경
+                            let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                            // JSON Decoder 사용
+                            let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                            
+                            print("어플 버전 : ",self.version!)
+                            print("서버 버전 : ",getInstanceData.result_data.version?.ios)
+                            if getInstanceData.result_data.version?.ios == self.version {
+
+                                let alertController = UIAlertController(title: "버전이 낮습니다", message: "업데이트가 필요합니다.\n업데이트를 하지 않을 시 문제가 발생할 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
+                                alertController.addAction(UIAlertAction.init(title: "확인", style: UIAlertAction.Style.default, handler: { (action) in
+                                    // 버튼 눌렸을 때 활동 할 것 추가 하기
+                                  //  UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+                                }))
+                                var topController = UIApplication.shared.keyWindow?.rootViewController
+                                if topController != nil {
+                                    while let presentedViewController = topController?.presentedViewController {
+                                        topController = presentedViewController
+                                    }
+                                }
+                                topController!.present(alertController, animated: false, completion: {
+
+                                })
+                            }else{
+                                print("못드갔다")
+                            }
+                        }catch(let error){
+                            print("getversion Error : ",error.localizedDescription)
+                        }
+                    }
+                case .failure(let e):
+                    print(e.localizedDescription)
+                    print("실패")
+                }
+            }
+    }
     
     func loginFunc(id : String, password : String, complation : ((Int?) -> ())?){
         url = "http://test.api.finkick.xyz/api/auth/login"
@@ -142,6 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Getversion()
         UINavigationBar.appearance().barTintColor = UIColor(red: 0.27, green: 0.29, blue: 0.35, alpha: 1.00)
         return true
     }
