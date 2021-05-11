@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var email : String?
     var url : String!
     
-    func loginFunc(id : String, password : String, complation : ((Response?, Int?) -> ())?){
+    func loginFunc(id : String, password : String, complation : ((Int?) -> ())?){
         url = "http://test.api.finkick.xyz/api/auth/login"
         let param : Parameters = ["id" : id , "password" : password]// JSON 객체로 변환할 딕셔너리 준비
         print(param)
@@ -60,10 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch response.result{
             case .success:
                 print("POST 성공")
-                complation!(nil,statusCode)
+                complation!(statusCode)
             case.failure(let error):
                 print("Error")
-                complation!(nil,statusCode)
+                complation!(statusCode)
             }
         }
     }

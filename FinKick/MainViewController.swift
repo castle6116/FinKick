@@ -16,6 +16,10 @@ class MainViewController: UIViewController {
     var loginID : String = ""
     var loginPW : String = ""
     var membershipOK : Int?
+    var statusCode : Int = 0
+    var success : Int = 0
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBAction func moveLogin() {
         appDelegate.ID = loginID
@@ -56,6 +60,27 @@ class MainViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func LoginCheck(complation : ((Int?) -> ())?){
+        appDelegate.loginFunc(id: IdInputField.text!, password: PwInputField.text!)
+        {
+            (statusCode) in
+            if let statusCode = statusCode{
+                self.LoginCodestat(statusCode: statusCode)
+                self.statusCode = statusCode
+                complation!(statusCode)
+            }
+        }
+    }
+    func LoginCodestat(statusCode : Int?) {
+        if(statusCode == 200 ){
+            self.showToast(message: "로그인에 성공하였습니다.")
+        }else if(statusCode == 400){
+            self.showToast(message: "형식에 오류가 있습니다.")
+        }else{
+            self.showToast(message: "문제가 발생하였습니다 관리자에게 문의 하십시요. 에러코드:\(statusCode)")
+        }
+    }
+    
     // 로그인이 되는지 테스트 하는 함수
     @IBAction func LoginErrorFunc(_ sender : UIButton){
         // 특정 시간 후 실행
@@ -64,19 +89,18 @@ class MainViewController: UIViewController {
             self.LoginError.isHidden = true
         }
         
-        if IdInputField.text == loginID {
-            if PwInputField.text == loginPW{
-                LoginError.text = "로그인 성공"
-                LoginError.isHidden = false
-                moveLogin()
-            }else {
-                LoginError.text = "비밀번호를 확인해 주세요"
-                LoginError.isHidden = false
+        LoginCheck(){
+            (statusCode) in
+            if statusCode == 200 {
+                self.LoginError.text = "로그인 성공"
+                self.LoginError.isHidden = false
+                self.moveLogin()
+            }else{
+                self.LoginError.text = "아이디 혹은 비밀번호를 확인해 주세요"
+                self.LoginError.isHidden = false
             }
-        }else{
-            LoginError.text = "아이디를 확인해 주세요"
-            LoginError.isHidden = false
         }
+        
     }
     func showToast(message : String) {
             let width_variable:CGFloat = 10
@@ -108,10 +132,11 @@ class MainViewController: UIViewController {
                 print("deleted = \(onSuccess)")
             }
         }
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     //프로그램이 시작 될 때 제일 처음 실행 되는 함수
     override func viewDidAppear(_ animated: Bool) {
         membershipOK = appDelegate.success
+        IdInputField.text = "aa@aa.aa"
+        PwInputField.text = "qweqwe!1"
         if(membershipOK == 1){
             showToast(message: "회원가입에 성공하였습니다.")
             IdInputField.text = appDelegate.ID

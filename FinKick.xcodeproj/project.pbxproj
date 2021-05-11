@@ -65,6 +65,7 @@
 		DE87F63D25B017930010C8B5 /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE87F63C25B017930010C8B5 /* MembershipView.swift */; };
 		DE9DF92B25FF2549004E9277 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = DE9DF92A25FF2549004E9277 /* email.png */; };
 		DE9DF92F25FF293E004E9277 /* ok-button.png in Resources */ = {isa = PBXBuildFile; fileRef = DE9DF92E25FF293E004E9277 /* ok-button.png */; };
+		DEA6DAA3264A12BD00D31EDD /* img_phoneNum.png in Resources */ = {isa = PBXBuildFile; fileRef = DEA6DAA2264A12BD00D31EDD /* img_phoneNum.png */; };
 		DEAAD6AB259F152F00001F67 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAAD6AA259F152F00001F67 /* MainViewController.swift */; };
 		DEAAD6B1259F15AB00001F67 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = DEAAD6AF259F15AB00001F67 /* lock.png */; };
 		DEAAD6B2259F15AB00001F67 /* human.png in Resources */ = {isa = PBXBuildFile; fileRef = DEAAD6B0259F15AB00001F67 /* human.png */; };
@@ -164,6 +165,7 @@
 		DE9DF92425FF20ED004E9277 /* Members.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Members.swift; sourceTree = "<group>"; };
 		DE9DF92A25FF2549004E9277 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email.png; path = "FinKick/Font&image/email.png"; sourceTree = SOURCE_ROOT; };
 		DE9DF92E25FF293E004E9277 /* ok-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ok-button.png"; path = "FinKick/Font&image/ok-button.png"; sourceTree = SOURCE_ROOT; };
+		DEA6DAA2264A12BD00D31EDD /* img_phoneNum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_phoneNum.png; sourceTree = "<group>"; };
 		DEAAD6AA259F152F00001F67 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DEAAD6AF259F15AB00001F67 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = "FinKick/Font&image/lock.png"; sourceTree = SOURCE_ROOT; };
 		DEAAD6B0259F15AB00001F67 /* human.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = human.png; path = "FinKick/Font&image/human.png"; sourceTree = SOURCE_ROOT; };
@@ -363,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				DE36069A261FF69C002A1D62 /* ic_main_location.png */,
+				DEA6DAA2264A12BD00D31EDD /* img_phoneNum.png */,
 				DE2EC54F261DC95700C54973 /* 512.png */,
 				DECFEF82261AD09C000AA28C /* left-arrow.png */,
 				DE3F8684260031430069D2D1 /* check.png */,
@@ -503,6 +506,7 @@
 				DE5C2AAD26073A25007F450C /* shadow_balloon.png in Resources */,
 				DE3F8685260031430069D2D1 /* check.png in Resources */,
 				DE5C2AC026073A25007F450C /* map_pin.png in Resources */,
+				DEA6DAA3264A12BD00D31EDD /* img_phoneNum.png in Resources */,
 				DE5C2AAB26073A25007F450C /* map_pinup_custom@3x.png in Resources */,
 				DE5C2AC426073A25007F450C /* daum_th_line.png in Resources */,
 				DE36069B261FF69C002A1D62 /* ic_main_location.png in Resources */,

@@ -19,6 +19,8 @@ class Members: UIViewController{
     @IBOutlet var EmailCertificationButton: UIButton!
     @IBOutlet var EmailCertificationInputField: UITextField!
     @IBOutlet var EmailCertification: UILabel!
+    @IBOutlet var PhoneInputField: UITextField!
+    @IBOutlet var PhoneError: UILabel!
     
     var loginID : String!
     var loginPW : String!
@@ -27,10 +29,10 @@ class Members: UIViewController{
     var IdCheckoverlap : Int = 0
     var emailCheckoverlap : Int = 0
     var successs : Int = 0
-    
+    // 아이디 생성시 서버간 통신에 사용되는 코드
     func MemberShipPush(complation : ((Int?) -> ())?) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.Putmember(id: IdInputField.text!, password: PwInputField.text!, phoneNumber: "01012345678")
+        appDelegate.Putmember(id: IdInputField.text!, password: PwInputField.text!, phoneNumber: PhoneInputField.text!)
         {
             (data, statusCode) in
             if let statusCode = statusCode{
@@ -39,7 +41,7 @@ class Members: UIViewController{
             }
         }
     }
-    
+    // 아이디 생성시 유효성 검사 코드
     func MemberCodestat(statusCode : Int?) {
         if(statusCode == 200 ){
             self.showToast(message: "아이디가 정상적으로 생성 되었습니다.")
@@ -50,7 +52,7 @@ class Members: UIViewController{
             self.showToast(message: "문제가 발생하였습니다 관리자에게 문의 하십시요. 에러코드:\(statusCode)")
         }
     }
-    
+    //아이디 중복 체크시 서버간 통신 코드
     @IBAction func IdOverlapCheckfunction(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -68,6 +70,7 @@ class Members: UIViewController{
         }
         
     }
+    //아이디 체크시 유효성 검사로 비동기로 돌아가는 코드
     func IdCodestat(statusCode : Int?) {
         if(statusCode == 200 ){
             self.showToast(message: "아이디가 중복됩니다.")
@@ -94,11 +97,11 @@ class Members: UIViewController{
         }
     }
     @objc func PassError(_ sender: Any?) -> Bool{
-        if PwCheck(id: PwInputField.text) == false {
+        if PwCheck(pw: PwInputField.text) == false {
             PasswordError.text = "영어,숫자,특수문자 1개 이상 8~20자리"
             PasswordError.isHidden = false
             return false
-        }else if PwCheck(id: PwInputField.text) == true{
+        }else if PwCheck(pw: PwInputField.text) == true{
             PasswordError.isHidden = true
             
             if PwInputField.text == PwCheckInputField.text {
@@ -133,12 +136,22 @@ class Members: UIViewController{
 //            let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
 //            return pred.evaluate(with: id)
 //    }
+    @objc func PhoneError(_ sender: Any?) -> Bool{
+        if PhoneCheck(phone: PhoneInputField.text) == false {
+            PhoneError.text = "전화번호가 잘못됐습니다."
+            PhoneError.isHidden = false
+            return false
+        }else{
+            PhoneError.isHidden = true
+            return true
+        }
+    }
     // 비밀번호 정규식
-    func PwCheck(id: String?) -> Bool {
-            guard id != nil else { return false }
-            let idRegEx = "^(?=.*[0-9])(?=.*[a-z])(?=.*\\W)(?=\\S+$).{8,20}$"
-            let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
-            return pred.evaluate(with: id)
+    func PwCheck(pw: String?) -> Bool {
+            guard pw != nil else { return false }
+            let pwRegEx = "^(?=.*[0-9])(?=.*[a-z])(?=.*\\W)(?=\\S+$).{8,20}$"
+            let pred = NSPredicate(format:"SELF MATCHES %@", pwRegEx)
+            return pred.evaluate(with: pw)
     }
     //  이메일 정규식
     func IdCheck(id: String?) -> Bool {
@@ -147,10 +160,17 @@ class Members: UIViewController{
             let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
             return pred.evaluate(with: id)
     }
+    //  전화번호 정규식
+    func PhoneCheck(phone: String?) -> Bool {
+        guard phone != nil else { return false }
+        let phoneRegEx = "^01(?:0|1|[6-9])(\\d{4})(\\d{4})$"
+        let pred = NSPredicate(format:"SELF MATCHES %@",phoneRegEx)
+        return pred.evaluate(with: phone)
+    }
     
     @IBAction func OkButtonClick(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if PassError(self) == true && IdError(self) == true && EmailCertification(self) == true && IdInputField.text == loginID{
+        if PassError(self) == true && IdError(self) == true && EmailCertification(self) == true && IdInputField.text == loginID && PhoneError(self) == true{
             
             MemberShipPush(){
                 (statusCode) in
@@ -220,6 +240,14 @@ class Members: UIViewController{
                     //가상 키보드 높이만큼 화면의 y값을 감소
                     self.view.frame.origin.y = -120
                 }
+            }else if(PhoneInputField.isEditing){
+                if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                    let keyboardHeight = keyboardSize.height
+                    print(keyboardHeight)
+                    
+                    //가상 키보드 높이만큼 화면의 y값을 감소
+                    self.view.frame.origin.y = -180
+                }
             }
         }
         
@@ -241,8 +269,10 @@ class Members: UIViewController{
         PasswordError.isHidden = true
         PasswordErrorCheck.isHidden = true
         EmailCertification.isHidden = true
+        PhoneError.isHidden = true
         IdInputField.keyboardType = .asciiCapable
         PwInputField.keyboardType = .asciiCapable
+        PhoneInputField.keyboardType = .phonePad
     }
     // 앱이 실행 되는 동안 계속 돌아가는 함수
     override func viewDidLoad() {
@@ -252,6 +282,7 @@ class Members: UIViewController{
         self.PwInputField.addTarget(self, action: #selector(self.PassError(_:)), for: .editingChanged)
         self.PwCheckInputField.addTarget(self, action: #selector(self.PassError(_:)), for: .editingChanged)
         self.EmailCertificationInputField.addTarget(self, action: #selector(self.EmailCertification(_:)), for: .editingChanged)
+        self.PhoneInputField.addTarget(self, action: #selector(self.PhoneError(_:)), for: .editingChanged)
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
