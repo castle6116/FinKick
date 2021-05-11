@@ -97,14 +97,6 @@ class MainViewController: UIViewController {
                 toastLabel.removeFromSuperview()
             })
     }
-    //저장된 데이터 보기
-    fileprivate func getAllUsers() {
-            let users: [Users] = CoreDataManager.shared.getUsers()
-            let userID: [String?] = users.map({$0.id})
-            let userPW: String = users.filter({$0.id == appDelegate.ID}).first!.pw!
-            print("User ID = \(userID)")
-            print("User PW = \(userPW)")
-    }
     //빈 화면 터치 시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
           self.view.endEditing(true)
@@ -122,10 +114,8 @@ class MainViewController: UIViewController {
         membershipOK = appDelegate.success
         if(membershipOK == 1){
             showToast(message: "회원가입에 성공하였습니다.")
-            let users: [Users] = CoreDataManager.shared.getUsers()
             IdInputField.text = appDelegate.ID
-            PwInputField.text = users.filter({$0.id == appDelegate.ID}).first!.pw!
-            getAllUsers()
+            PwInputField.text = appDelegate.Pass
         }
         LoginError.isHidden = true
         IdInputField.keyboardType = .asciiCapable

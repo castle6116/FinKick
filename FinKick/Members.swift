@@ -26,37 +26,61 @@ class Members: UIViewController{
     // 아이디 중복 체크 함수
     var IdCheckoverlap : Int = 0
     var emailCheckoverlap : Int = 0
+    var successs : Int = 0
+    
+    func MemberShipPush(complation : ((Int?) -> ())?) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.Putmember(id: IdInputField.text!, password: PwInputField.text!, phoneNumber: "01012345678")
+        {
+            (data, statusCode) in
+            if let statusCode = statusCode{
+                self.MemberCodestat(statusCode: statusCode)
+                complation!(statusCode)
+            }
+        }
+    }
+    
+    func MemberCodestat(statusCode : Int?) {
+        if(statusCode == 200 ){
+            self.showToast(message: "아이디가 정상적으로 생성 되었습니다.")
+            self.successs = 1
+        }else if(statusCode == 400){
+            self.showToast(message: "형식에 오류가 있습니다.")
+        }else{
+            self.showToast(message: "문제가 발생하였습니다 관리자에게 문의 하십시요. 에러코드:\(statusCode)")
+        }
+    }
     
     @IBAction func IdOverlapCheckfunction(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        IdCheckoverlap = 0
+        
         if(IdInputField.text != ""){
-            appDelegate.getid(InputId: IdInputField.text!) {
+            IdCheckoverlap = 0
+            appDelegate.Getid(InputId: IdInputField.text!) {
                 (data, statusCode) in
                 if let statusCode = statusCode{
-                    self.codestat(statusCode: statusCode)
+                    self.IdCodestat(statusCode: statusCode)
                 }
-
             }
-
         }
         if(IdInputField.text == ""){
             showToast(message: "아이디를 입력해 주세요")
         }
         
     }
-    func codestat(statusCode : Int?) {
+    func IdCodestat(statusCode : Int?) {
         if(statusCode == 200 ){
             self.showToast(message: "아이디가 중복됩니다.")
         }else if(statusCode == 400){
             self.showToast(message: "이메일 형식으로 요청해주세요.")
         }else if(statusCode == 404){
             self.showToast(message: "사용가능한 아이디 입니다.")
-            self.IdCheckoverlap = 1
-            self.loginID = self.IdInputField.text
+            IdCheckoverlap = 1
+            loginID = IdInputField.text
         }else{
             self.showToast(message: "문제가 발생하였습니다 관리자에게 문의 하십시요. 에러코드:\(statusCode)")
         }
+        IdError(self)
     }
 
     @objc func EmailCertification(_ sender: Any?) -> Bool{
@@ -73,21 +97,23 @@ class Members: UIViewController{
         if PwCheck(id: PwInputField.text) == false {
             PasswordError.text = "영어,숫자,특수문자 1개 이상 8~20자리"
             PasswordError.isHidden = false
-        }else{
-            PasswordError.isHidden = true
-        }
-        
-        if PwInputField.text == PwCheckInputField.text {
-            PasswordErrorCheck.isHidden = true
-            return true
-        }else{
-            PasswordErrorCheck.text = "비밀번호와 동일하지 않습니다."
-            PasswordErrorCheck.isHidden = false
             return false
+        }else if PwCheck(id: PwInputField.text) == true{
+            PasswordError.isHidden = true
+            
+            if PwInputField.text == PwCheckInputField.text {
+                PasswordErrorCheck.isHidden = true
+                return true
+            }else{
+                PasswordErrorCheck.text = "비밀번호와 동일하지 않습니다."
+                PasswordErrorCheck.isHidden = false
+                return false
+            }
         }
+        return false
     }
     @objc func IdError(_ sender: Any?) -> Bool{
-        if IdCheckoverlap != 1 {
+        if IdCheckoverlap == 0 {
             LoginError.text = "중복 체크를 해주세요."
             LoginError.isHidden = false
             return false
@@ -101,12 +127,12 @@ class Members: UIViewController{
         }
     }
     // 아이디 정규식
-    func IdCheck(id: String?) -> Bool {
-            guard id != nil else { return false }
-            let idRegEx = "^[a-zA-Z]{1}[a-zA-Z0-9_]{4,11}$"
-            let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
-            return pred.evaluate(with: id)
-    }
+//    func IdCheck(id: String?) -> Bool {
+//            guard id != nil else { return false }
+//            let idRegEx = "^[a-zA-Z]{1}[a-zA-Z0-9_]{4,11}$"
+//            let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
+//            return pred.evaluate(with: id)
+//    }
     // 비밀번호 정규식
     func PwCheck(id: String?) -> Bool {
             guard id != nil else { return false }
@@ -115,7 +141,7 @@ class Members: UIViewController{
             return pred.evaluate(with: id)
     }
     //  이메일 정규식
-    func EmailCheck(id: String?) -> Bool {
+    func IdCheck(id: String?) -> Bool {
             guard id != nil else { return false }
             let idRegEx = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
             let pred = NSPredicate(format:"SELF MATCHES %@", idRegEx)
@@ -125,22 +151,30 @@ class Members: UIViewController{
     @IBAction func OkButtonClick(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if PassError(self) == true && IdError(self) == true && EmailCertification(self) == true && IdInputField.text == loginID{
-            CoreDataManager.shared.saveUser(id : IdInputField.text!, email: "nil", pw : PwInputField.text!){ onSuccess in
-                print("saved = \(onSuccess)")
-            }
-            appDelegate.success = 1
-            appDelegate.ID = IdInputField.text
-           
-            self.view.window?.rootViewController?.dismiss(animated: false, completion: {
-                let homeVC = SecondViewController()
-                  homeVC.modalPresentationStyle = .fullScreen
-                  appDelegate.window?.rootViewController?.present(homeVC, animated: true, completion: nil)
-            })
             
-        }
-        else{
-            appDelegate.success = 0
-            showToast(message: "회원가입에 실패하셨습니다.")
+            MemberShipPush(){
+                (statusCode) in
+                if self.successs == 1 {
+                    appDelegate.success = 1
+                    appDelegate.ID = self.IdInputField.text
+                    appDelegate.Pass = self.PwInputField.text
+                    
+                    self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+                    let homeVC = SecondViewController()
+                        homeVC.modalPresentationStyle = .fullScreen
+                        appDelegate.window?.rootViewController?.present(homeVC, animated: true, completion: nil)
+                    })
+                }
+                
+                else if self.IdInputField.text != self.loginID{
+                    self.IdCheckoverlap = 0
+                    self.showToast(message: "입력된 아이디와 중복체크한 아이디가 동일하지 않습니다.")
+                }
+                else{
+                    appDelegate.success = 0
+                    self.showToast(message: "회원가입에 실패하셨습니다.")
+                }
+            }
         }
     }
     
@@ -213,6 +247,7 @@ class Members: UIViewController{
     // 앱이 실행 되는 동안 계속 돌아가는 함수
     override func viewDidLoad() {
         KeyboardSetting()
+        print(IdCheckoverlap)
         self.IdInputField.addTarget(self, action: #selector(self.IdError(_:)), for: .editingChanged)
         self.PwInputField.addTarget(self, action: #selector(self.PassError(_:)), for: .editingChanged)
         self.PwCheckInputField.addTarget(self, action: #selector(self.PassError(_:)), for: .editingChanged)
