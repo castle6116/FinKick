@@ -45,7 +45,7 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         super.viewDidLoad()
         //네이버 맵
         let mapView = NMFNaverMapView(frame: view.frame)
-        mapView.mapView.positionMode = .normal
+        mapView.mapView.positionMode = .direction
         
         //locationManager 인스턴스 생성 및 델리게이트 생성
         let locationManager = CLLocationManager()
@@ -73,7 +73,7 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         mapView.showZoomControls = true
         mapView.showLocationButton = true
         mapView.mapView.logoInteractionEnabled = true
-        mapView.mapView.logoAlign = NMFLogoAlign(rawValue: 3)!
+        mapView.mapView.logoAlign = NMFLogoAlign(rawValue: 0)!
         
 //        setMarker(mapView)
         

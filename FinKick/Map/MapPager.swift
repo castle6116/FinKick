@@ -31,6 +31,7 @@ class MapPager: UIPageViewController, UIPageViewControllerDelegate {
 
         if let firstVC = VCArray.first{
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+            
         }
         
     }

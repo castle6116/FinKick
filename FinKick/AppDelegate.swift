@@ -93,24 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 complation!(nil,statusCode)
             }
         }
-//        AF.request(
-//            url,
-//            method: .post,
-//            parameters: param,
-//            encoder: JSONParameterEncoder.default)
-//            .responseJSON { (response) in
-//                let statusCode = response.response!.statusCode
-//            switch response.result {
-//                case .success(let obj):
-//                    let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
-//                    // JSON Decoder 사용
-//                    let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
-//                    complation!(getInstanceData, statusCode)
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                    print("실패")
-//            }
-//        }
     }
     
     func Getid(InputId:String, complation : ((Response?, Int?) -> ())? ) {
