@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     struct Result_data : Codable{
         var account : Account?
         var version : Version?
+        var token : String?
     }
     
     struct Version : Codable {
@@ -31,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var id : String?
         var password : String?
         var phoneNumber : String?
+        var num : String?
+        var startTime : String?
+        var endTime : String?
     }
     
     var window: UIWindow?
@@ -40,11 +44,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var email : String?
     var url : String!
     
+    var loginToken : String?
+    
     var version: String? {
         guard let dictionary = Bundle.main.infoDictionary,
-            let version = dictionary["CFBundleShortVersionString"] as? String else {return nil}
+              let version = dictionary["CFBundleShortVersionString"] as? String else {return nil}
         
         return version
+    }
+    
+    func GetUseHistory(){
+        url = "http://test.api.finkick.xyz/api/usehistory"
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        
+        do{
+            try request.headers = JSONSerialization.data(withJSONObject: loginToken, options: [])
+        }catch{
+            print("Http Body Error")
+        }
+        
+        AF.request(request)
+            .responseJSON{
+                (response) in
+                let statusCode = response.response!.statusCode
+                switch response.result{
+                case .success(let obj):
+                    print("POST 성공")
+                    if obj is NSDictionary{
+                        do{
+                            //obj를 JSON으로 변경
+                            let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                            // JSON Decoder 사용
+                            let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                            self.loginToken = getInstanceData.result_data.token
+                        }catch{
+                            print("에러발생")
+                        }
+                    }
+                case.failure(let error):
+                    print("Error : ",error.localizedDescription)
+                }
+            }
     }
     
     func Getversion(){
@@ -72,11 +116,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             print("어플 버전 : ",self.version!)
                             print("서버 버전 : ",getInstanceData.result_data.version?.ios)
                             if getInstanceData.result_data.version?.ios != self.version {
-
+                                
                                 let alertController = UIAlertController(title: "버전이 낮습니다", message: "업데이트가 필요합니다.\n업데이트를 하지 않을 시 문제가 발생할 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
                                 alertController.addAction(UIAlertAction.init(title: "확인", style: UIAlertAction.Style.default, handler: { (action) in
                                     // 버튼 눌렸을 때 활동 할 것 추가 하기
-                                  //  UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+                                    //  UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
                                 }))
                                 var topController = UIApplication.shared.keyWindow?.rootViewController
                                 if topController != nil {
@@ -85,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     }
                                 }
                                 topController!.present(alertController, animated: false, completion: {
-
+                                    
                                 })
                             }else{
                                 print("못드갔다")
@@ -116,17 +160,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Http Body Error")
         }
         
-        AF.request(request).responseString{(response) in
-            let statusCode = response.response!.statusCode
-            switch response.result{
-            case .success:
-                print("POST 성공")
-                complation!(statusCode)
-            case.failure(let error):
-                print("Error")
-                complation!(statusCode)
+        AF.request(request)
+            .responseJSON{
+                (response) in
+                let statusCode = response.response!.statusCode
+                switch response.result{
+                case .success(let obj):
+                    print("POST 성공")
+                    if obj is NSDictionary{
+                        do{
+                            //obj를 JSON으로 변경
+                            let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                            // JSON Decoder 사용
+                            let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                            self.loginToken = getInstanceData.result_data.token
+                            complation!(statusCode)
+                        }catch{
+                            complation!(statusCode)
+                        }
+                    }
+                case.failure(let error):
+                    print("Error")
+                    complation!(statusCode)
+                }
             }
-        }
     }
     func Putmember(id : String , password : String, phoneNumber : String, complation : ((Response?, Int?) -> ())?)  {
         url = "http://test.api.finkick.xyz/api/account"
@@ -143,7 +200,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Http Body Error")
         }
         
-        AF.request(request).responseString{(response) in
+        AF.request(request)
+            .responseString{
+                (response) in
             let statusCode = response.response!.statusCode
             switch response.result{
             case .success:
