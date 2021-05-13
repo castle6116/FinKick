@@ -26,8 +26,8 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         marker.position = NMGLatLng(lat: 35.8471267472791, lng: 128.58281776895694)
         marker.iconImage = NMF_MARKER_IMAGE_BLACK
         marker.iconTintColor = UIColor.red
-        marker.width = 50
-        marker.height = 60
+        marker.width = 20
+        marker.height = 20
         marker.mapView = mapView.mapView
         
         // 정보창 생성
@@ -75,7 +75,7 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         mapView.mapView.logoInteractionEnabled = true
         mapView.mapView.logoAlign = NMFLogoAlign(rawValue: 0)!
         
-//        setMarker(mapView)
+        setMarker(mapView)
         
         view.addSubview(mapView)
         //카카오 맵

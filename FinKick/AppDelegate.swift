@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
                             print("어플 버전 : ",self.version!)
                             print("서버 버전 : ",getInstanceData.result_data.version?.ios)
-                            if getInstanceData.result_data.version?.ios == self.version {
+                            if getInstanceData.result_data.version?.ios != self.version {
 
                                 let alertController = UIAlertController(title: "버전이 낮습니다", message: "업데이트가 필요합니다.\n업데이트를 하지 않을 시 문제가 발생할 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
                                 alertController.addAction(UIAlertAction.init(title: "확인", style: UIAlertAction.Style.default, handler: { (action) in
