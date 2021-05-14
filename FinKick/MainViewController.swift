@@ -148,10 +148,13 @@ class MainViewController: UIViewController {
         
         var locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
+        
+        
     }
     // 앱이 실행 했을 때
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
     

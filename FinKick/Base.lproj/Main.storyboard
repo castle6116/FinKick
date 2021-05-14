@@ -659,7 +659,7 @@
                                 <rect key="frame" x="96" y="508" width="248" height="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_phoneNum.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXB-jV-rcn">
                                 <rect key="frame" x="70" y="508" width="22" height="22"/>
@@ -1255,7 +1255,6 @@
         <!--Detail Record-->
         <scene sceneID="wrB-Yv-TLX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hz8-KY-ylE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DetailRecord" id="Z3h-4b-WDV" customClass="DetailRecord" customModule="FinKick" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aRG-BC-lRA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
@@ -1268,7 +1267,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alu-gV-kG8">
-                                <rect key="frame" x="85" y="173" width="66.5" height="19"/>
+                                <rect key="frame" x="50" y="173" width="66.5" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1296,19 +1295,19 @@
                                 <color key="progressTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25분 30초" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-s2-qfG">
-                                <rect key="frame" x="73" y="130.5" width="90.5" height="22.5"/>
+                                <rect key="frame" x="38" y="130.5" width="90.5" height="22.5"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제 요금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7K-Te-zrU">
-                                <rect key="frame" x="262.5" y="173" width="66.5" height="19"/>
+                                <rect key="frame" x="297.5" y="173" width="66.5" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￦5,200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXp-W5-zpL">
-                                <rect key="frame" x="259.5" y="130.5" width="73" height="22.5"/>
+                                <rect key="frame" x="294.5" y="130.5" width="73" height="22.5"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1331,11 +1330,12 @@
                         <constraints>
                             <constraint firstItem="CVb-Az-uef" firstAttribute="trailing" secondItem="yYQ-pK-eMe" secondAttribute="trailing" constant="50" id="01Q-F9-KyN"/>
                             <constraint firstItem="djA-n1-JTR" firstAttribute="centerX" secondItem="aRG-BC-lRA" secondAttribute="centerX" id="0Hm-Wy-sEd"/>
+                            <constraint firstItem="CVb-Az-uef" firstAttribute="trailing" secondItem="i7K-Te-zrU" secondAttribute="trailing" constant="50" id="2mJ-p2-ivB"/>
                             <constraint firstItem="Alu-gV-kG8" firstAttribute="top" secondItem="chN-s2-qfG" secondAttribute="bottom" constant="20" id="3kI-oC-0aV"/>
                             <constraint firstItem="50l-Mm-LeT" firstAttribute="top" secondItem="djA-n1-JTR" secondAttribute="bottom" constant="60" id="6xF-6C-veW"/>
                             <constraint firstItem="wXp-W5-zpL" firstAttribute="top" secondItem="usE-y6-k5v" secondAttribute="bottom" constant="77" id="8Ql-BE-2ip"/>
                             <constraint firstItem="chN-s2-qfG" firstAttribute="top" secondItem="usE-y6-k5v" secondAttribute="bottom" constant="77" id="BrI-YH-VIG"/>
-                            <constraint firstItem="Alu-gV-kG8" firstAttribute="leading" secondItem="CVb-Az-uef" secondAttribute="leading" constant="85" id="D7F-N4-Ro5"/>
+                            <constraint firstItem="Alu-gV-kG8" firstAttribute="leading" secondItem="CVb-Az-uef" secondAttribute="leading" constant="50" id="D7F-N4-Ro5"/>
                             <constraint firstItem="djA-n1-JTR" firstAttribute="top" secondItem="usE-y6-k5v" secondAttribute="bottom" constant="240" id="Gvw-5z-kE2"/>
                             <constraint firstItem="JbS-vq-x5M" firstAttribute="top" secondItem="50l-Mm-LeT" secondAttribute="bottom" constant="10" id="He2-sy-snH"/>
                             <constraint firstItem="50l-Mm-LeT" firstAttribute="top" secondItem="yYQ-pK-eMe" secondAttribute="bottom" constant="10" id="IPl-ce-2vA"/>
@@ -1350,7 +1350,6 @@
                             <constraint firstItem="YZV-DW-jL1" firstAttribute="leading" secondItem="CVb-Az-uef" secondAttribute="leading" constant="50" id="fNP-9G-8Qg"/>
                             <constraint firstItem="CVb-Az-uef" firstAttribute="trailing" secondItem="50l-Mm-LeT" secondAttribute="trailing" constant="50" id="ji8-SH-Z2q"/>
                             <constraint firstItem="Alu-gV-kG8" firstAttribute="centerX" secondItem="chN-s2-qfG" secondAttribute="centerX" id="jpe-ob-4N0"/>
-                            <constraint firstItem="i7K-Te-zrU" firstAttribute="leading" secondItem="Alu-gV-kG8" secondAttribute="trailing" constant="111" id="n17-iF-g8H"/>
                             <constraint firstItem="yQE-PM-weo" firstAttribute="top" secondItem="50l-Mm-LeT" secondAttribute="bottom" constant="10" id="oUu-n1-KPd"/>
                             <constraint firstItem="JbS-vq-x5M" firstAttribute="leading" secondItem="CVb-Az-uef" secondAttribute="leading" constant="50" id="u0m-6H-4qA"/>
                         </constraints>
@@ -1363,6 +1362,7 @@
                         <outlet property="UseMoney2" destination="yYQ-pK-eMe" id="x1V-Yp-vkN"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hz8-KY-ylE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-28688.405797101452" y="-16163.169642857141"/>
         </scene>

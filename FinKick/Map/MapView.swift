@@ -43,6 +43,7 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         //네이버 맵
         let mapView = NMFNaverMapView(frame: CGRect(x: 0, y: 0, width: 390, height: 722))
         mapView.mapView.positionMode = .direction
@@ -78,6 +79,35 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         setMarker(mapView)
         
         view.addSubview(mapView)
+        
+        appDelegate.GetUseHistory(){
+            (data) in
+            if let data = data{
+                if (data.result_data?.useHistory!.count)! > 0 {
+                    for i in 0 ... (data.result_data?.useHistory!.count)!-1 {
+                        do{
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                            guard let startTime = dateFormatter.date(from: (data.result_data?.useHistory![i].startTime)!) else {return}
+                            guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime)!) else {return}
+                            var useTime = Int(endTime.timeIntervalSince(startTime))
+                            var useTimeMin = useTime / 60
+                            var useTimeSec = useTime % 60
+                            
+                            let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
+                            print(useTimeString)
+                            let money = 300 + (useTime / 60 + 1) * 150
+                            
+                            Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money ,insertDate: endTime))
+                            print("여기가 유즈 히스토리 : ",data.result_data?.useHistory![i] as Any)
+                        }catch{
+                            print("실패")
+                        }
+                        
+                    }
+                }
+            }
+        }
         //카카오 맵
 //            // 지도 불러오기
 //            mapView = MTMapView(frame: self.view.bounds)

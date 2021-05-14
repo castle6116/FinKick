@@ -8,18 +8,20 @@
 import UIKit
 import CoreData
 import Alamofire
+import KeychainSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     struct Response : Codable {
-        var code : Int
-        var message : String
-        var result_data : Result_data
+        var code : Int?
+        var message : String?
+        var result_data : Result_data?
     }
     
     struct Result_data : Codable{
         var account : Account?
         var version : Version?
+        var useHistory : [useHistory]?
         var token : String?
     }
     
@@ -28,13 +30,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var iosUrl : String?
     }
     
+    struct useHistory : Codable {
+        var num : Int?
+        var accountNum : Int?
+        var kickboardNum : Int?
+        var startTime : String?
+        var endTime : String?
+    }
     struct Account : Codable{
         var id : String?
         var password : String?
         var phoneNumber : String?
-        var num : String?
-        var startTime : String?
-        var endTime : String?
+        var registDay : String?
+        var accountNum : Int?
+        var type : String?
+        var num : Int?
     }
     
     var window: UIWindow?
@@ -44,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var email : String?
     var url : String!
     
-    var loginToken : String?
+    static var loginToken : String?
     
     var version: String? {
         guard let dictionary = Bundle.main.infoDictionary,
@@ -53,36 +63,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return version
     }
     
-    func GetUseHistory(){
+    func GetUseHistory(complation : ((Response?) -> ())?){
         url = "http://test.api.finkick.xyz/api/usehistory"
         
         var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
+        request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
+        KeychainSwift().set(AppDelegate.loginToken!,forKey: "x-access-token")
+        let headers : HTTPHeaders = ["x-access-token" : KeychainSwift().get("x-access-token")!]
         
-        do{
-            try request.headers = JSONSerialization.data(withJSONObject: loginToken, options: [])
-        }catch{
-            print("Http Body Error")
-        }
-        
-        AF.request(request)
+        AF.request(url,headers: headers)
             .responseJSON{
                 (response) in
                 let statusCode = response.response!.statusCode
                 switch response.result{
                 case .success(let obj):
-                    print("POST 성공")
+                    print("GET 성공")
                     if obj is NSDictionary{
                         do{
                             //obj를 JSON으로 변경
                             let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
                             // JSON Decoder 사용
                             let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
-                            self.loginToken = getInstanceData.result_data.token
+                            print("유저 사용 기록 : ",getInstanceData)
+                            complation!(getInstanceData)
                         }catch{
-                            print("에러발생")
+                            print(obj)
+                            print("에러 발생 : ",error)
                         }
                     }
                 case.failure(let error):
@@ -114,8 +122,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
                             
                             print("어플 버전 : ",self.version!)
-                            print("서버 버전 : ",getInstanceData.result_data.version?.ios)
-                            if getInstanceData.result_data.version?.ios != self.version {
+                            print("서버 버전 : ",getInstanceData.result_data?.version?.ios)
+                            if getInstanceData.result_data?.version?.ios != self.version {
                                 
                                 let alertController = UIAlertController(title: "버전이 낮습니다", message: "업데이트가 필요합니다.\n업데이트를 하지 않을 시 문제가 발생할 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
                                 alertController.addAction(UIAlertAction.init(title: "확인", style: UIAlertAction.Style.default, handler: { (action) in
@@ -132,9 +140,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     
                                 })
                             }else{
-                                print("못드갔다")
+                                print("버전 동일")
                             }
                         }catch(let error){
+                            print(error)
                             print("getversion Error : ",error.localizedDescription)
                         }
                     }
@@ -173,9 +182,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
                             // JSON Decoder 사용
                             let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
-                            self.loginToken = getInstanceData.result_data.token
+                            AppDelegate.loginToken = getInstanceData.result_data?.token
+                            print("로그인 하는 계정 : ",obj)
                             complation!(statusCode)
                         }catch{
+                            print(error)
                             complation!(statusCode)
                         }
                     }
@@ -238,6 +249,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             // JSON Decoder 사용
                             let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
                             
+                            print("아이디 중복 체크 : ",getInstanceData)
                             complation!(getInstanceData, statusCode)
                         }catch{
                             complation!(nil, statusCode)

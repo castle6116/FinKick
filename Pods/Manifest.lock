@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (5.4.3)
+  - KeychainSwift (19.0.0)
   - NMapsMap (3.10.1)
   - SideMenuSwift (2.0.7)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 5.4.3)
+  - KeychainSwift (~> 19.0)
   - NMapsMap (= 3.10.1)
   - SideMenuSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - KeychainSwift
     - NMapsMap
     - SideMenuSwift
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   NMapsMap: 1dc27ca06eac287ce1f001a972172766dca2abe1
   SideMenuSwift: ffbbc88d23741932177ad1320df837cedfb3bc5e
 
-PODFILE CHECKSUM: b66f30651aa6f620b3363f74128e34491994dc17
+PODFILE CHECKSUM: 0f1aff58a59722829fd86f5f25ed4006dba0d04c
 
 COCOAPODS: 1.10.1
