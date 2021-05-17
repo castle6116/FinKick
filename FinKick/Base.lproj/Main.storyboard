@@ -831,6 +831,57 @@
             </objects>
             <point key="canvasLocation" x="-30170" y="-13034"/>
         </scene>
+        <!--Check-->
+        <scene sceneID="Tuk-Bb-aWH">
+            <objects>
+                <viewController id="d9k-MU-tgV" customClass="QRCheck" customModule="FinKick" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gMg-l2-JAG">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54u-RY-kzA" customClass="ReaderView" customModule="FinKick" customModuleProvider="target">
+                                <rect key="frame" x="50" y="118" width="290" height="290"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="54u-RY-kzA" secondAttribute="height" multiplier="1:1" id="yYL-MQ-Vg6"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GR-6t-JrV">
+                                <rect key="frame" x="95" y="458" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.80000000000000004" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6Hf-RM-VnZ"/>
+                                    <constraint firstAttribute="width" constant="200" id="Seq-Tv-Y0t"/>
+                                </constraints>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="scanButtonAction:" destination="d9k-MU-tgV" eventType="touchUpInside" id="emR-w3-ISo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LBR-u3-DBN"/>
+                        <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="54u-RY-kzA" firstAttribute="top" secondItem="LBR-u3-DBN" secondAttribute="top" constant="30" id="Upa-9p-8FP"/>
+                            <constraint firstItem="54u-RY-kzA" firstAttribute="centerX" secondItem="gMg-l2-JAG" secondAttribute="centerX" id="c4e-WY-gDb"/>
+                            <constraint firstItem="7GR-6t-JrV" firstAttribute="top" secondItem="54u-RY-kzA" secondAttribute="bottom" constant="50" id="eDY-op-pF9"/>
+                            <constraint firstItem="LBR-u3-DBN" firstAttribute="trailing" secondItem="54u-RY-kzA" secondAttribute="trailing" constant="50" id="sol-Nj-BN7"/>
+                            <constraint firstItem="7GR-6t-JrV" firstAttribute="centerX" secondItem="gMg-l2-JAG" secondAttribute="centerX" id="vGP-u7-xZz"/>
+                            <constraint firstItem="54u-RY-kzA" firstAttribute="leading" secondItem="LBR-u3-DBN" secondAttribute="leading" constant="50" id="wu8-Gh-9mH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rbO-Gg-k2j"/>
+                    <connections>
+                        <outlet property="readButton" destination="7GR-6t-JrV" id="2os-Gh-Kpv"/>
+                        <outlet property="readerView" destination="54u-RY-kzA" id="hf8-NZ-HbN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2pn-LQ-zgh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-27976.923076923074" y="-13034.360189573459"/>
+        </scene>
         <!--Side Menu Content View-->
         <scene sceneID="RPx-FG-1Yu">
             <objects>
@@ -1370,6 +1421,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hz8-KY-ylE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-28688.405797101452" y="-16163.169642857141"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hpq-x2-7DO">
+            <objects>
+                <navigationController storyboardIdentifier="QRCode" automaticallyAdjustsScrollViewInsets="NO" id="PAt-d0-L1X" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bcs-io-2mH">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="d9k-MU-tgV" kind="relationship" relationship="rootViewController" id="Z96-rE-ne6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jhp-bq-hfB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28906.153846153844" y="-13034.360189573459"/>
         </scene>
     </scenes>
     <resources>

@@ -14,7 +14,23 @@ import CoreLocation
 class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
     var latitude : Double = 0.0
     var longitude : Double = 0.0
+    var kickboardUse : Int = 0
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let startButton = UIButton()
+    
+    func mapStartButton(){
+        startButton.setTitle("사용 시작", for: .normal)
+        startButton.backgroundColor = .gray
+        startButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(startButton)
+        
+        let safeArea =  view.safeAreaLayoutGuide
+        
+        startButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 80).isActive = true
+        startButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20).isActive = true
+        startButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -80).isActive = true
+    }
     // 카카오
 //    var mapView: MTMapView?
 //    var mapPoint1: MTMapPoint?
@@ -40,6 +56,7 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         infoWindow.open(with: marker)
 
     }
+    
     func mapCreate(){
         print("지도 뷰로드")
         
@@ -87,19 +104,27 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
                 if data.result_data != nil {
                     for i in 0 ... (data.result_data?.useHistory!.count)!-1 {
                         do{
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                            guard let startTime = dateFormatter.date(from: (data.result_data?.useHistory![i].startTime)!) else {return}
-                            guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime)!) else {return}
-                            var useTime = Int(endTime.timeIntervalSince(startTime))
-                            var useTimeMin = useTime / 60
-                            var useTimeSec = useTime % 60
-                            
-                            let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
-                            print(useTimeString)
-                            let money = 300 + (useTime / 60 + 1) * 150
-                            
-                            Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money ,insertDate: endTime))
+                            if data.result_data?.useHistory![i].endTime != nil {
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                guard let startTime = dateFormatter.date(from: (data.result_data?.useHistory![i].startTime)!) else {return}
+                                print(data.result_data?.useHistory![i].endTime)
+                                guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime) ?? "0000-00-00 00:00:00" ) else {return}
+                                var useTime = Int(endTime.timeIntervalSince(startTime))
+                                var useTimeMin = useTime / 60
+                                var useTimeSec = useTime % 60
+                                
+                                let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
+                                print(useTimeString)
+                                let money = 300 + (useTime / 60 + 1) * 150
+                                
+                                Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money ,insertDate: endTime))
+                            }
+                            else if data.result_data?.useHistory![i].endTime == nil {
+                                var date : Date = Date()
+                                Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: "0", money: 0 ,insertDate: date ))
+                                print("너 안돌지")
+                            }
                             print("여기가 유즈 히스토리 : ",data.result_data?.useHistory![i] as Any)
                         }catch{
                             print("실패")
@@ -154,7 +179,23 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapCreate()
+        if kickboardUse == 0{
+            mapStartButton()
+            startButton.addTarget(self, action: #selector(btnOnClick(_:)), for: .touchUpInside)
+            }
+    }
+    
+    @objc func btnOnClick(_ sender : Any?){
+        guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "QRCode") else{
+            return
         }
+        // 전체 화면으로 불러옴
+        uvc.modalPresentationStyle = .fullScreen
+        //화면 전환 애니메이션을 설정합니다.
+        uvc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        //인자값으로 다음 뷰 컨트롤러를 넣고 present 메소드를 호출합니다.
+        self.present(uvc, animated: true)
+    }
         
     // 카카오
 //        // Custom: 현 위치 트래킹 함수

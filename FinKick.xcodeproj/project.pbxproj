@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		53180DE80E56458182DF8AA4 /* Pods_FinKick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EA28E2831FD603E0A887D3 /* Pods_FinKick.framework */; };
 		DE066AB5260053D800D9F610 /* Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9DF92425FF20ED004E9277 /* Members.swift */; };
+		DE17CB78265234CF0039657A /* QRCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17CB77265234CF0039657A /* QRCheck.swift */; };
+		DE17CB7A2652457A0039657A /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17CB792652457A0039657A /* ReaderView.swift */; };
 		DE2EC550261DC95700C54973 /* 512.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2EC54F261DC95700C54973 /* 512.png */; };
 		DE32EA1C25B6B84A004BF2DA /* PagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32EA1B25B6B84A004BF2DA /* PagerView.swift */; };
 		DE32EA2625B97F8C004BF2DA /* information1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32EA2525B97F8C004BF2DA /* information1.swift */; };
@@ -99,6 +101,8 @@
 		00EA28E2831FD603E0A887D3 /* Pods_FinKick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinKick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D47E1C51C8B885F92F622A1 /* Pods-FinKick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinKick.debug.xcconfig"; path = "Target Support Files/Pods-FinKick/Pods-FinKick.debug.xcconfig"; sourceTree = "<group>"; };
 		C64D35FFF7524A203D9B1D9C /* Pods-FinKick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinKick.release.xcconfig"; path = "Target Support Files/Pods-FinKick/Pods-FinKick.release.xcconfig"; sourceTree = "<group>"; };
+		DE17CB77265234CF0039657A /* QRCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCheck.swift; sourceTree = "<group>"; };
+		DE17CB792652457A0039657A /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
 		DE2EC54F261DC95700C54973 /* 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512.png; path = FinKick/Assets.xcassets/Assets/AppIcon.appiconset/512.png; sourceTree = SOURCE_ROOT; };
 		DE32EA1B25B6B84A004BF2DA /* PagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerView.swift; sourceTree = "<group>"; };
 		DE32EA2525B97F8C004BF2DA /* information1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = information1.swift; sourceTree = "<group>"; };
@@ -224,6 +228,15 @@
 				C64D35FFF7524A203D9B1D9C /* Pods-FinKick.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DE17CB762652349D0039657A /* UseKickBoard */ = {
+			isa = PBXGroup;
+			children = (
+				DE17CB77265234CF0039657A /* QRCheck.swift */,
+				DE17CB792652457A0039657A /* ReaderView.swift */,
+			);
+			name = UseKickBoard;
 			sourceTree = "<group>";
 		};
 		DE32EA2425B97F4C004BF2DA /* SignupView */ = {
@@ -424,6 +437,7 @@
 		DEEC1361259EFE84008F282A /* FinKick */ = {
 			isa = PBXGroup;
 			children = (
+				DE17CB762652349D0039657A /* UseKickBoard */,
 				DEBAB49D2626CF2400C8FA1C /* MenuBar */,
 				DE4D69C42622E38E00F5F20A /* CoreData */,
 				DE5C2A8426073A25007F450C /* DaumMap.embeddedframework */,
@@ -605,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEBAB4AE2626CF2400C8FA1C /* Drive.swift in Sources */,
+				DE17CB7A2652457A0039657A /* ReaderView.swift in Sources */,
 				DE4D69C22622E38500F5F20A /* CoreDataManager.swift in Sources */,
 				DEBAB4A72626CF2400C8FA1C /* UserRecordTableCell.swift in Sources */,
 				DE32EA1C25B6B84A004BF2DA /* PagerView.swift in Sources */,
@@ -631,6 +646,7 @@
 				DEEC1365259EFE84008F282A /* SceneDelegate.swift in Sources */,
 				DE6755FB26082C09005C0EA2 /* MapPager.swift in Sources */,
 				DEAAD6B5259F15E800001F67 /* SecondViewController.swift in Sources */,
+				DE17CB78265234CF0039657A /* QRCheck.swift in Sources */,
 				DEBAB4A82626CF2400C8FA1C /* UserRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

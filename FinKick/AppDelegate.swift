@@ -23,6 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     struct Result_data : Codable{
         var account : Account?
         var version : Version?
+        var useHistory : useHistory?
+        var token : String?
+    }
+    
+    struct HistoryResponse : Codable {
+        var code : Int?
+        var message : String?
+        var result_data : HistoryResult_data?
+    }
+    
+    struct HistoryResult_data : Codable {
+        var account : Account?
+        var version : Version?
         var useHistory : [useHistory]?
         var token : String?
     }
@@ -68,6 +81,92 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return version
     }
     
+    func KickboardUsestop(kickboardNum : String?, complation : ((Int?, String?) -> ())?){
+        url = "http://test.api.finkick.xyz/api/usehistory"
+        let param : Parameters = ["kickboardNum" : kickboardNum]// JSON 객체로 변환할 딕셔너리 준비
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        KeychainSwift().set(AppDelegate.loginToken!,forKey: "x-access-token")
+        let headers : HTTPHeaders = ["x-access-token" : KeychainSwift().get("x-access-token")!]
+        request.headers = headers
+        do{
+            try request.httpBody = JSONSerialization.data(withJSONObject: param, options: [])
+        }catch{
+            print("Http Body Error")
+        }
+        
+        AF.request(request)
+            .responseJSON{
+                (response) in
+            let statusCode = response.response!.statusCode
+            switch response.result{
+            case .success(let obj):
+                print("POST 성공")
+                if obj is NSDictionary{
+                    do{
+                        //obj를 JSON으로 변경
+                        let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                        // JSON Decoder 사용
+                        let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                        print(obj)
+                        print("여기 안오는거 같은데")
+                        complation!(getInstanceData.code,getInstanceData.message)
+                    }catch{
+                        print(obj)
+                        print("에러 발생 : ",error)
+                    }
+                }
+            case.failure(let error):
+                print("Error : ",error.localizedDescription)
+            }
+        }
+    }
+    
+    func KickboardUsestart(kickboardNum : String?, complation : ((Int?, String?) -> ())?){
+        url = "http://test.api.finkick.xyz/api/usehistory"
+        let param : Parameters = ["kickboardNum" : kickboardNum]// JSON 객체로 변환할 딕셔너리 준비
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        KeychainSwift().set(AppDelegate.loginToken!,forKey: "x-access-token")
+        let headers : HTTPHeaders = ["x-access-token" : KeychainSwift().get("x-access-token")!]
+        request.headers = headers
+        do{
+            try request.httpBody = JSONSerialization.data(withJSONObject: param, options: [])
+        }catch{
+            print("Http Body Error")
+        }
+        
+        AF.request(request)
+            .responseJSON{
+                (response) in
+            let statusCode = response.response!.statusCode
+            switch response.result{
+            case .success(let obj):
+                print("POST 성공")
+                if obj is NSDictionary{
+                    do{
+                        //obj를 JSON으로 변경
+                        let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                        // JSON Decoder 사용
+                        let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                        print(obj)
+                        print("여기 안오는거 같은데")
+                        complation!(getInstanceData.code,getInstanceData.message)
+                    }catch{
+                        print(obj)
+                        print("에러 발생 : ",error)
+                    }
+                }
+            case.failure(let error):
+                print("Error : ",error.localizedDescription)
+            }
+        }
+    }
+    
     func EmailAuthentication(value : String , email : String, complation : ((Int?, String?) -> ())?){
         url = "http://test.api.finkick.xyz/api/auth/email"
         let param : Parameters = ["type" : value , "email" : email]// JSON 객체로 변환할 딕셔너리 준비
@@ -89,7 +188,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let statusCode = response.response!.statusCode
             switch response.result{
             case .success(let obj):
-                print("GET 성공")
+                print("POST 성공")
                 if obj is NSDictionary{
                     do{
                         //obj를 JSON으로 변경
@@ -109,7 +208,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    func GetUseHistory(complation : ((Response?) -> ())?){
+    func GetUseHistory(complation : ((HistoryResponse?) -> ())?){
         url = "http://test.api.finkick.xyz/api/usehistory"
         
         var request = URLRequest(url: URL(string: url)!)
@@ -118,8 +217,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         request.timeoutInterval = 10
         KeychainSwift().set(AppDelegate.loginToken!,forKey: "x-access-token")
         let headers : HTTPHeaders = ["x-access-token" : KeychainSwift().get("x-access-token")!]
+        request.headers = headers
         
-        AF.request(url,headers: headers)
+        AF.request(request)
             .responseJSON{
                 (response) in
                 let statusCode = response.response!.statusCode
@@ -131,7 +231,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             //obj를 JSON으로 변경
                             let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
                             // JSON Decoder 사용
-                            let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                            let getInstanceData = try JSONDecoder().decode(HistoryResponse.self, from: dataJSON)
                             print("유저 사용 기록 : ",getInstanceData)
                             complation!(getInstanceData)
                         }catch{

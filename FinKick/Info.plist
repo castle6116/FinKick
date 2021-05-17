@@ -35,6 +35,8 @@
 	<string>내 위치를 확인 하기 위해서 권한이 필요합니다.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>내 위치를 확인 하기 위해서 권한이 필요합니다.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>QR코드를 인식 하기 위해서는 권한이 필요합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NanumSquareBold.otf</string>
