@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var IdInputField: UITextField!
     @IBOutlet weak var PwInputField: UITextField!
     @IBOutlet weak var LoginError: UILabel!
@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     var membershipOK : Int?
     var statusCode : Int = 0
     var success : Int = 0
+    var locationM = CLLocationManager()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -61,6 +62,7 @@ class MainViewController: UIViewController {
     }
     
     func LoginCheck(complation : ((Int?) -> ())?){
+        
         appDelegate.loginFunc(id: IdInputField.text!, password: PwInputField.text!)
         {
             (statusCode) in
@@ -88,7 +90,7 @@ class MainViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: time) {
             self.LoginError.isHidden = true
         }
-        
+       
         LoginCheck(){
             (statusCode) in
             if statusCode == 200 {
@@ -132,11 +134,23 @@ class MainViewController: UIViewController {
                 print("deleted = \(onSuccess)")
             }
         }
+    func location(complation : ((Int?) -> ())?) {
+        complation!(3)
+    }
     //프로그램이 시작 될 때 제일 처음 실행 되는 함수
     override func viewDidAppear(_ animated: Bool) {
+        location(){
+            (statuscode) in
+            if let statuscode = statuscode{
+                self.locationM.requestAlwaysAuthorization()
+                self.locationM.requestWhenInUseAuthorization()
+                print("돌긴하냐")
+            }
+        }
         membershipOK = appDelegate.success
-        IdInputField.text = "aa@aa.aa"
+        IdInputField.text = "osc2143@gmail.com"
         PwInputField.text = "qweqwe!1"
+        
         if(membershipOK == 1){
             showToast(message: "회원가입에 성공하였습니다.")
             IdInputField.text = appDelegate.ID
@@ -145,12 +159,8 @@ class MainViewController: UIViewController {
         LoginError.isHidden = true
         IdInputField.keyboardType = .asciiCapable
         PwInputField.keyboardType = .asciiCapable
-        
-        var locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
-        
-        
     }
+    
     // 앱이 실행 했을 때
     override func viewDidLoad() {
         super.viewDidLoad()

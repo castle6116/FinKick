@@ -9,9 +9,11 @@ import UIKit
 import CoreData
 import Alamofire
 import KeychainSwift
+import CoreLocation
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+    
     struct Response : Codable {
         var code : Int?
         var message : String?
@@ -54,6 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var email : String?
     var url : String!
     
+    var width : Int?
+    var height : Int?
+    
     static var loginToken : String?
     
     var version: String? {
@@ -61,6 +66,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               let version = dictionary["CFBundleShortVersionString"] as? String else {return nil}
         
         return version
+    }
+    
+    func EmailAuthentication(value : String , email : String, complation : ((Int?, String?) -> ())?){
+        url = "http://test.api.finkick.xyz/api/auth/email"
+        let param : Parameters = ["type" : value , "email" : email]// JSON 객체로 변환할 딕셔너리 준비
+        print(param)
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        
+        do{
+            try request.httpBody = JSONSerialization.data(withJSONObject: param, options: [])
+        }catch{
+            print("Http Body Error")
+        }
+        
+        AF.request(request)
+            .responseJSON{
+                (response) in
+            let statusCode = response.response!.statusCode
+            switch response.result{
+            case .success(let obj):
+                print("GET 성공")
+                if obj is NSDictionary{
+                    do{
+                        //obj를 JSON으로 변경
+                        let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                        // JSON Decoder 사용
+                        let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                        print(obj)
+                        complation!(getInstanceData.code,getInstanceData.message)
+                    }catch{
+                        print(obj)
+                        print("에러 발생 : ",error)
+                    }
+                }
+            case.failure(let error):
+                print("Error : ",error.localizedDescription)
+            }
+        }
     }
     
     func GetUseHistory(complation : ((Response?) -> ())?){
@@ -109,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //            .validate(statusCode: 200..<300)
             .responseJSON { (json) in
                 //                   여기서 가져온 데이터를 자유롭게 활용하세요
-                let statusCode = json.response!.statusCode
+                let statusCode = json.response?.statusCode
                 
                 switch json.result{
                 case .success(let obj):
@@ -123,9 +169,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
                             print("어플 버전 : ",self.version!)
                             print("서버 버전 : ",getInstanceData.result_data?.version?.ios)
+                            
+                            
                             if getInstanceData.result_data?.version?.ios != self.version {
                                 
-                                let alertController = UIAlertController(title: "버전이 낮습니다", message: "업데이트가 필요합니다.\n업데이트를 하지 않을 시 문제가 발생할 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
+                                let alertController = UIAlertController(title: "버전이 낮습니다", message: "업데이트가 필요합니다.\n업데이트를  하지 않을 시 문제가 발생할 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
                                 alertController.addAction(UIAlertAction.init(title: "확인", style: UIAlertAction.Style.default, handler: { (action) in
                                     // 버튼 눌렸을 때 활동 할 것 추가 하기
                                     //  UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
@@ -196,6 +244,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
     }
+    
     func Putmember(id : String , password : String, phoneNumber : String, complation : ((Response?, Int?) -> ())?)  {
         url = "http://test.api.finkick.xyz/api/account"
         let param : Parameters = ["id" : id , "password" : password , "phoneNumber" : phoneNumber]// JSON 객체로 변환할 딕셔너리 준비
@@ -210,20 +259,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }catch{
             print("Http Body Error")
         }
-        
+
         AF.request(request)
-            .responseString{
+            .responseJSON{
                 (response) in
-            let statusCode = response.response!.statusCode
-            switch response.result{
-            case .success:
-                print("POST 성공")
-                complation!(nil,statusCode)
-            case.failure(let error):
-                print("Error")
-                complation!(nil,statusCode)
+                let statusCode = response.response!.statusCode
+                switch response.result{
+                case .success(let obj):
+                    print("POST 성공")
+                    if obj is NSDictionary{
+                        do{
+                            //obj를 JSON으로 변경
+                            let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                            // JSON Decoder 사용
+                            let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                            complation!(getInstanceData,statusCode)
+                        }catch{
+                            print(error)
+                            complation!(nil,statusCode)
+                        }
+                    }
+                case.failure(let error):
+                    print("Error")
+                    complation!(nil ,statusCode)
+                }
             }
-        }
     }
     
     func Getid(InputId:String, complation : ((Response?, Int?) -> ())? ) {
@@ -271,11 +331,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Getversion()
         UINavigationBar.appearance().barTintColor = UIColor(red: 0.27, green: 0.29, blue: 0.35, alpha: 1.00)
+        
         return true
     }
     

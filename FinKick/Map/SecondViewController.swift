@@ -10,7 +10,8 @@ import SideMenuSwift
 
 class SecondViewController: UIViewController {
     
-    
+    @IBOutlet var MapView2: UIView!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBAction func ButtonAction(_ sender: Any) {
         
         SideMenuController.preferences.basic.menuWidth = 200
@@ -21,6 +22,8 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        appDelegate.width = Int(MapView2.frame.width)
+        appDelegate.height = Int(MapView2.frame.height)
         
     }
 }

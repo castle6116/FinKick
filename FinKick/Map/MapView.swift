@@ -14,7 +14,7 @@ import CoreLocation
 class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
     var latitude : Double = 0.0
     var longitude : Double = 0.0
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     // 카카오
 //    var mapView: MTMapView?
 //    var mapPoint1: MTMapPoint?
@@ -40,31 +40,32 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         infoWindow.open(with: marker)
 
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //네이버 맵
-        let mapView = NMFNaverMapView(frame: CGRect(x: 0, y: 0, width: 390, height: 722))
-        mapView.mapView.positionMode = .direction
+    func mapCreate(){
+        print("지도 뷰로드")
         
+        //네이버 맵
+        let mapView = NMFNaverMapView(frame: CGRect(x: 0, y: 0, width: appDelegate.width ?? 390, height: appDelegate.height ?? 722))
+        print(appDelegate.width)
+        print(appDelegate.height)
+        mapView.mapView.positionMode = .direction
+
         //locationManager 인스턴스 생성 및 델리게이트 생성
         let locationManager = CLLocationManager()
         locationManager.delegate = self
-            
-        //포그라운드 상태에서 위치 추적 권한 요청
-        locationManager.requestWhenInUseAuthorization()
-        
-        //배터리에 맞게 권장되는 최적의 정확도
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        //위치업데이트
-        locationManager.startUpdatingLocation()
+//
+//        //포그라운드 상태에서 위치 추적 권한 요청
+//        locationManager.requestWhenInUseAuthorization()
+//
+//        //배터리에 맞게 권장되는 최적의 정확도
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//
+//        //위치업데이트
+//        locationManager.startUpdatingLocation()
         
         //위도 경도 가져오기
         var coor = locationManager.location?.coordinate
-        latitude = coor!.latitude
-        longitude = coor!.longitude
+        latitude = coor?.latitude ??  35.8471267472791
+        longitude = coor?.longitude ??  128.58281776895694
         
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
         mapView.mapView.moveCamera(cameraUpdate)
@@ -83,7 +84,7 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         appDelegate.GetUseHistory(){
             (data) in
             if let data = data{
-                if (data.result_data?.useHistory!.count)! > 0 {
+                if data.result_data != nil {
                     for i in 0 ... (data.result_data?.useHistory!.count)!-1 {
                         do{
                             let dateFormatter = DateFormatter()
@@ -103,7 +104,6 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
                         }catch{
                             print("실패")
                         }
-                        
                     }
                 }
             }
@@ -149,6 +149,11 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
 //                self.view.addSubview(button)
 //            }
 
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapCreate()
         }
         
     // 카카오

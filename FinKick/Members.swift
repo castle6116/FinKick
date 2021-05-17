@@ -17,39 +17,85 @@ class Members: UIViewController{
     @IBOutlet var PasswordErrorCheck: UILabel!
     @IBOutlet var MembershipButton: UIButton!
     @IBOutlet var EmailCertificationButton: UIButton!
-    @IBOutlet var EmailCertificationInputField: UITextField!
-    @IBOutlet var EmailCertification: UILabel!
+    @IBOutlet var EmailTime: UILabel!
     @IBOutlet var PhoneInputField: UITextField!
     @IBOutlet var PhoneError: UILabel!
     
     var loginID : String!
     var loginPW : String!
-    var EmailCertificationCode : String = ""
     // 아이디 중복 체크 함수
     var IdCheckoverlap : Int = 0
     var emailCheckoverlap : Int = 0
     var successs : Int = 0
+    var timer : Timer?
+    var timeLeft : Int = 600
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    func EmailTimer(_ sender : Any?) {
+        EmailTime.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
+    }
+    
+    @objc func onTimerFires()
+    {
+        timeLeft -= 1
+        var timeMin = timeLeft / 60
+        var timeSec = timeLeft % 60
+        EmailTime.text = String(timeMin)+" : "+String(timeSec)
+        if timeLeft <= 0 {
+            timer?.invalidate()
+            timer = nil
+            showToast(message: "인증 시간이 초과 되었습니다.")
+            EmailTime.isHidden = true
+        }
+    }
+    
+    
+    @IBAction func Emailauthentication() {
+        if IdError(self){
+            appDelegate.EmailAuthentication(value: "N", email: IdInputField.text!){
+                (data, message) in
+                if let data = data{
+                    if data == 0 {
+                        self.EmailTimer(self)
+                        print("왜죠")
+                    }
+                    else {
+                        self.showToast(message: message ?? "오류발생")
+                    }
+                }
+                
+            }
+        }
+    }
     // 아이디 생성시 서버간 통신에 사용되는 코드
     func MemberShipPush(complation : ((Int?) -> ())?) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         appDelegate.Putmember(id: IdInputField.text!, password: PwInputField.text!, phoneNumber: PhoneInputField.text!)
         {
             (data, statusCode) in
             if let statusCode = statusCode{
-                self.MemberCodestat(statusCode: statusCode)
+                if data != nil {
+                    self.MemberCodestat(data: data?.code,statusCode: statusCode,message: data?.message)
+                    complation!(statusCode)
+                }
                 complation!(statusCode)
+                
             }
         }
     }
     // 아이디 생성시 유효성 검사 코드
-    func MemberCodestat(statusCode : Int?) {
-        if(statusCode == 200 ){
-            self.showToast(message: "아이디가 정상적으로 생성 되었습니다.")
+    func MemberCodestat(data: Int?,statusCode : Int?,message : String?) {
+        if(statusCode == 200 && data == 0){
+            self.showToast(message: message!)
             self.successs = 1
+        }else if statusCode == 200 && data == -99{
+            self.showToast(message: message!)
+            self.successs = 0
         }else if(statusCode == 400){
-            self.showToast(message: "형식에 오류가 있습니다.")
+            self.successs = 2
         }else{
-            self.showToast(message: "문제가 발생하였습니다 관리자에게 문의 하십시요. 에러코드:\(statusCode)")
+            self.showToast(message: message!)
         }
     }
     //아이디 중복 체크시 서버간 통신 코드
@@ -86,16 +132,6 @@ class Members: UIViewController{
         IdError(self)
     }
 
-    @objc func EmailCertification(_ sender: Any?) -> Bool{
-        if EmailCertificationCode != EmailCertificationInputField.text {
-            EmailCertification.text = "인증코드가 유효하지않습니다."
-            EmailCertification.isHidden = false
-            return false
-        }else{
-            EmailCertification.isHidden = true
-            return true
-        }
-    }
     @objc func PassError(_ sender: Any?) -> Bool{
         if PwCheck(pw: PwInputField.text) == false {
             PasswordError.text = "영어,숫자,특수문자 1개 이상 8~20자리"
@@ -170,7 +206,7 @@ class Members: UIViewController{
     
     @IBAction func OkButtonClick(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if PassError(self) == true && IdError(self) == true && EmailCertification(self) == true && IdInputField.text == loginID && PhoneError(self) == true{
+        if PassError(self) == true && IdError(self) == true && IdInputField.text == loginID && PhoneError(self) == true{
             
             MemberShipPush(){
                 (statusCode) in
@@ -178,7 +214,7 @@ class Members: UIViewController{
                     appDelegate.success = 1
                     appDelegate.ID = self.IdInputField.text
                     appDelegate.Pass = self.PwInputField.text
-                    
+                    print(appDelegate.success)
                     self.view.window?.rootViewController?.dismiss(animated: false, completion: {
                     let homeVC = SecondViewController()
                         homeVC.modalPresentationStyle = .fullScreen
@@ -190,7 +226,7 @@ class Members: UIViewController{
                     self.IdCheckoverlap = 0
                     self.showToast(message: "입력된 아이디와 중복체크한 아이디가 동일하지 않습니다.")
                 }
-                else{
+                else if self.successs == 2{
                     appDelegate.success = 0
                     self.showToast(message: "회원가입에 실패하셨습니다.")
                 }
@@ -262,17 +298,19 @@ class Members: UIViewController{
           self.view.endEditing(true)
 
     }
-    
-    //프로그램이 시작 될 때 제일 처음 실행 되는 함수
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         LoginError.isHidden = true
         PasswordError.isHidden = true
         PasswordErrorCheck.isHidden = true
-        EmailCertification.isHidden = true
         PhoneError.isHidden = true
+        EmailTime.isHidden = true
         IdInputField.keyboardType = .asciiCapable
         PwInputField.keyboardType = .asciiCapable
         PhoneInputField.keyboardType = .phonePad
+    }
+    //프로그램이 시작 될 때 제일 처음 실행 되는 함수
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     // 앱이 실행 되는 동안 계속 돌아가는 함수
     override func viewDidLoad() {
@@ -281,7 +319,6 @@ class Members: UIViewController{
         self.IdInputField.addTarget(self, action: #selector(self.IdError(_:)), for: .editingChanged)
         self.PwInputField.addTarget(self, action: #selector(self.PassError(_:)), for: .editingChanged)
         self.PwCheckInputField.addTarget(self, action: #selector(self.PassError(_:)), for: .editingChanged)
-        self.EmailCertificationInputField.addTarget(self, action: #selector(self.EmailCertification(_:)), for: .editingChanged)
         self.PhoneInputField.addTarget(self, action: #selector(self.PhoneError(_:)), for: .editingChanged)
         super.viewDidLoad()
         // Do any additional setup after loading the view.
