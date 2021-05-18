@@ -403,8 +403,7 @@
 				DEBAB4A52626CF2400C8FA1C /* ServiceCenter.swift */,
 				DEBAB4A62626CF2400C8FA1C /* Drive.swift */,
 			);
-			name = MenuBar;
-			path = ../../../Project/Finkick/FinKick/MenuBar;
+			path = MenuBar;
 			sourceTree = "<group>";
 		};
 		DEBAB49E2626CF2400C8FA1C /* UserRecord */ = {
