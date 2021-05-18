@@ -61,6 +61,7 @@
 		DE6755F7260825F4005C0EA2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6755F6260825F4005C0EA2 /* MapView.swift */; };
 		DE6755FB26082C09005C0EA2 /* MapPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6755FA26082C09005C0EA2 /* MapPager.swift */; };
 		DE6F882D2612E676000663F6 /* SideMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6F882C2612E676000663F6 /* SideMenuContentView.swift */; };
+		DE74D80C2653A8BF00D956B4 /* CardRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE74D80B2653A8BF00D956B4 /* CardRegister.swift */; };
 		DE79D68725AF6973008605E2 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE79D68625AF6973008605E2 /* SCDream5.otf */; };
 		DE79D68A25AF6984008605E2 /* NanumSquareBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE79D68925AF6984008605E2 /* NanumSquareBold.otf */; };
 		DE879EFF25F9A71B00E9A78E /* m1.png in Resources */ = {isa = PBXBuildFile; fileRef = DE879EFE25F9A71B00E9A78E /* m1.png */; };
@@ -162,6 +163,7 @@
 		DE6755FA26082C09005C0EA2 /* MapPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPager.swift; sourceTree = "<group>"; };
 		DE6C59CE259F470200AED03F /* FinKick-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FinKick-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE6F882C2612E676000663F6 /* SideMenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuContentView.swift; sourceTree = "<group>"; };
+		DE74D80B2653A8BF00D956B4 /* CardRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRegister.swift; sourceTree = "<group>"; };
 		DE79D68625AF6973008605E2 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		DE79D68925AF6984008605E2 /* NanumSquareBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.otf; sourceTree = "<group>"; };
 		DE879EFE25F9A71B00E9A78E /* m1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = m1.png; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			children = (
 				DE17CB77265234CF0039657A /* QRCheck.swift */,
 				DE17CB792652457A0039657A /* ReaderView.swift */,
+				DE74D80B2653A8BF00D956B4 /* CardRegister.swift */,
 			);
 			name = UseKickBoard;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				DE066AB5260053D800D9F610 /* Members.swift in Sources */,
 				DE6F882D2612E676000663F6 /* SideMenuContentView.swift in Sources */,
 				DEF7511225FAEAC7002952AC /* information4.swift in Sources */,
+				DE74D80C2653A8BF00D956B4 /* CardRegister.swift in Sources */,
 				DE32EA3325B98A5B004BF2DA /* SignupViewPage.swift in Sources */,
 				DEAAD6AB259F152F00001F67 /* MainViewController.swift in Sources */,
 				DE6755F7260825F4005C0EA2 /* MapView.swift in Sources */,

@@ -882,6 +882,21 @@
             </objects>
             <point key="canvasLocation" x="-27976.923076923074" y="-13034.360189573459"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Zbc-gm-Yvw">
+            <objects>
+                <viewController id="gJY-CQ-qBn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vD6-eF-E1b">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="JOz-zY-uJg"/>
+                        <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SB7-wf-Mhj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-27208" y="-13035"/>
+        </scene>
         <!--Side Menu Content View-->
         <scene sceneID="RPx-FG-1Yu">
             <objects>
@@ -1323,60 +1338,102 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alu-gV-kG8">
-                                <rect key="frame" x="50.000000000000007" y="173" width="66.666666666666686" height="19"/>
+                                <rect key="frame" x="50.000000000000007" y="146" width="66.666666666666686" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영수증" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djA-n1-JTR">
-                                <rect key="frame" x="171.66666666666666" y="293.66666666666669" width="47" height="19"/>
+                                <rect key="frame" x="171.66666666666666" y="477.66666666666669" width="47" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 요금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZV-DW-jL1">
-                                <rect key="frame" x="50.000000000000007" y="343.66666666666669" width="66.666666666666686" height="19"/>
+                                <rect key="frame" x="50.000000000000007" y="527.66666666666663" width="66.666666666666686" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="합계" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbS-vq-x5M">
-                                <rect key="frame" x="50" y="386.66666666666669" width="31" height="19"/>
+                                <rect key="frame" x="50" y="570.66666666666663" width="31" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="50l-Mm-LeT">
-                                <rect key="frame" x="40" y="372.66666666666669" width="300" height="4"/>
+                                <rect key="frame" x="40" y="556.66666666666663" width="300" height="4"/>
                                 <color key="progressTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25분 30초" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-s2-qfG">
-                                <rect key="frame" x="38.000000000000007" y="130.66666666666666" width="90.666666666666686" height="22.333333333333343"/>
+                                <rect key="frame" x="38.000000000000007" y="103.66666666666667" width="90.666666666666686" height="22.333333333333329"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제 요금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7K-Te-zrU">
-                                <rect key="frame" x="273.66666666666669" y="173" width="66.333333333333314" height="19"/>
+                                <rect key="frame" x="273.66666666666669" y="146" width="66.333333333333314" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￦5,200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXp-W5-zpL">
-                                <rect key="frame" x="270.33333333333331" y="130.66666666666666" width="73" height="22.333333333333343"/>
+                                <rect key="frame" x="270.33333333333331" y="103.66666666666667" width="73" height="22.333333333333329"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￦5,200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYQ-pK-eMe">
-                                <rect key="frame" x="278.66666666666669" y="341.66666666666669" width="61.333333333333314" height="21"/>
+                                <rect key="frame" x="278.66666666666669" y="525.66666666666663" width="61.333333333333314" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￦5,200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQE-PM-weo">
-                                <rect key="frame" x="278.66666666666669" y="386.66666666666669" width="61.333333333333314" height="21"/>
+                                <rect key="frame" x="278.66666666666669" y="570.66666666666663" width="61.333333333333314" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제 수단" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlH-kC-Cjc">
+                                <rect key="frame" x="136.66666666666666" y="233.66666666666666" width="117" height="33.999999999999972"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카드사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HL9-hg-iuz">
+                                <rect key="frame" x="63" y="307.66666666666669" width="41" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카드 종류" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uI8-bR-Lb8">
+                                <rect key="frame" x="54" y="334.33333333333331" width="58.666666666666657" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카드 번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6n5-BZ-IRK">
+                                <rect key="frame" x="54" y="361" width="58.666666666666657" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R20-e9-X3v">
+                                <rect key="frame" x="224" y="307.66666666666669" width="29.666666666666657" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvj-Jk-4ro">
+                                <rect key="frame" x="224" y="334.33333333333331" width="29.666666666666657" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGw-jc-s1N">
+                                <rect key="frame" x="224" y="361" width="29.666666666666657" height="16.666666666666686"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1388,30 +1445,47 @@
                             <constraint firstItem="djA-n1-JTR" firstAttribute="centerX" secondItem="aRG-BC-lRA" secondAttribute="centerX" id="0Hm-Wy-sEd"/>
                             <constraint firstItem="CVb-Az-uef" firstAttribute="trailing" secondItem="i7K-Te-zrU" secondAttribute="trailing" constant="50" id="2mJ-p2-ivB"/>
                             <constraint firstItem="Alu-gV-kG8" firstAttribute="top" secondItem="chN-s2-qfG" secondAttribute="bottom" constant="20" id="3kI-oC-0aV"/>
+                            <constraint firstItem="fvj-Jk-4ro" firstAttribute="centerX" secondItem="R20-e9-X3v" secondAttribute="centerX" id="6NE-xh-ad5"/>
                             <constraint firstItem="50l-Mm-LeT" firstAttribute="top" secondItem="djA-n1-JTR" secondAttribute="bottom" constant="60" id="6xF-6C-veW"/>
-                            <constraint firstItem="wXp-W5-zpL" firstAttribute="top" secondItem="usE-y6-k5v" secondAttribute="bottom" constant="77" id="8Ql-BE-2ip"/>
-                            <constraint firstItem="chN-s2-qfG" firstAttribute="top" secondItem="usE-y6-k5v" secondAttribute="bottom" constant="77" id="BrI-YH-VIG"/>
+                            <constraint firstItem="wXp-W5-zpL" firstAttribute="top" secondItem="usE-y6-k5v" secondAttribute="bottom" constant="50" id="8Ql-BE-2ip"/>
+                            <constraint firstItem="uI8-bR-Lb8" firstAttribute="top" secondItem="HL9-hg-iuz" secondAttribute="bottom" constant="10" id="954-RM-bNw"/>
+                            <constraint firstItem="chN-s2-qfG" firstAttribute="top" secondItem="usE-y6-k5v" secondAttribute="bottom" constant="50" id="BrI-YH-VIG"/>
                             <constraint firstItem="Alu-gV-kG8" firstAttribute="leading" secondItem="CVb-Az-uef" secondAttribute="leading" constant="50" id="D7F-N4-Ro5"/>
-                            <constraint firstItem="djA-n1-JTR" firstAttribute="top" secondItem="usE-y6-k5v" secondAttribute="bottom" constant="240" id="Gvw-5z-kE2"/>
+                            <constraint firstItem="HL9-hg-iuz" firstAttribute="top" secondItem="HlH-kC-Cjc" secondAttribute="bottom" constant="40" id="EpF-Hk-dcD"/>
+                            <constraint firstItem="R20-e9-X3v" firstAttribute="top" secondItem="HlH-kC-Cjc" secondAttribute="bottom" constant="40" id="FgC-53-axo"/>
                             <constraint firstItem="JbS-vq-x5M" firstAttribute="top" secondItem="50l-Mm-LeT" secondAttribute="bottom" constant="10" id="He2-sy-snH"/>
                             <constraint firstItem="50l-Mm-LeT" firstAttribute="top" secondItem="yYQ-pK-eMe" secondAttribute="bottom" constant="10" id="IPl-ce-2vA"/>
                             <constraint firstItem="yQE-PM-weo" firstAttribute="trailing" secondItem="yYQ-pK-eMe" secondAttribute="trailing" id="JHG-sj-yR3"/>
                             <constraint firstItem="usE-y6-k5v" firstAttribute="top" secondItem="CVb-Az-uef" secondAttribute="top" constant="20" id="JPJ-KI-DDF"/>
+                            <constraint firstItem="6n5-BZ-IRK" firstAttribute="centerX" secondItem="Alu-gV-kG8" secondAttribute="centerX" id="Mjc-Pa-jli"/>
+                            <constraint firstItem="uI8-bR-Lb8" firstAttribute="centerX" secondItem="Alu-gV-kG8" secondAttribute="centerX" id="P8f-Sa-Qri"/>
                             <constraint firstItem="JbS-vq-x5M" firstAttribute="leading" secondItem="YZV-DW-jL1" secondAttribute="leading" id="QAU-4X-5OA"/>
+                            <constraint firstItem="HlH-kC-Cjc" firstAttribute="top" secondItem="usE-y6-k5v" secondAttribute="bottom" constant="180" id="QMn-xJ-C5k"/>
+                            <constraint firstItem="TGw-jc-s1N" firstAttribute="top" secondItem="fvj-Jk-4ro" secondAttribute="bottom" constant="10" id="Qfi-u2-322"/>
+                            <constraint firstItem="HL9-hg-iuz" firstAttribute="centerX" secondItem="Alu-gV-kG8" secondAttribute="centerX" id="QiO-9O-Jdr"/>
                             <constraint firstItem="50l-Mm-LeT" firstAttribute="top" secondItem="YZV-DW-jL1" secondAttribute="bottom" constant="10" id="ULr-YU-R3v"/>
+                            <constraint firstItem="djA-n1-JTR" firstAttribute="top" secondItem="TGw-jc-s1N" secondAttribute="bottom" constant="100" id="W7e-WF-BMP"/>
                             <constraint firstItem="i7K-Te-zrU" firstAttribute="centerX" secondItem="wXp-W5-zpL" secondAttribute="centerX" id="Z4Y-U9-W9H"/>
                             <constraint firstItem="i7K-Te-zrU" firstAttribute="top" secondItem="wXp-W5-zpL" secondAttribute="bottom" constant="20" id="abj-Xh-9dW"/>
+                            <constraint firstItem="TGw-jc-s1N" firstAttribute="centerX" secondItem="R20-e9-X3v" secondAttribute="centerX" id="clY-xT-2yk"/>
                             <constraint firstItem="usE-y6-k5v" firstAttribute="centerX" secondItem="aRG-BC-lRA" secondAttribute="centerX" id="cnf-LR-QWi"/>
                             <constraint firstItem="50l-Mm-LeT" firstAttribute="leading" secondItem="CVb-Az-uef" secondAttribute="leading" constant="40" id="de0-1z-ZbR"/>
+                            <constraint firstItem="fvj-Jk-4ro" firstAttribute="top" secondItem="R20-e9-X3v" secondAttribute="bottom" constant="10" id="eDM-f3-BP0"/>
                             <constraint firstItem="YZV-DW-jL1" firstAttribute="leading" secondItem="CVb-Az-uef" secondAttribute="leading" constant="50" id="fNP-9G-8Qg"/>
+                            <constraint firstItem="6n5-BZ-IRK" firstAttribute="top" secondItem="uI8-bR-Lb8" secondAttribute="bottom" constant="10" id="hfi-7Y-eIu"/>
+                            <constraint firstItem="HlH-kC-Cjc" firstAttribute="centerX" secondItem="aRG-BC-lRA" secondAttribute="centerX" id="iTn-Wt-QPm"/>
                             <constraint firstItem="CVb-Az-uef" firstAttribute="trailing" secondItem="50l-Mm-LeT" secondAttribute="trailing" constant="50" id="ji8-SH-Z2q"/>
                             <constraint firstItem="Alu-gV-kG8" firstAttribute="centerX" secondItem="chN-s2-qfG" secondAttribute="centerX" id="jpe-ob-4N0"/>
                             <constraint firstItem="yQE-PM-weo" firstAttribute="top" secondItem="50l-Mm-LeT" secondAttribute="bottom" constant="10" id="oUu-n1-KPd"/>
                             <constraint firstItem="JbS-vq-x5M" firstAttribute="leading" secondItem="CVb-Az-uef" secondAttribute="leading" constant="50" id="u0m-6H-4qA"/>
+                            <constraint firstItem="R20-e9-X3v" firstAttribute="leading" secondItem="HL9-hg-iuz" secondAttribute="trailing" constant="120" id="uE6-IU-Bch"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HhQ-tX-w3Q"/>
                     <connections>
+                        <outlet property="CardBin" destination="TGw-jc-s1N" id="Tgx-mQ-QhI"/>
+                        <outlet property="CardName" destination="R20-e9-X3v" id="cZe-AS-AuN"/>
+                        <outlet property="CardSchema" destination="fvj-Jk-4ro" id="1mt-yn-CUj"/>
                         <outlet property="ConnectTime" destination="chN-s2-qfG" id="lo6-r1-xaV"/>
                         <outlet property="Credit" destination="wXp-W5-zpL" id="utN-Xu-bOY"/>
                         <outlet property="UseMoney" destination="yQE-PM-weo" id="IgZ-Io-aeh"/>
@@ -1439,6 +1513,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jhp-bq-hfB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-28906.153846153844" y="-13034.360189573459"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6z0-UV-vTM">
+            <objects>
+                <viewController id="BUv-JP-Xr8" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tHT-JS-xZj">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="i7J-aV-EPi"/>
+                        <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wah-5b-pd4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28889" y="-12297"/>
         </scene>
     </scenes>
     <resources>

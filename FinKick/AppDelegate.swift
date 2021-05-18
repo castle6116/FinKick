@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var account : Account?
         var version : Version?
         var useHistory : useHistory?
+        var card : cardUse?
         var token : String?
     }
     
@@ -39,6 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var useHistory : [useHistory]?
         var token : String?
     }
+    struct cardUse : Codable {
+        var scheme : String?
+        var name : String?
+        var bin : String?
+    }
     
     struct Version : Codable {
         var ios : String?
@@ -47,10 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     struct useHistory : Codable {
         var num : Int?
-        var accountNum : Int?
-        var kickboardNum : Int?
         var startTime : String?
         var endTime : String?
+        var price : Int?
     }
     struct Account : Codable{
         var id : String?
@@ -208,9 +213,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    func GetUseHistory(complation : ((HistoryResponse?) -> ())?){
-        url = "http://test.api.finkick.xyz/api/usehistory"
-        
+    func GetUseHistory(type : String?, num : Int?,complation : ((HistoryResponse?, Response?) -> ())?){
+        if type == "ALL"{
+            url = "http://test.api.finkick.xyz/api/usehistory"
+        }else if type == "DT"{
+            url = "http://test.api.finkick.xyz/api/usehistory/\(num!)"
+            print(url)
+        }
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -231,9 +240,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             //obj를 JSON으로 변경
                             let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
                             // JSON Decoder 사용
-                            let getInstanceData = try JSONDecoder().decode(HistoryResponse.self, from: dataJSON)
-                            print("유저 사용 기록 : ",getInstanceData)
-                            complation!(getInstanceData)
+                            if type == "ALL" {
+                                let getInstanceData = try JSONDecoder().decode(HistoryResponse.self, from: dataJSON)
+                                print("유저 사용 기록 : ",getInstanceData)
+                                complation!(getInstanceData, nil)
+                            }else if type == "DT"{
+                                let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                                complation!(nil,getInstanceData)
+                            }
                         }catch{
                             print(obj)
                             print("에러 발생 : ",error)

@@ -98,33 +98,27 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         
         view.addSubview(mapView)
         
-        appDelegate.GetUseHistory(){
-            (data) in
+        appDelegate.GetUseHistory(type: "ALL", num: nil){
+            (data, result) in
             if let data = data{
                 if data.result_data != nil {
                     for i in 0 ... (data.result_data?.useHistory!.count)!-1 {
                         do{
-                            if data.result_data?.useHistory![i].endTime != nil {
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                guard let startTime = dateFormatter.date(from: (data.result_data?.useHistory![i].startTime)!) else {return}
-                                print(data.result_data?.useHistory![i].endTime)
-                                guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime) ?? "0000-00-00 00:00:00" ) else {return}
-                                var useTime = Int(endTime.timeIntervalSince(startTime))
-                                var useTimeMin = useTime / 60
-                                var useTimeSec = useTime % 60
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                            guard let startTime = dateFormatter.date(from:(data.result_data?.useHistory![i].startTime)!) else {return}
+                            print(data.result_data?.useHistory![i].endTime)
+                            guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime) ?? "0000-00-00 00:00:00" ) else {return}
+                            var useTime = Int(endTime.timeIntervalSince(startTime))
+                            var useTimeMin = useTime / 60
+                            var useTimeSec = useTime % 60
                                 
-                                let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
-                                print(useTimeString)
-                                let money = 300 + (useTime / 60 + 1) * 150
-                                
-                                Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money ,insertDate: endTime))
-                            }
-                            else if data.result_data?.useHistory![i].endTime == nil {
-                                var date : Date = Date()
-                                Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: "0", money: 0 ,insertDate: date ))
-                                print("너 안돌지")
-                            }
+                            let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
+                            print(useTimeString)
+                            let money = data.result_data?.useHistory![i].price!
+                            
+                            Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money! ,insertDate: endTime, num: (data.result_data?.useHistory![i].num)!))
+
                             print("여기가 유즈 히스토리 : ",data.result_data?.useHistory![i] as Any)
                         }catch{
                             print("실패")
