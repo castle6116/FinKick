@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -882,21 +883,6 @@
             </objects>
             <point key="canvasLocation" x="-27976.923076923074" y="-13034.360189573459"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Zbc-gm-Yvw">
-            <objects>
-                <viewController id="gJY-CQ-qBn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vD6-eF-E1b">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="JOz-zY-uJg"/>
-                        <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SB7-wf-Mhj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-27208" y="-13035"/>
-        </scene>
         <!--Side Menu Content View-->
         <scene sceneID="RPx-FG-1Yu">
             <objects>
@@ -1514,20 +1500,167 @@
             </objects>
             <point key="canvasLocation" x="-28906.153846153844" y="-13034.360189573459"/>
         </scene>
-        <!--View Controller-->
+        <!--Card Register-->
         <scene sceneID="6z0-UV-vTM">
             <objects>
-                <viewController id="BUv-JP-Xr8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardRegister" id="BUv-JP-Xr8" customClass="CardRegister" customModule="FinKick" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tHT-JS-xZj">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFU-UX-vnQ">
+                                <rect key="frame" x="49" y="114" width="192" height="34"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5140-4343-1234-1234" borderStyle="roundedRect" placeholder="카드번호 입력" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLz-UO-qDJ">
+                                <rect key="frame" x="67.666666666666686" y="308" width="220" height="34"/>
+                                <color key="backgroundColor" red="0.20392158630000001" green="0.22745099660000001" blue="0.28627452250000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="E7m-Bg-QbQ"/>
+                                </constraints>
+                                <color key="textColor" name="AccentColor"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1234" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mE-Ij-W6h">
+                                <rect key="frame" x="297.66666666666669" y="308" width="65" height="34"/>
+                                <color key="backgroundColor" red="0.20000001789999999" green="0.22745099660000001" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="64z-U8-L08"/>
+                                </constraints>
+                                <color key="textColor" name="AccentColor"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x8a-1K-1wg">
+                                <rect key="frame" x="67.666666666666671" y="403" width="85.000000000000014" height="35"/>
+                                <color key="backgroundColor" red="0.20000001789999999" green="0.22745099660000001" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Eqm-q0-lm1"/>
+                                    <constraint firstAttribute="width" constant="85" id="Yue-dy-g92"/>
+                                </constraints>
+                                <color key="textColor" name="AccentColor"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xOT-Lb-3WN">
+                                <rect key="frame" x="172.66666666666666" y="403" width="84.999999999999972" height="35"/>
+                                <color key="backgroundColor" red="0.19607841970000001" green="0.22745099660000001" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Dr8-cd-Sgh"/>
+                                    <constraint firstAttribute="width" constant="85" id="Pmm-UJ-oty"/>
+                                </constraints>
+                                <color key="textColor" name="AccentColor"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVC" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xGH-TG-yc0">
+                                <rect key="frame" x="277.66666666666669" y="403" width="85" height="35"/>
+                                <color key="backgroundColor" red="0.20000001789999999" green="0.22745099660000001" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="7ZX-VH-vdY"/>
+                                    <constraint firstAttribute="height" constant="35" id="TRr-3M-HZG"/>
+                                </constraints>
+                                <color key="textColor" name="AccentColor"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goP-lM-iku">
+                                <rect key="frame" x="95" y="547" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.14509806040000001" green="0.1647058874" blue="0.21960783" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HXF-Cm-bUk"/>
+                                    <constraint firstAttribute="width" constant="200" id="VeN-mO-giZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="25"/>
+                                <state key="normal" title="CARD REGIST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Cardregist" destination="BUv-JP-Xr8" eventType="touchUpInside" id="3ie-3k-MBw"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_card.png" translatesAutoresizingMaskIntoConstraints="NO" id="hRI-My-Pox">
+                                <rect key="frame" x="22.666666666666671" y="308" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Ol2-NF-56r"/>
+                                    <constraint firstAttribute="width" constant="35" id="XO1-fu-m3E"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_cvc.png" translatesAutoresizingMaskIntoConstraints="NO" id="iDK-Ac-4ec">
+                                <rect key="frame" x="22.666666666666671" y="403" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="JX0-V1-rOR"/>
+                                    <constraint firstAttribute="width" constant="35" id="coZ-Uk-Lcp"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="i7J-aV-EPi"/>
                         <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="GLz-UO-qDJ" firstAttribute="top" secondItem="hRI-My-Pox" secondAttribute="top" id="1Ba-8I-z8P"/>
+                            <constraint firstItem="iDK-Ac-4ec" firstAttribute="leading" secondItem="hRI-My-Pox" secondAttribute="leading" id="6m5-zQ-wpC"/>
+                            <constraint firstItem="iDK-Ac-4ec" firstAttribute="top" secondItem="hRI-My-Pox" secondAttribute="bottom" constant="60" id="7vQ-fe-9Rh"/>
+                            <constraint firstItem="xGH-TG-yc0" firstAttribute="top" secondItem="iDK-Ac-4ec" secondAttribute="top" id="8sf-Dm-VfM"/>
+                            <constraint firstItem="xGH-TG-yc0" firstAttribute="leading" secondItem="xOT-Lb-3WN" secondAttribute="trailing" constant="20" id="DTa-92-YFc"/>
+                            <constraint firstItem="x8a-1K-1wg" firstAttribute="top" secondItem="iDK-Ac-4ec" secondAttribute="top" id="DVv-7l-5xb"/>
+                            <constraint firstItem="xOT-Lb-3WN" firstAttribute="centerX" secondItem="tHT-JS-xZj" secondAttribute="centerX" constant="20" id="Jzw-Iz-J7h"/>
+                            <constraint firstItem="goP-lM-iku" firstAttribute="centerY" secondItem="tHT-JS-xZj" secondAttribute="centerY" constant="150" id="KQb-tP-jC4"/>
+                            <constraint firstItem="x8a-1K-1wg" firstAttribute="leading" secondItem="iDK-Ac-4ec" secondAttribute="trailing" constant="10" id="Px7-So-vxN"/>
+                            <constraint firstItem="hRI-My-Pox" firstAttribute="top" secondItem="fFU-UX-vnQ" secondAttribute="bottom" constant="160" id="VrX-hi-4qg"/>
+                            <constraint firstItem="GLz-UO-qDJ" firstAttribute="leading" secondItem="hRI-My-Pox" secondAttribute="trailing" constant="10" id="ZYq-zH-gfM"/>
+                            <constraint firstItem="fFU-UX-vnQ" firstAttribute="centerX" secondItem="tHT-JS-xZj" secondAttribute="centerX" constant="-50" id="cPa-eA-PjB"/>
+                            <constraint firstItem="goP-lM-iku" firstAttribute="centerX" secondItem="tHT-JS-xZj" secondAttribute="centerX" id="ewf-b8-q8k"/>
+                            <constraint firstItem="xOT-Lb-3WN" firstAttribute="top" secondItem="iDK-Ac-4ec" secondAttribute="top" id="lyh-EI-KGp"/>
+                            <constraint firstItem="4mE-Ij-W6h" firstAttribute="top" secondItem="hRI-My-Pox" secondAttribute="top" id="mPc-Je-qd3"/>
+                            <constraint firstItem="4mE-Ij-W6h" firstAttribute="leading" secondItem="GLz-UO-qDJ" secondAttribute="trailing" constant="10" id="r2T-Tz-KtO"/>
+                            <constraint firstItem="xOT-Lb-3WN" firstAttribute="leading" secondItem="x8a-1K-1wg" secondAttribute="trailing" constant="20" id="v4e-4r-h62"/>
+                            <constraint firstItem="fFU-UX-vnQ" firstAttribute="top" secondItem="i7J-aV-EPi" secondAttribute="top" constant="70" id="vFL-Yw-ety"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="CardCVC" destination="xGH-TG-yc0" id="e1R-rD-OQe"/>
+                        <outlet property="CardMonth" destination="x8a-1K-1wg" id="vuN-fJ-8op"/>
+                        <outlet property="CardPassWord" destination="4mE-Ij-W6h" id="gdi-Ep-8Nn"/>
+                        <outlet property="CardTextField" destination="GLz-UO-qDJ" id="Gv0-qw-5bX"/>
+                        <outlet property="CardYear" destination="xOT-Lb-3WN" id="NLE-xc-Wna"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wah-5b-pd4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28889" y="-12297"/>
+            <point key="canvasLocation" x="-28889.23076923077" y="-12297.156398104265"/>
         </scene>
     </scenes>
     <resources>
@@ -19165,11 +19298,16 @@ ECFUABAhXAAQIV8AECFkABAhbAAAAAAAAAQBAAAAAAAAAFEAAAAAAAAAAAAAAAAAECFvA
         <image name="email.png" width="512" height="512"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="human.png" width="30" height="33"/>
+        <image name="ic_card.png" width="192" height="192"/>
+        <image name="ic_cvc.png" width="192" height="192"/>
         <image name="img_phoneNum.png" width="192" height="192"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="lock" catalog="system" width="128" height="128"/>
         <image name="lock.png" width="30" height="38"/>
         <image name="ok-button.png" width="512" height="512"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

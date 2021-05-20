@@ -127,6 +127,7 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
                 }
             }
         }
+        appDelegate.CardLookup()
         //카카오 맵
 //            // 지도 불러오기
 //            mapView = MTMapView(frame: self.view.bounds)
@@ -176,12 +177,15 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         if kickboardUse == 0{
             mapStartButton()
             startButton.addTarget(self, action: #selector(btnOnClick(_:)), for: .touchUpInside)
-            }
+        }
     }
     
     @objc func btnOnClick(_ sender : Any?){
-        guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "QRCode") else{
+        guard var uvc = self.storyboard?.instantiateViewController(withIdentifier: "QRCode") else{
             return
+        }
+        if appDelegate.cardWhether == 0 {
+            uvc = self.storyboard?.instantiateViewController(withIdentifier: "CardRegister") ?? self
         }
         // 전체 화면으로 불러옴
         uvc.modalPresentationStyle = .fullScreen

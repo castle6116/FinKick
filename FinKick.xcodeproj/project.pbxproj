@@ -62,6 +62,8 @@
 		DE6755FB26082C09005C0EA2 /* MapPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6755FA26082C09005C0EA2 /* MapPager.swift */; };
 		DE6F882D2612E676000663F6 /* SideMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6F882C2612E676000663F6 /* SideMenuContentView.swift */; };
 		DE74D80C2653A8BF00D956B4 /* CardRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE74D80B2653A8BF00D956B4 /* CardRegister.swift */; };
+		DE74D80F2655EF4100D956B4 /* ic_cvc.png in Resources */ = {isa = PBXBuildFile; fileRef = DE74D80D2655EF4100D956B4 /* ic_cvc.png */; };
+		DE74D8102655EF4100D956B4 /* ic_card.png in Resources */ = {isa = PBXBuildFile; fileRef = DE74D80E2655EF4100D956B4 /* ic_card.png */; };
 		DE79D68725AF6973008605E2 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE79D68625AF6973008605E2 /* SCDream5.otf */; };
 		DE79D68A25AF6984008605E2 /* NanumSquareBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE79D68925AF6984008605E2 /* NanumSquareBold.otf */; };
 		DE879EFF25F9A71B00E9A78E /* m1.png in Resources */ = {isa = PBXBuildFile; fileRef = DE879EFE25F9A71B00E9A78E /* m1.png */; };
@@ -164,6 +166,8 @@
 		DE6C59CE259F470200AED03F /* FinKick-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FinKick-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE6F882C2612E676000663F6 /* SideMenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuContentView.swift; sourceTree = "<group>"; };
 		DE74D80B2653A8BF00D956B4 /* CardRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRegister.swift; sourceTree = "<group>"; };
+		DE74D80D2655EF4100D956B4 /* ic_cvc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cvc.png; sourceTree = "<group>"; };
+		DE74D80E2655EF4100D956B4 /* ic_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_card.png; sourceTree = "<group>"; };
 		DE79D68625AF6973008605E2 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		DE79D68925AF6984008605E2 /* NanumSquareBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.otf; sourceTree = "<group>"; };
 		DE879EFE25F9A71B00E9A78E /* m1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = m1.png; sourceTree = "<group>"; };
@@ -380,6 +384,8 @@
 		DE9DF93325FF2B73004E9277 /* Font&image */ = {
 			isa = PBXGroup;
 			children = (
+				DE74D80E2655EF4100D956B4 /* ic_card.png */,
+				DE74D80D2655EF4100D956B4 /* ic_cvc.png */,
 				DE36069A261FF69C002A1D62 /* ic_main_location.png */,
 				DEA6DAA2264A12BD00D31EDD /* img_phoneNum.png */,
 				DE2EC54F261DC95700C54973 /* 512.png */,
@@ -555,10 +561,12 @@
 				DEDF4D0A25F9B63C00C3E275 /* moon.png in Resources */,
 				DE5C2AB726073A25007F450C /* map_pin@3x.png in Resources */,
 				DE5C2AB626073A25007F450C /* daum_copyright.png in Resources */,
+				DE74D8102655EF4100D956B4 /* ic_card.png in Resources */,
 				DEDF4D0825F9B63C00C3E275 /* one.png in Resources */,
 				DE5C2ABC26073A25007F450C /* map_pinup_custom.png in Resources */,
 				DEF7510F25FAE9F1002952AC /* beer.png in Resources */,
 				DE5C2AB026073A25007F450C /* map_pin_custom@3x.png in Resources */,
+				DE74D80F2655EF4100D956B4 /* ic_cvc.png in Resources */,
 				DE5C2AAF26073A25007F450C /* detail_button.png in Resources */,
 				DECFEF83261AD09C000AA28C /* left-arrow.png in Resources */,
 				DEF7511B25FAEE9C002952AC /* left.png in Resources */,

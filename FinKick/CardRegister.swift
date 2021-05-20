@@ -8,7 +8,22 @@
 import UIKit
 
 class CardRegister: UIViewController {
-
+    @IBOutlet var CardTextField: UITextField!
+    @IBOutlet var CardPassWord: UITextField!
+    @IBOutlet var CardMonth: UITextField!
+    @IBOutlet var CardYear: UITextField!
+    @IBOutlet var CardCVC: UITextField!
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    @IBAction func Cardregist() {
+        appDelegate.CardSetup(bin: CardTextField.text, expirationMonth: CardMonth.text, expirationYear: CardYear.text, cvc: CardCVC.text, password: CardPassWord.text){
+            (code , message) in
+            if let code = code {
+                
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

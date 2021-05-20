@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var Pass : String?
     var email : String?
     var url : String!
-    
+    var cardWhether : Int = 0
     var width : Int?
     var height : Int?
     
@@ -86,9 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return version
     }
     
-    func KickboardUsestop(kickboardNum : String?, complation : ((Int?, String?) -> ())?){
-        url = "http://test.api.finkick.xyz/api/usehistory"
-        let param : Parameters = ["kickboardNum" : kickboardNum]// JSON 객체로 변환할 딕셔너리 준비
+    func CardSetup(bin : String? , expirationMonth : String? , expirationYear : String? ,cvc : String? , password : String? , complation : ((Int?, String?) -> ())?){
+        url = "http://test.api.finkick.xyz/api/auth/email"
+        let param : Parameters = ["bin" : bin , "expirationMonth" : expirationMonth, "expirationYear" : expirationYear, "cvc" : cvc , "password" : password]// JSON 객체로 변환할 딕셔너리 준비
+        print(param)
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -96,11 +97,88 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         KeychainSwift().set(AppDelegate.loginToken!,forKey: "x-access-token")
         let headers : HTTPHeaders = ["x-access-token" : KeychainSwift().get("x-access-token")!]
         request.headers = headers
+        
         do{
             try request.httpBody = JSONSerialization.data(withJSONObject: param, options: [])
         }catch{
             print("Http Body Error")
         }
+        
+        AF.request(request)
+            .responseJSON{
+                (response) in
+            let statusCode = response.response!.statusCode
+            switch response.result{
+            case .success(let obj):
+                print("POST 성공")
+                if obj is NSDictionary{
+                    do{
+                        //obj를 JSON으로 변경
+                        let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                        // JSON Decoder 사용
+                        let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                        print(obj)
+                        complation!(getInstanceData.code,getInstanceData.message)
+                    }catch{
+                        print(obj)
+                        print("에러 발생 : ",error)
+                    }
+                }
+            case.failure(let error):
+                print("Error : ",error.localizedDescription)
+            }
+        }
+    }
+    
+    func CardLookup(){
+        url = "http://test.api.finkick.xyz/api/card"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        KeychainSwift().set(AppDelegate.loginToken!,forKey: "x-access-token")
+        let headers : HTTPHeaders = ["x-access-token" : KeychainSwift().get("x-access-token")!]
+        request.headers = headers
+        
+        AF.request(request)
+            .responseJSON{
+                (response) in
+                let statusCode = response.response!.statusCode
+                switch response.result{
+                case .success(let obj):
+                    print("GET 성공")
+                    if obj is NSDictionary{
+                        do{
+                            //obj를 JSON으로 변경
+                            let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                            // JSON Decoder 사용
+                            let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                            print(getInstanceData)
+                            if getInstanceData.code != nil{
+                                self.cardWhether = getInstanceData.code!
+                            }else{
+                                self.cardWhether = 0
+                            }
+                        }catch{
+                            print(obj)
+                            print("에러 발생 : ",error)
+                        }
+                    }
+                case.failure(let error):
+                    print("Error : ",error.localizedDescription)
+                }
+            }
+    }
+    
+    func KickboardUsestop(useNum : String?, complation : ((Int?, String?) -> ())?){
+        url = "http://test.api.finkick.xyz/api/usehistory\(useNum!)"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        KeychainSwift().set(AppDelegate.loginToken!,forKey: "x-access-token")
+        let headers : HTTPHeaders = ["x-access-token" : KeychainSwift().get("x-access-token")!]
+        request.headers = headers
         
         AF.request(request)
             .responseJSON{
