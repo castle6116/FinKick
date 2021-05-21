@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func CardSetup(bin : String? , expirationMonth : String? , expirationYear : String? ,cvc : String? , password : String? , complation : ((Int?, String?) -> ())?){
-        url = "http://test.api.finkick.xyz/api/auth/email"
+        url = "http://test.api.finkick.xyz/api/card"
         let param : Parameters = ["bin" : bin , "expirationMonth" : expirationMonth, "expirationYear" : expirationYear, "cvc" : cvc , "password" : password]// JSON 객체로 변환할 딕셔너리 준비
         print(param)
         var request = URLRequest(url: URL(string: url)!)
@@ -154,8 +154,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             // JSON Decoder 사용
                             let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
                             print(getInstanceData)
+                            print(getInstanceData.code)
                             if getInstanceData.code != nil{
-                                self.cardWhether = getInstanceData.code!
+                                self.cardWhether = 1
                             }else{
                                 self.cardWhether = 0
                             }

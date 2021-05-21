@@ -1509,13 +1509,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFU-UX-vnQ">
-                                <rect key="frame" x="49" y="114" width="192" height="34"/>
+                                <rect key="frame" x="49.333333333333329" y="113.99999999999999" width="191.33333333333337" height="33.333333333333329"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5140-4343-1234-1234" borderStyle="roundedRect" placeholder="카드번호 입력" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLz-UO-qDJ">
-                                <rect key="frame" x="67.666666666666686" y="308" width="220" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5140434312341234" borderStyle="roundedRect" placeholder="카드번호 입력" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLz-UO-qDJ">
+                                <rect key="frame" x="67.666666666666686" y="307.33333333333331" width="220" height="34"/>
                                 <color key="backgroundColor" red="0.20392158630000001" green="0.22745099660000001" blue="0.28627452250000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="E7m-Bg-QbQ"/>
@@ -1528,9 +1528,12 @@
                                         <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="CardBinField:" destination="BUv-JP-Xr8" eventType="editingChanged" id="Z6w-c2-UXg"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1234" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mE-Ij-W6h">
-                                <rect key="frame" x="297.66666666666669" y="308" width="65" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" borderStyle="roundedRect" placeholder="PW" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mE-Ij-W6h">
+                                <rect key="frame" x="297.66666666666669" y="307.33333333333331" width="65" height="34"/>
                                 <color key="backgroundColor" red="0.20000001789999999" green="0.22745099660000001" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="64z-U8-L08"/>
@@ -1543,9 +1546,12 @@
                                         <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="CardPwField:" destination="BUv-JP-Xr8" eventType="editingChanged" id="Kkt-ct-Hl6"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x8a-1K-1wg">
-                                <rect key="frame" x="67.666666666666671" y="403" width="85.000000000000014" height="35"/>
+                                <rect key="frame" x="67.666666666666671" y="402.33333333333331" width="85.000000000000014" height="35"/>
                                 <color key="backgroundColor" red="0.20000001789999999" green="0.22745099660000001" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Eqm-q0-lm1"/>
@@ -1559,9 +1565,12 @@
                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="CardMonthField:" destination="BUv-JP-Xr8" eventType="editingChanged" id="leO-Fo-SYg"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xOT-Lb-3WN">
-                                <rect key="frame" x="172.66666666666666" y="403" width="84.999999999999972" height="35"/>
+                                <rect key="frame" x="172.66666666666666" y="402.33333333333331" width="84.999999999999972" height="35"/>
                                 <color key="backgroundColor" red="0.19607841970000001" green="0.22745099660000001" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Dr8-cd-Sgh"/>
@@ -1575,9 +1584,12 @@
                                         <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="CardYearField:" destination="BUv-JP-Xr8" eventType="editingDidEnd" id="suF-b5-jEz"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVC" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xGH-TG-yc0">
-                                <rect key="frame" x="277.66666666666669" y="403" width="85" height="35"/>
+                                <rect key="frame" x="277.66666666666669" y="402.33333333333331" width="85" height="35"/>
                                 <color key="backgroundColor" red="0.20000001789999999" green="0.22745099660000001" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="7ZX-VH-vdY"/>
@@ -1591,6 +1603,9 @@
                                         <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="CardCvcField:" destination="BUv-JP-Xr8" eventType="editingDidEnd" id="S6d-sO-5rJ"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goP-lM-iku">
                                 <rect key="frame" x="95" y="547" width="200" height="50"/>
@@ -1613,14 +1628,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_card.png" translatesAutoresizingMaskIntoConstraints="NO" id="hRI-My-Pox">
-                                <rect key="frame" x="22.666666666666671" y="308" width="35" height="35"/>
+                                <rect key="frame" x="22.666666666666671" y="307.33333333333331" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Ol2-NF-56r"/>
                                     <constraint firstAttribute="width" constant="35" id="XO1-fu-m3E"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_cvc.png" translatesAutoresizingMaskIntoConstraints="NO" id="iDK-Ac-4ec">
-                                <rect key="frame" x="22.666666666666671" y="403" width="35" height="35"/>
+                                <rect key="frame" x="22.666666666666671" y="402.33333333333331" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="JX0-V1-rOR"/>
                                     <constraint firstAttribute="width" constant="35" id="coZ-Uk-Lcp"/>

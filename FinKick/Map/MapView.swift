@@ -11,11 +11,10 @@ import CoreLocation
 // 카카오
 // public let DEFAULT_POSITION = MTMapPointGeo(latitude: 35.8471267472791, longitude: 128.58281776895694)
 
-class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
+class MapView: MainViewController, MTMapViewDelegate {
     var latitude : Double = 0.0
     var longitude : Double = 0.0
     var kickboardUse : Int = 0
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let startButton = UIButton()
     
     func mapStartButton(){
@@ -177,6 +176,12 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         if kickboardUse == 0{
             mapStartButton()
             startButton.addTarget(self, action: #selector(btnOnClick(_:)), for: .touchUpInside)
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        if appDelegate.cardWhether == 2 {
+            print("카드 생성 성공")
+            showToast(message: "카드 생성 성공")
         }
     }
     
