@@ -14,7 +14,7 @@ class information5: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        image = UIImage(named: "moon.png")
+        image = UIImage(named: "night.png")
         imgView.image = image
         // Do any additional setup after loading the view.
     }

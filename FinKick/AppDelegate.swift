@@ -76,6 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var cardWhether : Int = 0
     var width : Int?
     var height : Int?
+    var kickboarduse : Int = 0
+    var usernum : Int = 0
     
     static var loginToken : String?
     
@@ -171,8 +173,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
     }
     
-    func KickboardUsestop(useNum : String?, complation : ((Int?, String?) -> ())?){
-        url = "http://test.api.finkick.xyz/api/usehistory\(useNum!)"
+    func KickboardUsestop(useNum : Int, complation : ((Response?) -> ())?){
+        print("유저 넘 : ",usernum)
+        url = "http://test.api.finkick.xyz/api/usehistory/\(useNum)"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -196,7 +199,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
                         print(obj)
                         print("여기 안오는거 같은데")
-                        complation!(getInstanceData.code,getInstanceData.message)
+                        complation!(getInstanceData)
                     }catch{
                         print(obj)
                         print("에러 발생 : ",error)
@@ -239,6 +242,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
                         print(obj)
                         print("여기 안오는거 같은데")
+                        self.usernum = (getInstanceData.result_data?.useHistory?.num)!
                         complation!(getInstanceData.code,getInstanceData.message)
                     }catch{
                         print(obj)
@@ -298,6 +302,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }else if type == "DT"{
             url = "http://test.api.finkick.xyz/api/usehistory/\(num!)"
             print(url)
+        }else if type == "Now"{
+            url = "http://test.api.finkick.xyz/api/usehistory?isnowuse=true"
         }
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
@@ -323,7 +329,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                                 let getInstanceData = try JSONDecoder().decode(HistoryResponse.self, from: dataJSON)
                                 print("유저 사용 기록 : ",getInstanceData)
                                 complation!(getInstanceData, nil)
-                            }else if type == "DT"{
+                            }else if type == "DT" || type == "Now"{
                                 let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
                                 complation!(nil,getInstanceData)
                             }

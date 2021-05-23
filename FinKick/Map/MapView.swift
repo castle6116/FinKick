@@ -16,6 +16,13 @@ class MapView: MainViewController, MTMapViewDelegate {
     var longitude : Double = 0.0
     var kickboardUse : Int = 0
     let startButton = UIButton()
+    let UsingButton = UITextView()
+    let stopButton = UIButton()
+    var mtimer : Timer?
+    var number : Int = 0
+    var min : Int = 0
+    var sec : Int = 0
+    var money : Int = 0
     
     func mapStartButton(){
         startButton.setTitle("사용 시작", for: .normal)
@@ -30,6 +37,54 @@ class MapView: MainViewController, MTMapViewDelegate {
         startButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20).isActive = true
         startButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -80).isActive = true
     }
+    
+    func KickboardUsing(){
+        mtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+        UsingButton.backgroundColor = .gray
+        UsingButton.translatesAutoresizingMaskIntoConstraints = false
+        UsingButton.text = "사용 시간 : \(min) 분 \(sec) 초 \n사용 금액 : \(money)"
+        UsingButton.font = UIFont(name: UsingButton.font!.fontName , size: 24)
+        UsingButton.textColor = .white
+        UsingButton.isEditable = false
+        
+        view.addSubview(UsingButton)
+        
+        stopButton.backgroundColor = .green
+        stopButton.translatesAutoresizingMaskIntoConstraints = false
+        stopButton.setTitle("사용 종료", for: .normal)
+        
+        view.addSubview(stopButton)
+        
+        let safeArea =  view.safeAreaLayoutGuide
+        
+        UsingButton.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.12).isActive = true
+        UsingButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20).isActive = true
+        UsingButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20).isActive = true
+        UsingButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20).isActive = true
+        
+        stopButton.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.1).isActive = true
+        stopButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 260).isActive = true
+        stopButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -30).isActive = true
+        stopButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -30).isActive = true
+    }
+    
+    @objc func timerCallback(){
+        number += 1
+        min = number / 60
+        sec = number % 60
+        money = 450 + min * 150
+        UsingButton.text = "사용 시간 : \(min) 분 \(sec) 초 \n사용 금액 : \(money)"
+    }
+    
+    @IBAction func onTimerEnd(_ sender: Any) {
+            if let timer = mtimer {
+                if(timer.isValid){
+                    timer.invalidate()
+                }
+            }
+            number = 0
+        }
+
     // 카카오
 //    var mapView: MTMapView?
 //    var mapPoint1: MTMapPoint?
@@ -169,19 +224,49 @@ class MapView: MainViewController, MTMapViewDelegate {
 //            }
 
     }
+    func KickboardNowUse(){
+        appDelegate.GetUseHistory(type: "Now", num: nil) { data, result in
+            if let result = result{
+                if result.result_data != nil {
+                    self.appDelegate.usernum = result.result_data?.useHistory?.num ?? 0
+                    print("사용중이다 : ",self.appDelegate.usernum)
+                }
+            }
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapCreate()
-        if kickboardUse == 0{
+        KickboardNowUse()
+        if appDelegate.kickboarduse == 0{
             mapStartButton()
             startButton.addTarget(self, action: #selector(btnOnClick(_:)), for: .touchUpInside)
+        }else if appDelegate.kickboarduse == 1 {
+            KickboardUsing()
+            stopButton.addTarget(self, action: #selector(useStopClick(_:)), for: .touchUpInside)
         }
     }
     override func viewDidAppear(_ animated: Bool) {
         if appDelegate.cardWhether == 2 {
             print("카드 생성 성공")
             showToast(message: "카드 생성 성공")
+        }
+    }
+    
+    @objc func useStopClick(_ sender : Any?){
+        
+        appDelegate.KickboardUsestop(useNum: appDelegate.usernum) {
+            data in
+            if let data = data{
+                print("data : ",data)
+                if data.code == 0{
+                    self.showToast(message: "사용 시간 : \(self.min) 분 \(self.sec) 초 \n사용 금액 : \(data.result_data?.useHistory?.price)")
+                    self.stopButton.isHidden = true
+                    self.onTimerEnd(self)
+                }
+            }
         }
     }
     
