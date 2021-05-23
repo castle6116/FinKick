@@ -14,7 +14,6 @@ import CoreLocation
 class MapView: MainViewController, MTMapViewDelegate {
     var latitude : Double = 0.0
     var longitude : Double = 0.0
-    var kickboardUse : Int = 0
     let startButton = UIButton()
     let UsingButton = UITextView()
     let stopButton = UIButton()
@@ -52,6 +51,7 @@ class MapView: MainViewController, MTMapViewDelegate {
         stopButton.backgroundColor = .green
         stopButton.translatesAutoresizingMaskIntoConstraints = false
         stopButton.setTitle("사용 종료", for: .normal)
+        stopButton.isHidden = false
         
         view.addSubview(stopButton)
         
@@ -151,37 +151,6 @@ class MapView: MainViewController, MTMapViewDelegate {
         setMarker(mapView)
         
         view.addSubview(mapView)
-        
-        appDelegate.GetUseHistory(type: "ALL", num: nil){
-            (data, result) in
-            if let data = data{
-                if data.result_data != nil {
-                    for i in 0 ... (data.result_data?.useHistory!.count)!-1 {
-                        do{
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                            guard let startTime = dateFormatter.date(from:(data.result_data?.useHistory![i].startTime)!) else {return}
-                            print(data.result_data?.useHistory![i].endTime)
-                            guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime) ?? "0000-00-00 00:00:00" ) else {return}
-                            var useTime = Int(endTime.timeIntervalSince(startTime))
-                            var useTimeMin = useTime / 60
-                            var useTimeSec = useTime % 60
-                                
-                            let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
-                            print(useTimeString)
-                            let money = data.result_data?.useHistory![i].price!
-                            
-                            Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money! ,insertDate: endTime, num: (data.result_data?.useHistory![i].num)!))
-
-                            print("여기가 유즈 히스토리 : ",data.result_data?.useHistory![i] as Any)
-                        }catch{
-                            print("실패")
-                        }
-                    }
-                }
-            }
-        }
-        appDelegate.CardLookup()
         //카카오 맵
 //            // 지도 불러오기
 //            mapView = MTMapView(frame: self.view.bounds)
@@ -230,29 +199,67 @@ class MapView: MainViewController, MTMapViewDelegate {
                 if result.result_data != nil {
                     self.appDelegate.usernum = result.result_data?.useHistory?.num ?? 0
                     print("사용중이다 : ",self.appDelegate.usernum)
+                    self.appDelegate.kickboarduse = 1
+                    
                 }
             }
         }
         
     }
+    
+    func datareload(){
+        appDelegate.GetUseHistory(type: "ALL", num: nil){
+            (data, result) in
+            if let data = data{
+                if data.result_data != nil {
+                    Memo.dummyMemoList = []
+                    for i in 0 ... (data.result_data?.useHistory!.count)!-1 {
+                        do{
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                            guard let startTime = dateFormatter.date(from:(data.result_data?.useHistory![i].startTime)!) else {return}
+                            print(data.result_data?.useHistory![i].endTime)
+                            guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime) ?? "0000-00-00 00:00:00" ) else {return}
+                            var useTime = Int(endTime.timeIntervalSince(startTime))
+                            var useTimeMin = useTime / 60
+                            var useTimeSec = useTime % 60
+                                
+                            let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
+                            print(useTimeString)
+                            let money = data.result_data?.useHistory![i].price!
+                            
+                            Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money! ,insertDate: endTime, num: (data.result_data?.useHistory![i].num)!))
+
+                            print("여기가 유즈 히스토리 : ",data.result_data?.useHistory![i] as Any)
+                        }catch{
+                            print("실패")
+                        }
+                    }
+                }
+            }
+        }
+        appDelegate.CardLookup()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapCreate()
-        KickboardNowUse()
-        if appDelegate.kickboarduse == 0{
-            mapStartButton()
-            startButton.addTarget(self, action: #selector(btnOnClick(_:)), for: .touchUpInside)
-        }else if appDelegate.kickboarduse == 1 {
-            KickboardUsing()
-            stopButton.addTarget(self, action: #selector(useStopClick(_:)), for: .touchUpInside)
-        }
     }
     override func viewDidAppear(_ animated: Bool) {
+        KickboardNowUse()
+        datareload()
         if appDelegate.cardWhether == 2 {
             print("카드 생성 성공")
             showToast(message: "카드 생성 성공")
         }
+        if self.appDelegate.kickboarduse == 0{
+            self.mapStartButton()
+            self.startButton.addTarget(self, action: #selector(self.btnOnClick(_:)), for: .touchUpInside)
+        }else if appDelegate.kickboarduse == 1{
+            self.KickboardUsing()
+            self.stopButton.addTarget(self, action: #selector(self.useStopClick(_:)), for: .touchUpInside)
+        }
+        
     }
     
     @objc func useStopClick(_ sender : Any?){
@@ -263,7 +270,9 @@ class MapView: MainViewController, MTMapViewDelegate {
                 print("data : ",data)
                 if data.code == 0{
                     self.showToast(message: "사용 시간 : \(self.min) 분 \(self.sec) 초 \n사용 금액 : \(data.result_data?.useHistory?.price)")
+                    self.appDelegate.kickboarduse = 0
                     self.stopButton.isHidden = true
+                    self.UsingButton.isHidden = true
                     self.onTimerEnd(self)
                 }
             }

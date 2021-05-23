@@ -123,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         complation!(getInstanceData.code,getInstanceData.message)
                     }catch{
                         print(obj)
-                        print("에러 발생 : ",error)
+                        print("카드 저장 에러 발생 : ",error)
                     }
                 }
             case.failure(let error):
@@ -164,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             }
                         }catch{
                             print(obj)
-                            print("에러 발생 : ",error)
+                            print("카드 조회 에러 발생 : ",error)
                         }
                     }
                 case.failure(let error):
@@ -197,12 +197,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
                         // JSON Decoder 사용
                         let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
-                        print(obj)
-                        print("여기 안오는거 같은데")
                         complation!(getInstanceData)
                     }catch{
                         print(obj)
-                        print("에러 발생 : ",error)
+                        print("킥보드 사용 멈춤 에러 발생 : ",error)
                     }
                 }
             case.failure(let error):
@@ -240,13 +238,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
                         // JSON Decoder 사용
                         let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
-                        print(obj)
-                        print("여기 안오는거 같은데")
                         self.usernum = (getInstanceData.result_data?.useHistory?.num)!
                         complation!(getInstanceData.code,getInstanceData.message)
                     }catch{
                         print(obj)
-                        print("에러 발생 : ",error)
+                        print("킥보드 사용 시작 에러 발생 : ",error)
                     }
                 }
             case.failure(let error):
@@ -287,7 +283,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         complation!(getInstanceData.code,getInstanceData.message)
                     }catch{
                         print(obj)
-                        print("에러 발생 : ",error)
+                        print("이메일 인증 에러 발생 : ",error)
                     }
                 }
             case.failure(let error):
@@ -334,8 +330,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                                 complation!(nil,getInstanceData)
                             }
                         }catch{
-                            print(obj)
-                            print("에러 발생 : ",error)
+                            print("오브젝트는 : ",obj)
+                            print("사용 기록 받아오기 에러 발생 : ",error)
                         }
                     }
                 case.failure(let error):
@@ -405,6 +401,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         url = "http://test.api.finkick.xyz/api/auth/login"
         let param : Parameters = ["id" : id , "password" : password]// JSON 객체로 변환할 딕셔너리 준비
         print(param)
+        ID = id
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

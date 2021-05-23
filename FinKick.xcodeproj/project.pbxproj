@@ -58,10 +58,6 @@
 		DE5C2AC426073A25007F450C /* daum_th_line.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5C2AA826073A25007F450C /* daum_th_line.png */; };
 		DE5C2AC526073A25007F450C /* map_pin_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5C2AA926073A25007F450C /* map_pin_shadow.png */; };
 		DE5C2AC626073A25007F450C /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5C2AAA26073A25007F450C /* DaumMap.framework */; };
-		DE64667D265A9EDB000A48AC /* drive.png in Resources */ = {isa = PBXBuildFile; fileRef = DE646679265A9EDB000A48AC /* drive.png */; };
-		DE64667E265A9EDB000A48AC /* twice.png in Resources */ = {isa = PBXBuildFile; fileRef = DE64667A265A9EDB000A48AC /* twice.png */; };
-		DE64667F265A9EDB000A48AC /* night.png in Resources */ = {isa = PBXBuildFile; fileRef = DE64667B265A9EDB000A48AC /* night.png */; };
-		DE646680265A9EDB000A48AC /* drunk.png in Resources */ = {isa = PBXBuildFile; fileRef = DE64667C265A9EDB000A48AC /* drunk.png */; };
 		DE6755F7260825F4005C0EA2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6755F6260825F4005C0EA2 /* MapView.swift */; };
 		DE6755FB26082C09005C0EA2 /* MapPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6755FA26082C09005C0EA2 /* MapPager.swift */; };
 		DE6F882D2612E676000663F6 /* SideMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6F882C2612E676000663F6 /* SideMenuContentView.swift */; };
@@ -93,6 +89,11 @@
 		DEEC136A259EFE84008F282A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEEC1368259EFE84008F282A /* Main.storyboard */; };
 		DEEC136C259EFE86008F282A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEEC136B259EFE86008F282A /* Assets.xcassets */; };
 		DEEC136F259EFE86008F282A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEEC136D259EFE86008F282A /* LaunchScreen.storyboard */; };
+		DEF40613265AA17600A4E483 /* night.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF4060F265AA17500A4E483 /* night.png */; };
+		DEF40614265AA17600A4E483 /* drive.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF40610265AA17500A4E483 /* drive.png */; };
+		DEF40615265AA17600A4E483 /* twice.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF40611265AA17600A4E483 /* twice.png */; };
+		DEF40616265AA17600A4E483 /* drunk.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF40612265AA17600A4E483 /* drunk.png */; };
+		DEF40618265AA9A500A4E483 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF40617265AA9A500A4E483 /* SettingCell.swift */; };
 		DEF7510F25FAE9F1002952AC /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF7510E25FAE9F1002952AC /* beer.png */; };
 		DEF7511225FAEAC7002952AC /* information4.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF7511125FAEAC7002952AC /* information4.swift */; };
 		DEF7511525FAEAF9002952AC /* information5.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF7511425FAEAF9002952AC /* information5.swift */; };
@@ -161,10 +162,6 @@
 		DE5C2AA826073A25007F450C /* daum_th_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daum_th_line.png; sourceTree = "<group>"; };
 		DE5C2AA926073A25007F450C /* map_pin_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_shadow.png; sourceTree = "<group>"; };
 		DE5C2AAA26073A25007F450C /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
-		DE646679265A9EDB000A48AC /* drive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drive.png; sourceTree = "<group>"; };
-		DE64667A265A9EDB000A48AC /* twice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twice.png; sourceTree = "<group>"; };
-		DE64667B265A9EDB000A48AC /* night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = night.png; sourceTree = "<group>"; };
-		DE64667C265A9EDB000A48AC /* drunk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drunk.png; sourceTree = "<group>"; };
 		DE6755F6260825F4005C0EA2 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DE6755FA26082C09005C0EA2 /* MapPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPager.swift; sourceTree = "<group>"; };
 		DE6C59CE259F470200AED03F /* FinKick-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FinKick-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -200,6 +197,11 @@
 		DEEC136B259EFE86008F282A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEEC136E259EFE86008F282A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEEC1370259EFE86008F282A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEF4060F265AA17500A4E483 /* night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = night.png; sourceTree = "<group>"; };
+		DEF40610265AA17500A4E483 /* drive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drive.png; sourceTree = "<group>"; };
+		DEF40611265AA17600A4E483 /* twice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twice.png; sourceTree = "<group>"; };
+		DEF40612265AA17600A4E483 /* drunk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drunk.png; sourceTree = "<group>"; };
+		DEF40617265AA9A500A4E483 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		DEF7510E25FAE9F1002952AC /* beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beer.png; sourceTree = "<group>"; };
 		DEF7511125FAEAC7002952AC /* information4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = information4.swift; sourceTree = "<group>"; };
 		DEF7511425FAEAF9002952AC /* information5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = information5.swift; sourceTree = "<group>"; };
@@ -264,10 +266,6 @@
 		DE32EA3025B9864E004BF2DA /* SignupImage */ = {
 			isa = PBXGroup;
 			children = (
-				DE646679265A9EDB000A48AC /* drive.png */,
-				DE64667C265A9EDB000A48AC /* drunk.png */,
-				DE64667B265A9EDB000A48AC /* night.png */,
-				DE64667A265A9EDB000A48AC /* twice.png */,
 				DEDF4D0625F9B63C00C3E275 /* 19+.png */,
 				DEF7510E25FAE9F1002952AC /* beer.png */,
 				DEF7511925FAEE9C002952AC /* left.png */,
@@ -406,6 +404,7 @@
 			children = (
 				DEBAB49E2626CF2400C8FA1C /* UserRecord */,
 				DEBAB4A42626CF2400C8FA1C /* Setting.swift */,
+				DEF40617265AA9A500A4E483 /* SettingCell.swift */,
 				DEBAB4A52626CF2400C8FA1C /* ServiceCenter.swift */,
 				DEBAB4A62626CF2400C8FA1C /* Drive.swift */,
 			);
@@ -459,6 +458,10 @@
 				DEEC1362259EFE84008F282A /* AppDelegate.swift */,
 				DEEC1368259EFE84008F282A /* Main.storyboard */,
 				DEEC136B259EFE86008F282A /* Assets.xcassets */,
+				DEF40610265AA17500A4E483 /* drive.png */,
+				DEF40612265AA17600A4E483 /* drunk.png */,
+				DEF4060F265AA17500A4E483 /* night.png */,
+				DEF40611265AA17600A4E483 /* twice.png */,
 				DEEC1370259EFE86008F282A /* Info.plist */,
 				DE6C59CE259F470200AED03F /* FinKick-Bridging-Header.h */,
 			);
@@ -531,11 +534,13 @@
 				DEA6DAA3264A12BD00D31EDD /* img_phoneNum.png in Resources */,
 				DE5C2AAB26073A25007F450C /* map_pinup_custom@3x.png in Resources */,
 				DE5C2AC426073A25007F450C /* daum_th_line.png in Resources */,
+				DEF40613265AA17600A4E483 /* night.png in Resources */,
 				DE36069B261FF69C002A1D62 /* ic_main_location.png in Resources */,
 				DE5C2ABD26073A25007F450C /* info_box_tail.png in Resources */,
 				DE5C2ABA26073A25007F450C /* info_box.png in Resources */,
 				DEEC136F259EFE86008F282A /* LaunchScreen.storyboard in Resources */,
 				DE5C2AB426073A25007F450C /* th_line.png in Resources */,
+				DEF40614265AA17600A4E483 /* drive.png in Resources */,
 				DE5C2ABE26073A25007F450C /* noimage256.png in Resources */,
 				DE5C2AB126073A25007F450C /* map_pinup@3x.png in Resources */,
 				DE5C2AC526073A25007F450C /* map_pin_shadow.png in Resources */,
@@ -547,16 +552,15 @@
 				DE5C2AAC26073A25007F450C /* map_pin_custom.png in Resources */,
 				DE5C2ABF26073A25007F450C /* map_present_direction.png in Resources */,
 				DE79D68A25AF6984008605E2 /* NanumSquareBold.otf in Resources */,
-				DE64667E265A9EDB000A48AC /* twice.png in Resources */,
-				DE64667D265A9EDB000A48AC /* drive.png in Resources */,
+				DEF40615265AA17600A4E483 /* twice.png in Resources */,
 				DE5C2AC326073A25007F450C /* map_present_background_update.png in Resources */,
 				DE2EC550261DC95700C54973 /* 512.png in Resources */,
 				DE9DF92B25FF2549004E9277 /* email.png in Resources */,
 				DE5C2AB526073A25007F450C /* map_pin_red@3x.png in Resources */,
 				DE5C2AB326073A25007F450C /* copyright.png in Resources */,
 				DE5C2AAE26073A25007F450C /* map_pinup.png in Resources */,
+				DEF40616265AA17600A4E483 /* drunk.png in Resources */,
 				DE5C2AB926073A25007F450C /* map_pin_red.png in Resources */,
-				DE646680265A9EDB000A48AC /* drunk.png in Resources */,
 				DEF7511A25FAEE9C002952AC /* right.png in Resources */,
 				DE5C2ABB26073A25007F450C /* point_sprite.png in Resources */,
 				DEEC136A259EFE84008F282A /* Main.storyboard in Resources */,
@@ -564,7 +568,6 @@
 				DE5C2AB626073A25007F450C /* daum_copyright.png in Resources */,
 				DE74D8102655EF4100D956B4 /* ic_card.png in Resources */,
 				DE5C2ABC26073A25007F450C /* map_pinup_custom.png in Resources */,
-				DE64667F265A9EDB000A48AC /* night.png in Resources */,
 				DEF7510F25FAE9F1002952AC /* beer.png in Resources */,
 				DE5C2AB026073A25007F450C /* map_pin_custom@3x.png in Resources */,
 				DE74D80F2655EF4100D956B4 /* ic_cvc.png in Resources */,
@@ -638,6 +641,7 @@
 				DEBAB4AB2626CF2400C8FA1C /* DetailRecord.swift in Sources */,
 				DE4D69BF2622E0D900F5F20A /* Users.xcdatamodeld in Sources */,
 				DEBAB4A92626CF2400C8FA1C /* UserRecordTable.swift in Sources */,
+				DEF40618265AA9A500A4E483 /* SettingCell.swift in Sources */,
 				DEEC1363259EFE84008F282A /* AppDelegate.swift in Sources */,
 				DE4D69C72622E39700F5F20A /* Users+CoreDataProperties.swift in Sources */,
 				DE87F63D25B017930010C8B5 /* MembershipView.swift in Sources */,
