@@ -12,52 +12,98 @@ class QRCheck: MainViewController {
     @IBOutlet weak var readButton: UIButton!
     var message = ""
     var titleM : String?
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            self.readerView.delegate = self
-            
-            self.readButton.layer.masksToBounds = true
-            self.readButton.layer.cornerRadius = 15
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.readerView.delegate = self
+        
+        self.readButton.layer.masksToBounds = true
+        self.readButton.layer.cornerRadius = 15
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if !self.readerView.isRunning {
+            self.readerView.stop(isButtonTap: false)
+        }
+    }
+    
+    @IBAction func scanButtonAction(_ sender: UIButton) {
+        if self.readerView.isRunning {
+            self.readerView.stop(isButtonTap: true)
+        } else {
+            self.readerView.start()
         }
         
-        override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-            
-            if !self.readerView.isRunning {
-                self.readerView.stop(isButtonTap: false)
-            }
-        }
-        
-        @IBAction func scanButtonAction(_ sender: UIButton) {
-            if self.readerView.isRunning {
-                self.readerView.stop(isButtonTap: true)
-            } else {
-                self.readerView.start()
-            }
-
-            sender.isSelected = self.readerView.isRunning
-        }
-    func Back(_ sender: Any) {
+        sender.isSelected = self.readerView.isRunning
+    }
+    @IBAction func Back(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension QRCheck: ReaderViewDelegate {
+    func alertMsgBox(strTitle : String, strMessage : String) {
+        let alert = UIAlertController(title: strTitle,
+                                      message: strMessage,
+                                      preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "확인",
+                                      style: .default,
+                                      handler: { action in
+                                        switch action.style{
+                                        case .default:
+                                            self.appDelegate.GetUseHistory(type: "Now", num: nil){
+                                                data,result in
+                                                if let result = result{
+                                                    if result.result_data != nil{
+                                                        if result.result_data?.useHistory?.authTime == nil {
+                                                            self.alertMsgBox(strTitle: "지문 인식", strMessage: "지문 인식이 필요합니다.\n지문인식을 완료한 경우 확인을 눌러주세요.")
+                                                        }else{
+                                                            self.Back(self)
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        case .cancel:
+                                            print("cancel")
+                                        case .destructive:
+                                            print("destructive")
+                                        }
+                                      }))
+        alert.addAction(UIAlertAction(title: "취소",
+                                      style: .cancel,
+                                      handler: {action in
+                                        switch action.style{
+                                        case .cancel:
+                                            self.appDelegate.KickboardUsestop(useNum: self.appDelegate.usernum){
+                                                data in
+                                                self.showToast(message: "사용을 취소 하였습니다.")
+                                                self.Back(self)
+                                            }
+                                        case .default:
+                                            print("default")
+                                        case .destructive:
+                                            print("destructive")
+                                            
+                                        }}))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func readerComplete(status: ReaderStatus) {
-
+        
         var title = ""
         var message = ""
         switch status {
@@ -68,22 +114,20 @@ extension QRCheck: ReaderViewDelegate {
                 print("여기?")
                 break
             }
-            appDelegate.KickboardUsestart(kickboardNum: code ?? "-99"){
+            appDelegate.KickboardUsestart(kickboardNum: code ?? "-96"){
                 (code,message) in
                 if let code = code {
                     print("QRcode : ",code)
                     if code == 0 {
                         self.showToast(message: "킥보드 사용을 시작합니다.")
                         self.appDelegate.kickboarduse = 1
-                        self.Back(self)
-                    }else if code == -99{
+                        self.alertMsgBox(strTitle: "지문 인식", strMessage: "지문 인식이 필요합니다.\n지문인식을 완료한 경우 확인을 눌러주세요.")
+                    }else if code == -96{
                         print(code)
                         print("안됐네")
-                        self.showToast(message: "킥보드를 이미 사용중 입니다.")
+                        self.showToast(message: message!)
                     }
-                    
                 }
-                
             }
         case .fail:
             message = "QR코드 or 바코드를 인식하지 못했습니다.\n다시 시도해주세요."

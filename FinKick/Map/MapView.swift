@@ -21,6 +21,7 @@ class MapView: MainViewController, MTMapViewDelegate {
     var number : Int = 0
     var min : Int = 0
     var sec : Int = 0
+    var nowusing : Int = 0
     var money : Int = 0
     
     func mapStartButton(){
@@ -38,13 +39,18 @@ class MapView: MainViewController, MTMapViewDelegate {
     }
     
     func KickboardUsing(){
-        mtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+        if nowusing == 0 {
+            mtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+            nowusing = 1
+        }
+        
         UsingButton.backgroundColor = .gray
         UsingButton.translatesAutoresizingMaskIntoConstraints = false
         UsingButton.text = "사용 시간 : \(min) 분 \(sec) 초 \n사용 금액 : \(money)"
         UsingButton.font = UIFont(name: UsingButton.font!.fontName , size: 24)
         UsingButton.textColor = .white
         UsingButton.isEditable = false
+        UsingButton.isHidden = false
         
         view.addSubview(UsingButton)
         
@@ -77,13 +83,14 @@ class MapView: MainViewController, MTMapViewDelegate {
     }
     
     @IBAction func onTimerEnd(_ sender: Any) {
-            if let timer = mtimer {
-                if(timer.isValid){
-                    timer.invalidate()
-                }
+        if let timer = mtimer {
+            if(timer.isValid){
+                timer.invalidate()
             }
-            number = 0
         }
+        number = 0
+        nowusing = 0
+    }
 
     // 카카오
 //    var mapView: MTMapView?
@@ -199,7 +206,18 @@ class MapView: MainViewController, MTMapViewDelegate {
                 if result.result_data != nil {
                     self.appDelegate.usernum = result.result_data?.useHistory?.num ?? 0
                     print("사용중이다 : ",self.appDelegate.usernum)
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    guard let startTime = dateFormatter.date(from:(result.result_data?.useHistory!.startTime)!) else {return}
+                    print(result.result_data?.useHistory!.endTime)
+                    var endTime = Date()
+                    var useTime = Int(endTime.timeIntervalSince(startTime))
+                    self.number = useTime
+                    
                     self.appDelegate.kickboarduse = 1
+                    self.KickboardUsing()
+                    self.stopButton.addTarget(self, action: #selector(self.useStopClick(_:)), for: .touchUpInside)
                     
                 }
             }
@@ -244,6 +262,10 @@ class MapView: MainViewController, MTMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapCreate()
+        print("디드로드")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("윌어피어")
     }
     override func viewDidAppear(_ animated: Bool) {
         KickboardNowUse()
@@ -255,11 +277,8 @@ class MapView: MainViewController, MTMapViewDelegate {
         if self.appDelegate.kickboarduse == 0{
             self.mapStartButton()
             self.startButton.addTarget(self, action: #selector(self.btnOnClick(_:)), for: .touchUpInside)
-        }else if appDelegate.kickboarduse == 1{
-            self.KickboardUsing()
-            self.stopButton.addTarget(self, action: #selector(self.useStopClick(_:)), for: .touchUpInside)
         }
-        
+        print("디드어피어")
     }
     
     @objc func useStopClick(_ sender : Any?){

@@ -54,15 +54,15 @@ extension Setting : UITableViewDataSource,UITableViewDelegate{
         var cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! SettingCell
         if tableView == Information {
             let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! SettingCell
-            cell.information.text = appDelegate.ID
+                cell.information.text = appDelegate.ID
         }else if tableView == TermsAndpolicies{
             let cell = tableView.dequeueReusableCell(withIdentifier: "policies", for: indexPath) as! SettingCell
             if indexPath.row == 1 {
                 cell.policies.text = "이용 약관"
             }
-            
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "version", for: indexPath) as! SettingCell
+            cell.version.text = appDelegate.version
         }
         
         

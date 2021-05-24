@@ -933,7 +933,18 @@
                             <constraint firstItem="54u-RY-kzA" firstAttribute="leading" secondItem="LBR-u3-DBN" secondAttribute="leading" constant="50" id="wu8-Gh-9mH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rbO-Gg-k2j"/>
+                    <navigationItem key="navigationItem" id="rbO-Gg-k2j">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="b8d-7f-7p0">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wT2-qQ-l0O">
+                                <rect key="frame" x="16" y="7" width="86" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="뒤로가기"/>
+                                <connections>
+                                    <action selector="Back:" destination="d9k-MU-tgV" eventType="touchUpInside" id="Uch-Va-0QG"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="readButton" destination="7GR-6t-JrV" id="2os-Gh-Kpv"/>
                         <outlet property="readerView" destination="54u-RY-kzA" id="hf8-NZ-HbN"/>

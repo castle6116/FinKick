@@ -53,8 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     struct useHistory : Codable {
         var num : Int?
+        var kickboardNum : Int?
         var startTime : String?
         var endTime : String?
+        var authTime : String?
         var price : Int?
     }
     struct Account : Codable{
@@ -238,8 +240,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
                         // JSON Decoder 사용
                         let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
-                        self.usernum = (getInstanceData.result_data?.useHistory?.num)!
+                        print("킥보드 사용 시작 데이터 : ",getInstanceData)
+                        if getInstanceData.code == 0{
+                            self.usernum = (getInstanceData.result_data?.useHistory?.num)!
+                        }
                         complation!(getInstanceData.code,getInstanceData.message)
+                        
                     }catch{
                         print(obj)
                         print("킥보드 사용 시작 에러 발생 : ",error)
@@ -299,7 +305,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             url = "http://test.api.finkick.xyz/api/usehistory/\(num!)"
             print(url)
         }else if type == "Now"{
-            url = "http://test.api.finkick.xyz/api/usehistory?isnowuse=true"
+            url = "http://test.api.finkick.xyz/api/usehistory?isNowUse=true"
         }
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
@@ -399,7 +405,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func loginFunc(id : String, password : String, complation : ((Int?) -> ())?){
         url = "http://test.api.finkick.xyz/api/auth/login"
-        let param : Parameters = ["id" : id , "password" : password]// JSON 객체로 변환할 딕셔너리 준비
+        let param : Parameters = ["id" : id , "password" : password, "type" : "ios"]// JSON 객체로 변환할 딕셔너리 준비
         print(param)
         ID = id
         var request = URLRequest(url: URL(string: url)!)
