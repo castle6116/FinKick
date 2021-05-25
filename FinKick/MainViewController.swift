@@ -157,6 +157,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             showToast(message: "회원가입에 성공하였습니다.")
             IdInputField?.text = appDelegate.ID
             PwInputField?.text = appDelegate.Pass
+            membershipOK = 0
         }
         LoginError?.isHidden = true
         IdInputField?.keyboardType = .asciiCapable

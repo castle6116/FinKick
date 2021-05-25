@@ -280,11 +280,11 @@ typedef NS_ENUM(NSInteger, NMFLogoAlign) {
     /** 지도의 좌하단. */
     NMFLogoAlignLeftBottom = 0,
     /** 지도의 우하단. */
-    NMFLogoAlignRightBottom = 1,
+    NMFLogoAlignRightBottom,
     /** 지도의 좌상단. */
-    NMFLogoAlignLeftTop = 2,
+    NMFLogoAlignLeftTop,
     /** 지도의 우상단. */
-    NMFLogoAlignRightTop = 3
+    NMFLogoAlignRightTop
 };
 
 /**

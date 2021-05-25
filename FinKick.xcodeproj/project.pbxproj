@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53180DE80E56458182DF8AA4 /* Pods_FinKick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EA28E2831FD603E0A887D3 /* Pods_FinKick.framework */; };
+		3048739E6FA06E0ED95CA8BB /* Pods_FinKick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B934835730349E04953F2A7 /* Pods_FinKick.framework */; };
 		DE066AB5260053D800D9F610 /* Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9DF92425FF20ED004E9277 /* Members.swift */; };
 		DE17CB78265234CF0039657A /* QRCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17CB77265234CF0039657A /* QRCheck.swift */; };
 		DE17CB7A2652457A0039657A /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE17CB792652457A0039657A /* ReaderView.swift */; };
@@ -94,6 +94,8 @@
 		DEF40615265AA17600A4E483 /* twice.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF40611265AA17600A4E483 /* twice.png */; };
 		DEF40616265AA17600A4E483 /* drunk.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF40612265AA17600A4E483 /* drunk.png */; };
 		DEF40618265AA9A500A4E483 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF40617265AA9A500A4E483 /* SettingCell.swift */; };
+		DEF40622265B71ED00A4E483 /* FinKickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF40621265B71ED00A4E483 /* FinKickTests.swift */; };
+		DEF40630265B773900A4E483 /* FinKickUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF4062F265B773900A4E483 /* FinKickUITests.swift */; };
 		DEF7510F25FAE9F1002952AC /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF7510E25FAE9F1002952AC /* beer.png */; };
 		DEF7511225FAEAC7002952AC /* information4.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF7511125FAEAC7002952AC /* information4.swift */; };
 		DEF7511525FAEAF9002952AC /* information5.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF7511425FAEAF9002952AC /* information5.swift */; };
@@ -101,10 +103,27 @@
 		DEF7511B25FAEE9C002952AC /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF7511925FAEE9C002952AC /* left.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DEF40624265B71ED00A4E483 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DEEC1357259EFE84008F282A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DEEC135E259EFE84008F282A;
+			remoteInfo = FinKick;
+		};
+		DEF40632265B773900A4E483 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DEEC1357259EFE84008F282A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DEEC135E259EFE84008F282A;
+			remoteInfo = FinKick;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		00EA28E2831FD603E0A887D3 /* Pods_FinKick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinKick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D47E1C51C8B885F92F622A1 /* Pods-FinKick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinKick.debug.xcconfig"; path = "Target Support Files/Pods-FinKick/Pods-FinKick.debug.xcconfig"; sourceTree = "<group>"; };
-		C64D35FFF7524A203D9B1D9C /* Pods-FinKick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinKick.release.xcconfig"; path = "Target Support Files/Pods-FinKick/Pods-FinKick.release.xcconfig"; sourceTree = "<group>"; };
+		4050E79DC2E6106155544A15 /* Pods-FinKick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinKick.debug.xcconfig"; path = "Target Support Files/Pods-FinKick/Pods-FinKick.debug.xcconfig"; sourceTree = "<group>"; };
+		4B934835730349E04953F2A7 /* Pods_FinKick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinKick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCE140F8D4C8556526CD946B /* Pods-FinKick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinKick.release.xcconfig"; path = "Target Support Files/Pods-FinKick/Pods-FinKick.release.xcconfig"; sourceTree = "<group>"; };
 		DE17CB77265234CF0039657A /* QRCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCheck.swift; sourceTree = "<group>"; };
 		DE17CB792652457A0039657A /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
 		DE2EC54F261DC95700C54973 /* 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512.png; path = FinKick/Assets.xcassets/Assets/AppIcon.appiconset/512.png; sourceTree = SOURCE_ROOT; };
@@ -202,6 +221,12 @@
 		DEF40611265AA17600A4E483 /* twice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twice.png; sourceTree = "<group>"; };
 		DEF40612265AA17600A4E483 /* drunk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drunk.png; sourceTree = "<group>"; };
 		DEF40617265AA9A500A4E483 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		DEF4061F265B71ED00A4E483 /* FinKickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinKickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEF40621265B71ED00A4E483 /* FinKickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinKickTests.swift; sourceTree = "<group>"; };
+		DEF40623265B71ED00A4E483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEF4062D265B773900A4E483 /* FinKickUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinKickUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEF4062F265B773900A4E483 /* FinKickUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinKickUITests.swift; sourceTree = "<group>"; };
+		DEF40631265B773900A4E483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEF7510E25FAE9F1002952AC /* beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beer.png; sourceTree = "<group>"; };
 		DEF7511125FAEAC7002952AC /* information4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = information4.swift; sourceTree = "<group>"; };
 		DEF7511425FAEAF9002952AC /* information5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = information5.swift; sourceTree = "<group>"; };
@@ -222,7 +247,21 @@
 				DE5C2A7526073796007F450C /* libxml2.tbd in Frameworks */,
 				DE5C2A7B260737D7007F450C /* SystemConfiguration.framework in Frameworks */,
 				DE5C2A6C26073762007F450C /* OpenGLES.framework in Frameworks */,
-				53180DE80E56458182DF8AA4 /* Pods_FinKick.framework in Frameworks */,
+				3048739E6FA06E0ED95CA8BB /* Pods_FinKick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEF4061C265B71ED00A4E483 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEF4062A265B773900A4E483 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,8 +271,8 @@
 		A30438E4EEEE6C455DFF27AA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0D47E1C51C8B885F92F622A1 /* Pods-FinKick.debug.xcconfig */,
-				C64D35FFF7524A203D9B1D9C /* Pods-FinKick.release.xcconfig */,
+				4050E79DC2E6106155544A15 /* Pods-FinKick.debug.xcconfig */,
+				CCE140F8D4C8556526CD946B /* Pods-FinKick.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -295,7 +334,7 @@
 				DE5C2A6F2607377A007F450C /* QuartzCore.framework */,
 				DE5C2A6D26073773007F450C /* CoreLocation.framework */,
 				DE5C2A6B26073762007F450C /* OpenGLES.framework */,
-				00EA28E2831FD603E0A887D3 /* Pods_FinKick.framework */,
+				4B934835730349E04953F2A7 /* Pods_FinKick.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -427,6 +466,8 @@
 			isa = PBXGroup;
 			children = (
 				DEEC1361259EFE84008F282A /* FinKick */,
+				DEF40620265B71ED00A4E483 /* FinKickTests */,
+				DEF4062E265B773900A4E483 /* FinKickUITests */,
 				DEEC1360259EFE84008F282A /* Products */,
 				DE5C2A6A26073762007F450C /* Frameworks */,
 				A30438E4EEEE6C455DFF27AA /* Pods */,
@@ -437,6 +478,8 @@
 			isa = PBXGroup;
 			children = (
 				DEEC135F259EFE84008F282A /* FinKick.app */,
+				DEF4061F265B71ED00A4E483 /* FinKickTests.xctest */,
+				DEF4062D265B773900A4E483 /* FinKickUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -468,6 +511,24 @@
 			path = FinKick;
 			sourceTree = "<group>";
 		};
+		DEF40620265B71ED00A4E483 /* FinKickTests */ = {
+			isa = PBXGroup;
+			children = (
+				DEF40621265B71ED00A4E483 /* FinKickTests.swift */,
+				DEF40623265B71ED00A4E483 /* Info.plist */,
+			);
+			path = FinKickTests;
+			sourceTree = "<group>";
+		};
+		DEF4062E265B773900A4E483 /* FinKickUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DEF4062F265B773900A4E483 /* FinKickUITests.swift */,
+				DEF40631265B773900A4E483 /* Info.plist */,
+			);
+			path = FinKickUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -475,11 +536,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEEC1373259EFE86008F282A /* Build configuration list for PBXNativeTarget "FinKick" */;
 			buildPhases = (
-				A5028E9AA91FE08D1CEAF339 /* [CP] Check Pods Manifest.lock */,
+				C35F72EB2B8481CCBE88F868 /* [CP] Check Pods Manifest.lock */,
 				DEEC135B259EFE84008F282A /* Sources */,
 				DEEC135C259EFE84008F282A /* Frameworks */,
 				DEEC135D259EFE84008F282A /* Resources */,
-				36D22B40C380073CE8F30205 /* [CP] Embed Pods Frameworks */,
+				CD1F9DE276E33ADF98D89053 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -490,18 +551,62 @@
 			productReference = DEEC135F259EFE84008F282A /* FinKick.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DEF4061E265B71ED00A4E483 /* FinKickTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEF40626265B71ED00A4E483 /* Build configuration list for PBXNativeTarget "FinKickTests" */;
+			buildPhases = (
+				DEF4061B265B71ED00A4E483 /* Sources */,
+				DEF4061C265B71ED00A4E483 /* Frameworks */,
+				DEF4061D265B71ED00A4E483 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DEF40625265B71ED00A4E483 /* PBXTargetDependency */,
+			);
+			name = FinKickTests;
+			productName = FinKickTests;
+			productReference = DEF4061F265B71ED00A4E483 /* FinKickTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DEF4062C265B773900A4E483 /* FinKickUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEF40634265B773900A4E483 /* Build configuration list for PBXNativeTarget "FinKickUITests" */;
+			buildPhases = (
+				DEF40629265B773900A4E483 /* Sources */,
+				DEF4062A265B773900A4E483 /* Frameworks */,
+				DEF4062B265B773900A4E483 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DEF40633265B773900A4E483 /* PBXTargetDependency */,
+			);
+			name = FinKickUITests;
+			productName = FinKickUITests;
+			productReference = DEF4062D265B773900A4E483 /* FinKickUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DEEC1357259EFE84008F282A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					DEEC135E259EFE84008F282A = {
 						CreatedOnToolsVersion = 12.3;
 						LastSwiftMigration = 1230;
+					};
+					DEF4061E265B71ED00A4E483 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = DEEC135E259EFE84008F282A;
+					};
+					DEF4062C265B773900A4E483 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = DEEC135E259EFE84008F282A;
 					};
 				};
 			};
@@ -519,6 +624,8 @@
 			projectRoot = "";
 			targets = (
 				DEEC135E259EFE84008F282A /* FinKick */,
+				DEF4061E265B71ED00A4E483 /* FinKickTests */,
+				DEF4062C265B773900A4E483 /* FinKickUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -582,27 +689,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		36D22B40C380073CE8F30205 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
+		DEF4061D265B71ED00A4E483 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FinKick/Pods-FinKick-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FinKick/Pods-FinKick-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEF4062B265B773900A4E483 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinKick/Pods-FinKick-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
-		A5028E9AA91FE08D1CEAF339 /* [CP] Check Pods Manifest.lock */ = {
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C35F72EB2B8481CCBE88F868 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -622,6 +726,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD1F9DE276E33ADF98D89053 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinKick/Pods-FinKick-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinKick/Pods-FinKick-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinKick/Pods-FinKick-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -666,7 +787,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DEF4061B265B71ED00A4E483 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEF40622265B71ED00A4E483 /* FinKickTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEF40629265B773900A4E483 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEF40630265B773900A4E483 /* FinKickUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DEF40625265B71ED00A4E483 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DEEC135E259EFE84008F282A /* FinKick */;
+			targetProxy = DEF40624265B71ED00A4E483 /* PBXContainerItemProxy */;
+		};
+		DEF40633265B773900A4E483 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DEEC135E259EFE84008F282A /* FinKick */;
+			targetProxy = DEF40632265B773900A4E483 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DEEC1368259EFE84008F282A /* Main.storyboard */ = {
@@ -807,9 +957,10 @@
 		};
 		DEEC1374259EFE86008F282A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D47E1C51C8B885F92F622A1 /* Pods-FinKick.debug.xcconfig */;
+			baseConfigurationReference = 4050E79DC2E6106155544A15 /* Pods-FinKick.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -839,9 +990,10 @@
 		};
 		DEEC1375259EFE86008F282A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C64D35FFF7524A203D9B1D9C /* Pods-FinKick.release.xcconfig */;
+			baseConfigurationReference = CCE140F8D4C8556526CD946B /* Pods-FinKick.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -868,6 +1020,92 @@
 			};
 			name = Release;
 		};
+		DEF40627265B71ED00A4E483 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 882B4FP598;
+				INFOPLIST_FILE = FinKickTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kimjinwoo.FinKickTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinKick.app/FinKick";
+			};
+			name = Debug;
+		};
+		DEF40628265B71ED00A4E483 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 882B4FP598;
+				INFOPLIST_FILE = FinKickTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kimjinwoo.FinKickTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinKick.app/FinKick";
+			};
+			name = Release;
+		};
+		DEF40635265B773900A4E483 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 882B4FP598;
+				INFOPLIST_FILE = FinKickUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kimjinwoo.FinKickUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FinKick;
+			};
+			name = Debug;
+		};
+		DEF40636265B773900A4E483 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 882B4FP598;
+				INFOPLIST_FILE = FinKickUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kimjinwoo.FinKickUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FinKick;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -885,6 +1123,24 @@
 			buildConfigurations = (
 				DEEC1374259EFE86008F282A /* Debug */,
 				DEEC1375259EFE86008F282A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEF40626265B71ED00A4E483 /* Build configuration list for PBXNativeTarget "FinKickTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEF40627265B71ED00A4E483 /* Debug */,
+				DEF40628265B71ED00A4E483 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEF40634265B773900A4E483 /* Build configuration list for PBXNativeTarget "FinKickUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEF40635265B773900A4E483 /* Debug */,
+				DEF40636265B773900A4E483 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

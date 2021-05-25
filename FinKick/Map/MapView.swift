@@ -262,11 +262,8 @@ class MapView: MainViewController, MTMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapCreate()
-        print("디드로드")
     }
-    override func viewWillAppear(_ animated: Bool) {
-        print("윌어피어")
-    }
+    
     override func viewDidAppear(_ animated: Bool) {
         KickboardNowUse()
         datareload()
@@ -278,7 +275,6 @@ class MapView: MainViewController, MTMapViewDelegate {
             self.mapStartButton()
             self.startButton.addTarget(self, action: #selector(self.btnOnClick(_:)), for: .touchUpInside)
         }
-        print("디드어피어")
     }
     
     @objc func useStopClick(_ sender : Any?){

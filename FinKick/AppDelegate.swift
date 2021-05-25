@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         AF.request(request)
             .responseJSON{
                 (response) in
-            let statusCode = response.response!.statusCode
+            let statusCode = response.response?.statusCode
             switch response.result{
             case .success(let obj):
                 print("POST 성공")
@@ -147,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         AF.request(request)
             .responseJSON{
                 (response) in
-                let statusCode = response.response!.statusCode
+                let statusCode = response.response?.statusCode
                 switch response.result{
                 case .success(let obj):
                     print("GET 성공")
@@ -189,7 +189,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         AF.request(request)
             .responseJSON{
                 (response) in
-            let statusCode = response.response!.statusCode
+            let statusCode = response.response?.statusCode
             switch response.result{
             case .success(let obj):
                 print("POST 성공")
@@ -230,7 +230,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         AF.request(request)
             .responseJSON{
                 (response) in
-            let statusCode = response.response!.statusCode
+            let statusCode = response.response?.statusCode
             switch response.result{
             case .success(let obj):
                 print("POST 성공")
@@ -275,7 +275,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         AF.request(request)
             .responseJSON{
                 (response) in
-            let statusCode = response.response!.statusCode
+            let statusCode = response.response?.statusCode
             switch response.result{
             case .success(let obj):
                 print("POST 성공")
@@ -318,7 +318,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         AF.request(request)
             .responseJSON{
                 (response) in
-                let statusCode = response.response!.statusCode
+                let statusCode = response.response?.statusCode
                 switch response.result{
                 case .success(let obj):
                     print("GET 성공")
@@ -422,7 +422,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         AF.request(request)
             .responseJSON{
                 (response) in
-                let statusCode = response.response!.statusCode
+                let statusCode = response.response?.statusCode
                 switch response.result{
                 case .success(let obj):
                     print("POST 성공")
@@ -465,7 +465,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         AF.request(request)
             .responseJSON{
                 (response) in
-                let statusCode = response.response!.statusCode
+                let statusCode = response.response?.statusCode
                 switch response.result{
                 case .success(let obj):
                     print("POST 성공")
@@ -478,11 +478,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             complation!(getInstanceData,statusCode)
                         }catch{
                             print(error)
+                            print("회원가입 오류 : ",obj)
                             complation!(nil,statusCode)
                         }
                     }
                 case.failure(let error):
-                    print("Error")
+                    print("회원가입 Error : ",error)
                     complation!(nil ,statusCode)
                 }
             }
@@ -499,7 +500,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             //            .validate(statusCode: 200..<300)
             .responseJSON { (json) in
                 //                   여기서 가져온 데이터를 자유롭게 활용하세요
-                let statusCode = json.response!.statusCode
+                let statusCode = json.response?.statusCode
                 
                 switch json.result{
                 case .success(let obj):
