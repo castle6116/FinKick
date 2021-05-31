@@ -13,7 +13,7 @@ class information1: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        image = UIImage(named: "m1.png")
+        image = UIImage(named: "512.png")
         imgView.image = image
         // Do any additional setup after loading the view.
     }

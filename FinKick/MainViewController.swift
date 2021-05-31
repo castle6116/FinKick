@@ -137,6 +137,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func location(complation : ((Int?) -> ())?) {
         complation!(3)
     }
+
     //프로그램이 시작 될 때 제일 처음 실행 되는 함수
     override func viewDidAppear(_ animated: Bool) {
         location(){
@@ -148,17 +149,19 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
         membershipOK = appDelegate.success
-        IdInputField.text = "osc2143@gmail.com"
-        PwInputField.text = "qweqwe!1"
+        IdInputField?.text = "osc2143@gmail.com"
+        PwInputField?.text = "qweqwe!1"
+        
         
         if(membershipOK == 1){
             showToast(message: "회원가입에 성공하였습니다.")
-            IdInputField.text = appDelegate.ID
-            PwInputField.text = appDelegate.Pass
+            IdInputField?.text = appDelegate.ID
+            PwInputField?.text = appDelegate.Pass
+            membershipOK = 0
         }
-        LoginError.isHidden = true
-        IdInputField.keyboardType = .asciiCapable
-        PwInputField.keyboardType = .asciiCapable
+        LoginError?.isHidden = true
+        IdInputField?.keyboardType = .asciiCapable
+        PwInputField?.keyboardType = .asciiCapable
     }
     
     // 앱이 실행 했을 때

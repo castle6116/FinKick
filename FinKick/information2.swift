@@ -13,7 +13,7 @@ class information2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        image = UIImage(named: "road2.png")
+        image = UIImage(named: "drive.png")
         imgView.image = image
         // Do any additional setup after loading the view.
     }

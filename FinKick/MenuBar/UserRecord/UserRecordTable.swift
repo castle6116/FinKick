@@ -95,6 +95,7 @@ extension UserRecordTable: UITableViewDataSource,UITableViewDelegate{
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         var target = Memo.dummyMemoList[indexPath.row]
+        print("인덱스 패스 : ",indexPath.row)
         cell.useTime.text = target.time
         cell.usemoney.text = String(target.money) + " 원"
         cell.Date.text = dateFormatter.string(from: target.insertDate)

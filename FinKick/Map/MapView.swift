@@ -11,12 +11,18 @@ import CoreLocation
 // 카카오
 // public let DEFAULT_POSITION = MTMapPointGeo(latitude: 35.8471267472791, longitude: 128.58281776895694)
 
-class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
+class MapView: MainViewController, MTMapViewDelegate {
     var latitude : Double = 0.0
     var longitude : Double = 0.0
-    var kickboardUse : Int = 0
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let startButton = UIButton()
+    let UsingButton = UITextView()
+    let stopButton = UIButton()
+    var mtimer : Timer?
+    var number : Int = 0
+    var min : Int = 0
+    var sec : Int = 0
+    var nowusing : Int = 0
+    var money : Int = 0
     
     func mapStartButton(){
         startButton.setTitle("사용 시작", for: .normal)
@@ -31,29 +37,86 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         startButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20).isActive = true
         startButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -80).isActive = true
     }
+    
+    func KickboardUsing(){
+        if nowusing == 0 {
+            mtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+            nowusing = 1
+        }
+        
+        UsingButton.backgroundColor = .gray
+        UsingButton.translatesAutoresizingMaskIntoConstraints = false
+        UsingButton.text = "사용 시간 : \(min) 분 \(sec) 초 \n사용 금액 : \(money)"
+        UsingButton.font = UIFont(name: UsingButton.font!.fontName , size: 24)
+        UsingButton.textColor = .white
+        UsingButton.isEditable = false
+        UsingButton.isHidden = false
+        
+        view.addSubview(UsingButton)
+        
+        stopButton.backgroundColor = .green
+        stopButton.translatesAutoresizingMaskIntoConstraints = false
+        stopButton.setTitle("사용 종료", for: .normal)
+        stopButton.isHidden = false
+        
+        view.addSubview(stopButton)
+        
+        let safeArea =  view.safeAreaLayoutGuide
+        
+        UsingButton.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.12).isActive = true
+        UsingButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20).isActive = true
+        UsingButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20).isActive = true
+        UsingButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20).isActive = true
+        
+        stopButton.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.1).isActive = true
+        stopButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 260).isActive = true
+        stopButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -30).isActive = true
+        stopButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -30).isActive = true
+    }
+    
+    @objc func timerCallback(){
+        number += 1
+        min = number / 60
+        sec = number % 60
+        money = 450 + min * 150
+        UsingButton.text = "사용 시간 : \(min) 분 \(sec) 초 \n사용 금액 : \(money)"
+    }
+    
+    @IBAction func onTimerEnd(_ sender: Any) {
+        if let timer = mtimer {
+            if(timer.isValid){
+                timer.invalidate()
+            }
+        }
+        number = 0
+        nowusing = 0
+    }
+
     // 카카오
 //    var mapView: MTMapView?
 //    var mapPoint1: MTMapPoint?
 //    var poiItem1: MTMapPOIItem?
 //    var mapcricle: MTMapCircle?
     // 네이버
-    func setMarker(_ mapView: NMFNaverMapView) {
+    func setMarker(_ mapView: NMFNaverMapView , lat : Double, lng : Double) {
         let marker = NMFMarker()
-        marker.position = NMGLatLng(lat: 35.8471267472791, lng: 128.58281776895694)
-        marker.iconImage = NMF_MARKER_IMAGE_BLACK
-        marker.iconTintColor = UIColor.red
-        marker.width = 20
-        marker.height = 20
+        var marketimage : UIImage?
+        marketimage  = UIImage(named: "My_Post.png")
+        print("lat : ",lat,"lng : ",lng)
+        marker.position = NMGLatLng(lat: lat, lng: lng)
+        marker.iconImage = NMFOverlayImage(image: marketimage!)
         marker.mapView = mapView.mapView
+        marker.width = 35
+        marker.height = 35
         
-        // 정보창 생성
-        let infoWindow = NMFInfoWindow()
-        let dataSource = NMFInfoWindowDefaultTextSource.data()
-        dataSource.title = "영남이공대"
-        infoWindow.dataSource = dataSource
+//        // 정보창 생성
+//        let infoWindow = NMFInfoWindow()
+//        let dataSource = NMFInfoWindowDefaultTextSource.data()
+//        dataSource.title = "영남이공대"
+//        infoWindow.dataSource = dataSource
         
         // 마커에 달아주기
-        infoWindow.open(with: marker)
+//        infoWindow.open(with: marker)
 
     }
     
@@ -94,39 +157,8 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
         mapView.mapView.logoInteractionEnabled = true
         mapView.mapView.logoAlign = NMFLogoAlign(rawValue: 0)!
         
-        setMarker(mapView)
-        
+        Kickboardspot(mapView)
         view.addSubview(mapView)
-        
-        appDelegate.GetUseHistory(type: "ALL", num: nil){
-            (data, result) in
-            if let data = data{
-                if data.result_data != nil {
-                    for i in 0 ... (data.result_data?.useHistory!.count)!-1 {
-                        do{
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                            guard let startTime = dateFormatter.date(from:(data.result_data?.useHistory![i].startTime)!) else {return}
-                            print(data.result_data?.useHistory![i].endTime)
-                            guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime) ?? "0000-00-00 00:00:00" ) else {return}
-                            var useTime = Int(endTime.timeIntervalSince(startTime))
-                            var useTimeMin = useTime / 60
-                            var useTimeSec = useTime % 60
-                                
-                            let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
-                            print(useTimeString)
-                            let money = data.result_data?.useHistory![i].price!
-                            
-                            Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money! ,insertDate: endTime, num: (data.result_data?.useHistory![i].num)!))
-
-                            print("여기가 유즈 히스토리 : ",data.result_data?.useHistory![i] as Any)
-                        }catch{
-                            print("실패")
-                        }
-                    }
-                }
-            }
-        }
         //카카오 맵
 //            // 지도 불러오기
 //            mapView = MTMapView(frame: self.view.bounds)
@@ -169,19 +201,125 @@ class MapView: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
 //            }
 
     }
+    func KickboardNowUse(){
+        appDelegate.GetUseHistory(type: "Now", num: nil) { data, result in
+            if let result = result{
+                if result.result_data != nil {
+                    self.appDelegate.usernum = result.result_data?.useHistory?.num ?? 0
+                    print("사용중이다 : ",self.appDelegate.usernum)
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    guard let startTime = dateFormatter.date(from:(result.result_data?.useHistory!.startTime)!) else {return}
+                    print(result.result_data?.useHistory!.endTime)
+                    var endTime = Date()
+                    var useTime = Int(endTime.timeIntervalSince(startTime))
+                    self.number = useTime
+                    
+                    self.appDelegate.kickboarduse = 1
+                    self.KickboardUsing()
+                    self.stopButton.addTarget(self, action: #selector(self.useStopClick(_:)), for: .touchUpInside)
+                    
+                }
+            }
+        }
+        
+    }
+    
+    func datareload(){
+        appDelegate.GetUseHistory(type: "ALL", num: nil){
+            (data, result) in
+            if let data = data{
+                if data.result_data != nil {
+                    Memo.dummyMemoList = []
+                    for i in 0 ... (data.result_data?.useHistory!.count)!-1 {
+                        do{
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                            guard let startTime = dateFormatter.date(from:(data.result_data?.useHistory![i].startTime)!) else {return}
+                            guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime) ?? "0000-00-00 00:00:00" ) else {return}
+                            var useTime = Int(endTime.timeIntervalSince(startTime))
+                            var useTimeMin = useTime / 60
+                            var useTimeSec = useTime % 60
+                                
+                            let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
+                            let money = data.result_data?.useHistory![i].price!
+                            
+                            Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money! ,insertDate: endTime, num: (data.result_data?.useHistory![i].num)!))
+                        }catch{
+                            print("실패")
+                        }
+                    }
+                }
+            }
+        }
+        appDelegate.CardLookup()
+    }
+    
+    func Kickboardspot(_ mapView: NMFNaverMapView){
+        appDelegate.KickboardCurrentlocation(){
+            data in
+            if let data = data {
+                print("킥보드 위치 : ",data)
+                for i in 0 ... (data.result_data?.Kickboard!.count)!-1 {
+                    do{
+                        self.setMarker(mapView, lat: (data.result_data?.Kickboard?[i].lat)!, lng: (data.result_data?.Kickboard?[i].lon)!)
+                        print("킥보드 위치 찍는 중 : ",data.result_data?.Kickboard?[i])
+                    }
+                    catch{
+                        print("킥보드 위치 오류 발생 : ",error)
+                    }
+                }
+                
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapCreate()
-        if kickboardUse == 0{
-            mapStartButton()
-            startButton.addTarget(self, action: #selector(btnOnClick(_:)), for: .touchUpInside)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        KickboardNowUse()
+        datareload()
+        if appDelegate.cardWhether == 2 {
+            print("카드 생성 성공")
+            showToast(message: "카드 생성 성공")
+        }
+        if self.appDelegate.kickboarduse == 0{
+            self.mapStartButton()
+            self.startButton.addTarget(self, action: #selector(self.btnOnClick(_:)), for: .touchUpInside)
+        }
+    }
+    
+    @objc func useStopClick(_ sender : Any?){
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        var coor = locationManager.location?.coordinate
+        latitude = coor?.latitude ??  35.8471267472791
+        longitude = coor?.longitude ??  128.58281776895694
+        appDelegate.KickboardUsestop(useNum: appDelegate.usernum, lon:longitude , lat:latitude) {
+            data in
+            if let data = data{
+                print("data : ",data)
+                if data.code == 0{
+                    self.showToast(message: "사용 시간 : \(self.min) 분 \(self.sec) 초 \n사용 금액 : \(data.result_data?.useHistory?.price)")
+                    self.appDelegate.kickboarduse = 0
+                    self.stopButton.isHidden = true
+                    self.UsingButton.isHidden = true
+                    self.onTimerEnd(self)
+                }
             }
+        }
     }
     
     @objc func btnOnClick(_ sender : Any?){
-        guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "QRCode") else{
+        guard var uvc = self.storyboard?.instantiateViewController(withIdentifier: "QRCode") else{
             return
+        }
+        if appDelegate.cardWhether == 0 {
+            uvc = self.storyboard?.instantiateViewController(withIdentifier: "CardRegister") ?? self
         }
         // 전체 화면으로 불러옴
         uvc.modalPresentationStyle = .fullScreen
