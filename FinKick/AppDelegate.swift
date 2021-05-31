@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var useHistory : useHistory?
         var card : cardUse?
         var token : String?
+        var Kickboard : [Kickboard]?
     }
     
     struct HistoryResponse : Codable {
@@ -40,7 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var useHistory : [useHistory]?
         var token : String?
     }
+    
     struct cardUse : Codable {
+        var num : Int?
         var scheme : String?
         var name : String?
         var bin : String?
@@ -51,6 +54,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var iosUrl : String?
     }
     
+    struct Kickboard : Codable{
+        var num : Int?
+        var lat : Double?
+        var lon : Double?
+    }
+    
     struct useHistory : Codable {
         var num : Int?
         var kickboardNum : Int?
@@ -59,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var authTime : String?
         var price : Int?
     }
+    
     struct Account : Codable{
         var id : String?
         var password : String?
@@ -175,9 +185,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
     }
     
-    func KickboardUsestop(useNum : Int, complation : ((Response?) -> ())?){
+    func KickboardCurrentlocation(complation : ((Response?) -> ())?){
+        url = "http://test.api.finkick.xyz/api/kickboard"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        KeychainSwift().set(AppDelegate.loginToken!,forKey: "x-access-token")
+        let headers : HTTPHeaders = ["x-access-token" : KeychainSwift().get("x-access-token")!]
+        request.headers = headers
+        
+        AF.request(request)
+            .responseJSON{
+                (response) in
+                let statusCode = response.response?.statusCode
+                switch response.result{
+                case .success(let obj):
+                    print("GET 성공")
+                    if obj is NSDictionary{
+                        do{
+                            //obj를 JSON으로 변경
+                            let dataJSON = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+                            // JSON Decoder 사용
+                            let getInstanceData = try JSONDecoder().decode(Response.self, from: dataJSON)
+                            print(getInstanceData)
+                            complation!(getInstanceData)
+                            
+                        }catch{
+                            print(obj)
+                            print("카드 조회 에러 발생 : ",error)
+                        }
+                    }
+                case.failure(let error):
+                    print("Error : ",error.localizedDescription)
+                }
+            }
+    }
+    
+    func KickboardUsestop(useNum : Int, lon : Double, lat : Double, complation : ((Response?) -> ())?){
         print("유저 넘 : ",usernum)
         url = "http://test.api.finkick.xyz/api/usehistory/\(useNum)"
+        let param : Parameters = ["lon" : lon , "lat" : lat]// JSON 객체로 변환할 딕셔너리 준비
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -185,6 +233,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         KeychainSwift().set(AppDelegate.loginToken!,forKey: "x-access-token")
         let headers : HTTPHeaders = ["x-access-token" : KeychainSwift().get("x-access-token")!]
         request.headers = headers
+        do{
+            try request.httpBody = JSONSerialization.data(withJSONObject: param, options: [])
+        }catch{
+            print("Http Body Error")
+        }
         
         AF.request(request)
             .responseJSON{

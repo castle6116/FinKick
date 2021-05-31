@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class QRCheck: MainViewController {
+class QRCheck: MainViewController{
     @IBOutlet weak var readerView: ReaderView!
     @IBOutlet weak var readButton: UIButton!
     var message = ""
@@ -88,7 +89,12 @@ extension QRCheck: ReaderViewDelegate {
                                       handler: {action in
                                         switch action.style{
                                         case .cancel:
-                                            self.appDelegate.KickboardUsestop(useNum: self.appDelegate.usernum){
+                                            let locationManager = CLLocationManager()
+                                            locationManager.delegate = self
+                                            var coor = locationManager.location?.coordinate
+                                            var latitude = coor?.latitude ??  35.8471267472791
+                                            var longitude = coor?.longitude ??  128.58281776895694
+                                            self.appDelegate.KickboardUsestop(useNum: self.appDelegate.usernum, lon:longitude , lat:latitude){
                                                 data in
                                                 self.showToast(message: "사용을 취소 하였습니다.")
                                                 self.Back(self)

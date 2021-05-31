@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DEF4061E265B71ED00A4E483"
-               BuildableName = "FinKickTests.xctest"
-               BlueprintName = "FinKickTests"
-               ReferencedContainer = "container:FinKick.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DEF4062C265B773900A4E483"
-               BuildableName = "FinKickUITests.xctest"
-               BlueprintName = "FinKickUITests"
-               ReferencedContainer = "container:FinKick.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

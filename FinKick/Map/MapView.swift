@@ -98,23 +98,25 @@ class MapView: MainViewController, MTMapViewDelegate {
 //    var poiItem1: MTMapPOIItem?
 //    var mapcricle: MTMapCircle?
     // 네이버
-    func setMarker(_ mapView: NMFNaverMapView) {
+    func setMarker(_ mapView: NMFNaverMapView , lat : Double, lng : Double) {
         let marker = NMFMarker()
-        marker.position = NMGLatLng(lat: 35.8471267472791, lng: 128.58281776895694)
-        marker.iconImage = NMF_MARKER_IMAGE_BLACK
-        marker.iconTintColor = UIColor.red
-        marker.width = 20
-        marker.height = 20
+        var marketimage : UIImage?
+        marketimage  = UIImage(named: "My_Post.png")
+        print("lat : ",lat,"lng : ",lng)
+        marker.position = NMGLatLng(lat: lat, lng: lng)
+        marker.iconImage = NMFOverlayImage(image: marketimage!)
         marker.mapView = mapView.mapView
+        marker.width = 35
+        marker.height = 35
         
-        // 정보창 생성
-        let infoWindow = NMFInfoWindow()
-        let dataSource = NMFInfoWindowDefaultTextSource.data()
-        dataSource.title = "영남이공대"
-        infoWindow.dataSource = dataSource
+//        // 정보창 생성
+//        let infoWindow = NMFInfoWindow()
+//        let dataSource = NMFInfoWindowDefaultTextSource.data()
+//        dataSource.title = "영남이공대"
+//        infoWindow.dataSource = dataSource
         
         // 마커에 달아주기
-        infoWindow.open(with: marker)
+//        infoWindow.open(with: marker)
 
     }
     
@@ -155,8 +157,7 @@ class MapView: MainViewController, MTMapViewDelegate {
         mapView.mapView.logoInteractionEnabled = true
         mapView.mapView.logoAlign = NMFLogoAlign(rawValue: 0)!
         
-        setMarker(mapView)
-        
+        Kickboardspot(mapView)
         view.addSubview(mapView)
         //카카오 맵
 //            // 지도 불러오기
@@ -236,19 +237,15 @@ class MapView: MainViewController, MTMapViewDelegate {
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                             guard let startTime = dateFormatter.date(from:(data.result_data?.useHistory![i].startTime)!) else {return}
-                            print(data.result_data?.useHistory![i].endTime)
                             guard let endTime = dateFormatter.date(from: (data.result_data?.useHistory![i].endTime) ?? "0000-00-00 00:00:00" ) else {return}
                             var useTime = Int(endTime.timeIntervalSince(startTime))
                             var useTimeMin = useTime / 60
                             var useTimeSec = useTime % 60
                                 
                             let useTimeString = String(useTimeMin) + " 분 " + String(useTimeSec) + " 초"
-                            print(useTimeString)
                             let money = data.result_data?.useHistory![i].price!
                             
                             Memo.dummyMemoList.append(Memo(content: (data.result_data?.useHistory![i].startTime)!, time: useTimeString, money: money! ,insertDate: endTime, num: (data.result_data?.useHistory![i].num)!))
-
-                            print("여기가 유즈 히스토리 : ",data.result_data?.useHistory![i] as Any)
                         }catch{
                             print("실패")
                         }
@@ -257,6 +254,25 @@ class MapView: MainViewController, MTMapViewDelegate {
             }
         }
         appDelegate.CardLookup()
+    }
+    
+    func Kickboardspot(_ mapView: NMFNaverMapView){
+        appDelegate.KickboardCurrentlocation(){
+            data in
+            if let data = data {
+                print("킥보드 위치 : ",data)
+                for i in 0 ... (data.result_data?.Kickboard!.count)!-1 {
+                    do{
+                        self.setMarker(mapView, lat: (data.result_data?.Kickboard?[i].lat)!, lng: (data.result_data?.Kickboard?[i].lon)!)
+                        print("킥보드 위치 찍는 중 : ",data.result_data?.Kickboard?[i])
+                    }
+                    catch{
+                        print("킥보드 위치 오류 발생 : ",error)
+                    }
+                }
+                
+            }
+        }
     }
 
     override func viewDidLoad() {
@@ -278,8 +294,12 @@ class MapView: MainViewController, MTMapViewDelegate {
     }
     
     @objc func useStopClick(_ sender : Any?){
-        
-        appDelegate.KickboardUsestop(useNum: appDelegate.usernum) {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        var coor = locationManager.location?.coordinate
+        latitude = coor?.latitude ??  35.8471267472791
+        longitude = coor?.longitude ??  128.58281776895694
+        appDelegate.KickboardUsestop(useNum: appDelegate.usernum, lon:longitude , lat:latitude) {
             data in
             if let data = data{
                 print("data : ",data)
